@@ -1,0 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+h1{
+    @apply font-dm font-bold lg:text-4xl md:text-3xl sm:text-2xl text-xl
+}
