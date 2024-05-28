@@ -1,0 +1,51 @@
+[
+  {
+    "label": "Traditional",
+    "image": "images/category/traditional.png"
+  },
+
+  {
+    "label": "Modern",
+    "image": "images/category/designer.png"
+  },
+
+  {
+    "label": "Abstract",
+    "image": "images/category/abstract.png"
+  },
+
+  {
+    "label": "Geometric",
+    "image": "images/category/geometric.png"
+  },
+
+  {
+    "label": "Floral",
+    "image": "images/category/floral.png"
+  },
+
+  {
+    "label": "Unshaped",
+    "image": "images/category/unshaped.png"
+  },
+
+  {
+    "label": "Dhurries",
+    "image": "images/category/dhurries.png"
+  },
+
+  {
+    "label": "Playroom",
+    "image": "images/category/playroom.png"
+  },
+
+  {
+    "label": "Designer",
+    "image": "images/category/designer.png"
+  },
+
+  {
+    "label": "Cushion & Pillows",
+    "image": "images/category/cushions.png"
+  }
+]
