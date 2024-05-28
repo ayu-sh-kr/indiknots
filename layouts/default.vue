@@ -9,11 +9,8 @@ console.log(isSideNavActive.value)
 
 </script>
 
-<template>
+<template class="hide-scrollbar">
     <AppHeader @side-nav="toggleSidenav"/>
-<!--    <div class="w-full min-h-screen bg-gray-800 absolute top-0 left-0 z-30">-->
-
-<!--    </div>-->
     <slot/>
 </template>
 
