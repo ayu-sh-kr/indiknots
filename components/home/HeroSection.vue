@@ -56,7 +56,7 @@ export interface CarouselItem{
         v-slot="{ item }"
         :items="items"
         :ui="{
-            item: 'basis-full lg:h-[90vh] md:h-[70vh] sm:h-[50vh]'
+            item: 'basis-full lg:h-[90vh] md:h-[70vh] sm:h-[60vh] h-[50vh]'
         }"
         class="w-full"
         indicators
