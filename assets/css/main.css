@@ -5,3 +5,19 @@
 h1{
     @apply font-dm font-bold lg:text-4xl md:text-3xl sm:text-2xl text-xl
 }
+
+h2 {
+    @apply font-dm font-semibold lg:text-3xl md:text-2xl sm:text-xl text-lg
+}
+
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+body {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
