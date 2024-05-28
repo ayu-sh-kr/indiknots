@@ -46,12 +46,11 @@ const route = useRoute();
 const activeHeader = computed(() => links.find(link => link.to === route.path) || {label: '', to: ''});
 
 const emit = defineEmits(['side-nav'])
-let sideNav = ref(false);
+let sideNav = ref(true);
 const toggleSideNav = useToggle(sideNav);
 
 const handleSideNav = () => {
     emit('side-nav', toggleSideNav());
-    console.log(`Side Status: ${sideNav.value}`)
 }
 
 console.log(activeHeader.value.label)
@@ -64,7 +63,7 @@ console.log(activeHeader.value.label)
     flex justify-between mx-auto items-center
     dark:border-gray-800 dark:hover:bg-gray-800
 "
-            :class="{'bg-transparent backdrop-blur shadow-none hover:shadow-md': isScrolled, 'bg-white dark:bg-gray-800': !isScrolled, 'col-span-12': !sideNav, 'col-span-9': sideNav}"
+            :class="{'bg-transparent backdrop-blur shadow-none hover:shadow-md': isScrolled, 'bg-white dark:bg-gray-800': !isScrolled}"
     >
         <h1 class="text-center flex items-center"><span class="text-orange-500">Indi</span>Knots</h1>
         <ul class="hidden lg:flex justify-between items-center gap-x-8 text-sm font-dm font-semibold text-gray-800 dark:text-gray-200 mt-2">
@@ -107,6 +106,9 @@ console.log(activeHeader.value.label)
             </button>
         </div>
     </header>
+    <div class="w-1/3 fixed top-16 right-0 z-30 lg:hidden" :hidden="sideNav">
+        <UtilsSideNav/>
+    </div>
 </template>
 
 <style scoped>
