@@ -2,22 +2,22 @@
 
 let items: CarouselItem[] = [
     {
-        link: 'images/carousel/img.png',
+        link: 'images/hero/img.png',
         label: 'New In Season'
     },
 
     {
-        link: 'images/carousel/img_1.png',
+        link: 'images/hero/img_1.png',
         label: 'New In Season'
     },
 
     {
-        link: 'images/carousel/img_2.png',
+        link: 'images/hero/img_2.png',
         label: 'New In Season'
     },
 
     {
-        link: 'images/carousel/img_3.png',
+        link: 'images/hero/img_3.png',
         label: 'New In Season'
     },
 
@@ -73,14 +73,28 @@ export interface CarouselItem{
 
 <style scoped>
 
-.hero-animate{
-    animation: animate-scale-in 3s linear;
-}
+
 
 .text-animate {
     animation: text-transform-in 3s linear;
 }
 
+
+@keyframes text-transform-in {
+    0% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-animate{
+    animation: animate-scale-in 3s linear;
+}
 
 @keyframes animate-scale-in {
     0% {
@@ -95,18 +109,6 @@ export interface CarouselItem{
     100% {
         opacity: 1;
         scale: 1;
-    }
-}
-
-@keyframes text-transform-in {
-    0% {
-        opacity: 0;
-        transform: translateY(100%);
-    }
-
-    100% {
-        opacity: 1;
-        transform: translateY(0);
     }
 }
 

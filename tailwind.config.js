@@ -20,6 +20,9 @@ export default {
         'dm': ['DM Sans', 'Helvetica', 'sans-serif'],
         'aktive':['aktive-grostec', 'Helvetica', 'sans-serif']
       },
+      fontWeight: {
+        'almostLight': '50'
+      },
     }
   },
   plugins: [],
