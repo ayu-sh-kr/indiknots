@@ -61,7 +61,7 @@ export interface BestSelling {
 </script>
 
 <template>
-<section class="min-h-screen p-2 mt-20">
+<section class="py-24 px-2 mt-20">
     <div class="flex justify-center items-center">
         <h3>DISCOVER OUR <span class="text-orange-400">BESTSELLING</span> RUGS</h3>
     </div>
@@ -75,7 +75,7 @@ export interface BestSelling {
                 <h3 class="font-extralight">{{item.label}}</h3>
                 <h4 class="text-lg font-extralight">{{item.provider}}</h4>
                 <div class="flex flex-col gap-2 items-center justify-center">
-                    <p class="text-sm cursor-pointer text-slate-900 dark:text-slate-100 font-semibold hover:text-orange-400 dark:hover:text-orange-600">FROM: ${{item.price}}</p>
+                    <p class="text-sm cursor-pointer text-slate-900 dark:text-slate-100 font-semibold hover:text-orange-400 dark:hover:text-orange-400">FROM: ${{item.price}}</p>
                     <UBadge :label="item.shipping" color="indigo" variant="outline"
                             :ui="{
                                 rounded: 'rounded-none'
