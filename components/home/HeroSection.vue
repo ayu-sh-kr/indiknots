@@ -62,7 +62,7 @@ export interface CarouselItem{
         indicators
     >
         <div class="w-full h-full object-cover overflow-hidden bg-black relative">
-            <img :src="item.link" :key="items.indexOf(item)" alt="" class="w-full h-full" draggable="false" :class="{'hero-animate': currentPage === items.indexOf(item)}">
+            <img loading="lazy" :src="item.link" :key="items.indexOf(item)" alt="" class="w-full h-full" draggable="false" :class="{'hero-animate': currentPage === items.indexOf(item)}">
             <div class="font-dm flex justify-center items-center font-semibold absolute bottom-20 w-full z-20 text-white" :class="{'text-animate': currentPage === items.indexOf(item)}">
                 <h1>{{item.label}}</h1>
             </div>
