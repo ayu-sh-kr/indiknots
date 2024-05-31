@@ -11,6 +11,20 @@ export default {
   ],
   theme: {
     extend: {
+      colors: {
+        beige: {
+          50: '#F9F8F5',
+          100: '#F2EFEA',
+          200: '#E2DFD5',
+          300: '#D2CFC0',
+          400: '#B2AF96',
+          500: '#928F6C',
+          600: '#837F62',
+          700: '#575741',
+          800: '#424231',
+          900: '#2C2B21',
+        },
+      },
       aspectRatio: {
         auto: 'auto',
         square: '1 / 1',
