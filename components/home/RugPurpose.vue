@@ -69,7 +69,7 @@ export interface Purpose{
                     <h2 class="font-almostLight">{{item.label}}</h2>
                     <p class="text-sm lg:text-[16px] lg:leading-relaxed font-almostLight text-center text-slate-800 dark:text-slate-100 w-4/5 text-wrap tracking-wide lg:text-left">{{item.description}}</p>
                     <div>
-                        <a href="#" class="mt-2 bg-orange-400 dark:bg-transparent dark:underline text-white dark:text-orange-600 font-semibold px-4 py-2 text-xl tracking-wide underline-offset-4">Shop</a>
+                        <a href="#" class="mt-2 bg-orange-400 dark:bg-transparent dark:underline text-white dark:text-orange-400 font-semibold px-4 py-2 text-xl tracking-wide underline-offset-4">Shop</a>
                     </div>
                 </div>
                 <div class="lg:w-1/2 overflow-hidden object-cover h-2/3 lg:h-full flex items-center justify-center bg-black">
