@@ -74,7 +74,7 @@ export interface BestSelling {
             <div class="flex flex-col items-center mt-2 rounded-none">
                 <h3 class="font-extralight">{{item.label}}</h3>
                 <h4 class="text-lg font-extralight">{{item.provider}}</h4>
-                <div class="flex flex-col gap-2">
+                <div class="flex flex-col gap-2 items-center justify-center">
                     <p class="text-sm cursor-pointer text-slate-900 dark:text-slate-100 font-semibold hover:text-orange-400 dark:hover:text-orange-600">FROM: ${{item.price}}</p>
                     <UBadge :label="item.shipping" color="indigo" variant="outline"
                             :ui="{
