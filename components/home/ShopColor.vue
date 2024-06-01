@@ -71,9 +71,7 @@ export interface ColorRug {
                 <div class="h-48 overflow-hidden object-cover bg-white/80 rounded-lg">
                     <img :src="item.image" :alt="item.color" class="w-full h-full">
                 </div>
-                <UButton :color="() => {
-                    return item.color.toLowerCase()
-                }" :label="item.color" variant="outline"/>
+                <UButton :color="item.color.toLocaleLowerCase()" :label="item.color" variant="soft"/>
             </div>
         </div>
     </section>

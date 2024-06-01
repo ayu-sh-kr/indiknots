@@ -5,6 +5,7 @@ import ShopCategory from "~/components/home/ShopCategory.vue";
 import RugPurpose from "~/components/home/RugPurpose.vue";
 import BestSelling from "~/components/home/BestSelling.vue";
 import ShopColor from "~/components/home/ShopColor.vue";
+import Showcase from "~/components/home/Showcase.vue";
 </script>
 
 <template>
@@ -13,6 +14,7 @@ import ShopColor from "~/components/home/ShopColor.vue";
     <RugPurpose/>
     <BestSelling/>
     <ShopColor/>
+    <Showcase/>
 </template>
 
 <style scoped>
