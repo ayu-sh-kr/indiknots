@@ -67,7 +67,7 @@ export interface ColorRug {
         </div>
 
         <div class="grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-5 mt-16">
-            <div class="grid-cols-1 flex flex-col items-center justify-center gap-4" v-for="(item, index) in items" :key="index">
+            <div class="col-span-1 flex flex-col items-center justify-center gap-4" v-for="(item, index) in items" :key="index">
                 <div class="h-48 overflow-hidden object-cover bg-white/80 rounded-lg">
                     <img :src="item.image" :alt="item.color" class="w-full h-full">
                 </div>
