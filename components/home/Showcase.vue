@@ -50,7 +50,7 @@ export interface Showcase {
                              class="image-after slider-image"
                         >
                     </div>
-                    <input type="range" min="20" max="100" value="50" class="slider"
+                    <input type="range" min="0" max="100" value="50" class="slider"
                            aria-label="Percentage of Before Photo Shown"
                     >
                     <div class="slider-line" aria-hidden="true"></div>
@@ -129,7 +129,7 @@ img {
 }
 
 main{
-    @apply grid place-items-center mt-3
+    @apply grid place-items-center mt-3;
 }
 
 .container {
@@ -184,7 +184,7 @@ main{
     position: absolute;
     bottom: 10px;
     left: 0;
-    @apply text-white font-dm p-2 text-sm font-semibold z-50;
+    @apply text-white font-dm p-2 text-sm font-semibold z-20;
 }
 
 .image-container::after {
@@ -192,7 +192,7 @@ main{
     position: absolute;
     bottom: 10px;
     right: 0;
-    @apply text-white font-dm p-2 text-sm font-semibold z-50;
+    @apply text-white font-dm p-2 text-sm font-semibold z-20;
 }
 
 </style>
