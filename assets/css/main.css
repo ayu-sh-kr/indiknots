@@ -11,7 +11,7 @@ h2 {
 }
 
 h3 {
-    @apply lg:text-xl md:text-lg text-[1.5rem] text-slate-900 contrast-150 font-dm dark:text-white
+    @apply lg:text-xl md:text-lg text-[1.05rem] text-slate-900 contrast-150 font-dm dark:text-white
 }
 
 
