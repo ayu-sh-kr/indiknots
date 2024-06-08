@@ -57,6 +57,11 @@ export default {
             fontWeight: {
                 'almostLight': '50'
             },
+            fontSize: {
+                '0.5': '0.5rem',
+                '0.75': '0.75rem',
+                '0.9': '0.9rem'
+            }
         }
     },
     plugins: [],
