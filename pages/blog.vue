@@ -1,5 +1,9 @@
 <script setup lang="ts">
 
+useHead({
+    title: 'Indiknots Blogs',
+})
+
 </script>
 
 <template>

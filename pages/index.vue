@@ -8,6 +8,12 @@ import ShopColor from "~/components/home/ShopColor.vue";
 import Showcase from "~/components/home/Showcase.vue";
 import StandFor from "~/components/home/StandFor.vue";
 import AboutUs from "~/components/home/AboutUs.vue";
+
+
+useHead({
+    title: 'Indiknots Home'
+})
+
 </script>
 
 <template>

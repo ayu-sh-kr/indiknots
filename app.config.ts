@@ -1,4 +1,5 @@
 export default defineAppConfig({
+    title: 'Indiknots Home',
     ui: {
         primary: 'orange',
         gray: 'cool',

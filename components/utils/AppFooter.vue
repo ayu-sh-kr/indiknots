@@ -16,7 +16,7 @@ const menu: Link[] = [
 
     {
         label: 'Services',
-        to: '/services',
+        to: '/service',
     },
 
     {
@@ -74,7 +74,7 @@ const knots: Link[] = [
 </script>
 
 <template>
-<section class="px-2 py-10 bg-black dark:bg-white text-gray-100 dark:text-gray-950">
+<footer class="px-2 py-10 bg-black dark:bg-white text-gray-100 dark:text-gray-950">
     <div class="grid grid-cols-2 md:grid-cols-5 place-content-center place-items-center gap-y-5">
         <div class="col-span-2 px-3 flex flex-col justify-between gap-y-10">
             <div>
@@ -141,7 +141,7 @@ const knots: Link[] = [
             <UIcon name="i-mdi-whatsapp" dynamic class="h-6 w-6 dark:text-gray-700 dark:hover:text-gray-900 text-gray-400 hover:text-gray-200"/>
         </NuxtLink>
     </div>
-</section>
+</footer>
 </template>
 
 <style scoped>
