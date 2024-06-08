@@ -112,7 +112,7 @@ const knots: Link[] = [
         </div>
         <div>
             <h4 class="text-gray-200 dark:text-gray-900 font-thin font-aktive sm:font-dm text-sm tracking-wide">
-                INDI KNOTS
+                INDIKNOTS
             </h4>
 
             <ul class="flex flex-col gap-y-3 mt-3">
@@ -125,7 +125,7 @@ const knots: Link[] = [
         </div>
     </div>
     <div class="flex gap-x-3 mt-5">
-        <NuxtLink :to="'https://instagram.com'" target="_blank" class="block">
+        <NuxtLink :to="'https://www.instagram.com/indiknots_?igsh=a2FkZmhraGFpdW4='" target="_blank" class="block">
             <UIcon name="i-mdi-instagram" dynamic class="h-6 w-6 dark:text-gray-700 dark:hover:text-gray-900 text-gray-400 hover:text-gray-200"/>
         </NuxtLink>
 
