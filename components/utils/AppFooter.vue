@@ -124,7 +124,7 @@ const knots: Link[] = [
             </ul>
         </div>
     </div>
-    <div class="flex gap-x-3 mt-5">
+    <div class="flex gap-x-5 mt-8 justify-center">
         <NuxtLink :to="'https://www.instagram.com/indiknots_?igsh=a2FkZmhraGFpdW4='" target="_blank" class="block">
             <UIcon name="i-mdi-instagram" dynamic class="h-6 w-6 dark:text-gray-700 dark:hover:text-gray-900 text-gray-400 hover:text-gray-200"/>
         </NuxtLink>
