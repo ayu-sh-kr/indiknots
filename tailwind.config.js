@@ -43,8 +43,16 @@ export default {
                 video: '16 / 9'
             },
             fontFamily: {
+                'arial': ['Arial', 'sans-serif'],
+                'verdana': ['Verdana', 'sans-serif'],
+                'georgia': ['Georgia', 'serif'],
+                'times': ['Times New Roman', 'serif'],
+                'courier': ['Courier New', 'monospace'],
                 'dm': ['DM Sans', 'Helvetica', 'sans-serif'],
-                'aktive': ['aktive-grostec', 'Helvetica', 'sans-serif']
+                'aktive': ['aktiv-grotesk', 'sans-serif'],
+                'helvetica': ['Helvetica', 'sans-serif'],
+                'tahoma': ['Tahoma', 'sans-serif'],
+                'trebuchet': ['Trebuchet MS', 'sans-serif'],
             },
             fontWeight: {
                 'almostLight': '50'
