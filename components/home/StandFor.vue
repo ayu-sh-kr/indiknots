@@ -1,5 +1,7 @@
 <script setup lang="ts">
 
+import SectionHeader from "~/components/utils/SectionHeader.vue";
+
 const items: StandFor[] = [
     {
         image: 'images/standfor/orange.png',
@@ -25,9 +27,8 @@ export interface StandFor {
 
 <template>
     <section class="py-16 px-2">
-        <div class="flex justify-center text-center items-center">
-            <h3>WHAT WE <span class="text-orange-400">STAND FOR</span></h3>
-        </div>
+
+        <SectionHeader text2="STAND FOR" text1="WHAT WE"/>
 
         <div class="flex justify-around flex-wrap items-center mt-10 gap-y-10 py-20">
             <div v-for="item in items" class="md:h-96 h-72 overflow-hidden relative group parent">
@@ -39,6 +40,9 @@ export interface StandFor {
                 <div class="absolute bottom-20 w-full text-2xl font-semibold flex justify-center">
                     <h3 class="hidden typer">{{item.label}}</h3>
                 </div>
+                <div class="sm:group-hover:flex hidden absolute sm:top-12 sm:text-sm md:text-lg md:top-20 justify-center items-center w-full text-center">
+                    <p class="w-2/3 bg-white px-3 py-2 mix-blend-screen dark:bg-black">{{item.description}}</p>
+                </div>
             </div>
         </div>
     </section>
@@ -47,7 +51,7 @@ export interface StandFor {
 <style scoped>
 
 .parent:hover .typer {
-    @apply block w-[15ch] whitespace-nowrap overflow-hidden text-center text-white;
+    @apply block w-[15ch] whitespace-nowrap overflow-hidden text-center bg-white dark:bg-black mix-blend-screen;
     animation: typing 2s steps(15), linear step-end;
 }
 
