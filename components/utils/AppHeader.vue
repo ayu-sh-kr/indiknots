@@ -8,6 +8,8 @@ const toggleDark = useToggle(isDark);
 
 
 let isScrolled = ref(false);
+let currentPos = ref<number>(0);
+let headerVisible = ref(true);
 
 onMounted(() => {
     window.addEventListener('scroll', handleScroll);
@@ -19,6 +21,11 @@ onUnmounted(() => {
 
 function handleScroll() {
     isScrolled.value = window.scrollY > 10;
+    // console.log(`Current Pos: ${currentPos.value} scrollY: ${scrollY}`)
+    headerVisible.value = currentPos.value > scrollY;
+    setTimeout(() => {
+        currentPos.value = scrollY;
+    }, 2000)
 }
 
 const links: Link[] = [
@@ -37,10 +44,6 @@ export interface Link {
     iconClass?:string
 }
 
-export interface IconType {
-    icon: string,
-    color?: string
-}
 
 const route = useRoute();
 const activeHeader = computed(() => links.find(link => link.to === route.path) || {label: '', to: ''});
@@ -53,7 +56,7 @@ const handleSideNav = () => {
     emit('side-nav', toggleSideNav());
 }
 
-console.log(activeHeader.value.label)
+
 
 </script>
 
@@ -63,7 +66,7 @@ console.log(activeHeader.value.label)
     flex justify-between mx-auto items-center
     dark:hover:bg-[#121212]
 "
-            :class="{'bg-transparent backdrop-blur shadow-none hover:shadow-md': isScrolled, 'bg-white dark:bg-black': !isScrolled}"
+            :class="{'bg-transparent backdrop-blur shadow-none hover:shadow-md': isScrolled, 'bg-white dark:bg-black': !isScrolled, 'hidden': !headerVisible}"
     >
 
         <ul class="hidden lg:flex justify-start items-center gap-x-8 text-sm font-semibold text-gray-800 dark:text-gray-200 mt-2 w-1/3">
