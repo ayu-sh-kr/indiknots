@@ -23,7 +23,7 @@ export interface RugCategory {
 <template>
 <div class="mt-20 min-h-screen">
     <div class="flex justify-center items-center mt-5">
-        <h3 class="lg:text-xl md:text-lg text-[1.5rem] text-slate-900 contrast-150 font-dm dark:text-white">SHOP BY <span class="text-orange-400">CATEGORY</span></h3>
+        <h3>SHOP BY <span class="text-orange-400">CATEGORY</span></h3>
     </div>
 
     <div class="grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 items-center p-2 gap-x-8 gap-y-4 flex-wrap w-full max-w-7xl mx-auto mt-10">
