@@ -48,7 +48,7 @@ export interface ReachingWay{
 </script>
 
 <template>
-    <section class="px-2 sm:py-10 py-4">
+    <section class="px-2 sm:py-10 py-4 font-dm">
         <SectionHeader text2="TO US" text1="REACH OUT"/>
 
         <div class="grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 py-10 mt-5">
@@ -59,8 +59,8 @@ export interface ReachingWay{
                 <UIcon :name="item.icon" class="h-8 w-8"/>
                 <h3>{{item.header}}</h3>
                 <div class="py-5 flex flex-col items-center justify-between h-48">
-                    <p class="text-center text-sm text-gray-900 dark:text-gray-100" v-html="item.description"></p>
-                    <UButton :label="item.button" :to="item.button_link" target="_blank" />
+                    <p class="text-center text-sm text-gray-900 dark:text-gray-100 tracking-wide" v-html="item.description"></p>
+                    <UButton :label="item.button" :to="item.button_link" target="_blank"  class="mt-2"/>
                 </div>
             </div>
         </div>
