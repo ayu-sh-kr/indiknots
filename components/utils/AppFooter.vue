@@ -52,7 +52,8 @@ const policy: Link[] = [
 const knots: Link[] = [
     {
         label: 'Contact Us',
-        to: '/'
+        to: '/service',
+        hash: '#contact-form'
     },
 
     {
@@ -75,8 +76,8 @@ const knots: Link[] = [
 
 <template>
 <footer class="px-2 py-10 bg-black dark:bg-white text-gray-100 dark:text-gray-950">
-    <div class="grid grid-cols-2 md:grid-cols-5 place-content-center place-items-center gap-y-5">
-        <div class="col-span-2 px-3 flex flex-col justify-between gap-y-10">
+    <div class="grid grid-cols-2 md:grid-cols-5 sm:place-content-center sm:place-items-center gap-y-5">
+        <div class="col-span-2 sm:px-3 flex flex-col justify-between gap-y-10">
             <div>
                 <h4 class="text-gray-200 dark:text-gray-900 font-thin font-aktive sm:font-dm text-sm tracking-wide">ABOUT INDIKNOTS</h4>
                 <p class="mt-5 text-0.75 font-aktive sm:font-dm">
@@ -117,7 +118,8 @@ const knots: Link[] = [
 
             <ul class="flex flex-col gap-y-3 mt-3">
                 <li v-for="item in knots" class="text-0.75">
-                    <NuxtLink :to="item.to" class="hover:text-orange-400">
+                    <NuxtLink :to="{path: item.to, hash: item.hash}"
+                              class="hover:text-orange-400">
                         {{item.label}}
                     </NuxtLink>
                 </li>
