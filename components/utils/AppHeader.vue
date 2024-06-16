@@ -42,6 +42,7 @@ export interface Link {
     to: string,
     icon?: string,
     iconClass?:string
+    hash?: string
 }
 
 
@@ -69,7 +70,7 @@ const handleSideNav = () => {
             :class="{'bg-transparent backdrop-blur shadow-none hover:shadow-md': isScrolled, 'bg-white dark:bg-black': !isScrolled, 'hidden': !headerVisible}"
     >
 
-        <ul class="hidden lg:flex justify-start items-center gap-x-8 text-sm font-semibold text-gray-800 dark:text-gray-200 mt-2 w-1/3">
+        <ul class="hidden lg:flex justify-start items-center gap-x-8 text-sm font-semibold text-gray-900 dark:text-gray-200 mt-2 w-1/3">
             <li v-for="link in links"
                 class="hover:text-orange-400 group"
                 :class="{'text-orange-400': activeHeader.label === link.label}"
