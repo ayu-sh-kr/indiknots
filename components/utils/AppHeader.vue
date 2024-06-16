@@ -81,7 +81,7 @@ const handleSideNav = () => {
         </ul>
 
         <div class="cursor-pointer w-1/3 flex justify-center" @click="navigateTo('/')">
-            <img :src="'images/logo/logo-no-background.png'" alt="Indiknots Logo" class="h-20 w-20">
+            <img :src="'/images/logo/logo-no-background.png'" alt="Indiknots Logo" class="h-20 w-20">
         </div>
 
         <div class="flex justify-end gap-x-4 items-center w-1/3">
