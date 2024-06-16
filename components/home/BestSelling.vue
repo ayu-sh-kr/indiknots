@@ -69,6 +69,7 @@ export interface BestSelling {
     <div class="w-full grid lg:grid-cols-6 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 gap-5 mt-16 align-middle">
         <div v-for="(item, index) in items" :key="index"
              class="col-span-1"
+             v-motion-slide-visible-top
         >
             <img :src="item.image" :alt="item.label" />
             <div class="flex flex-col items-center mt-2 rounded-none">
