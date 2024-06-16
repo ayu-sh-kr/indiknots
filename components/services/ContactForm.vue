@@ -90,7 +90,7 @@ export interface ContactFormData {
 </script>
 
 <template>
-<section class="px-2 sm:py-10 py-4" id="contact-form">
+<section class="px-2 sm:py-10 py-4 font-dm" id="contact-form">
     <SectionHeader text2="FORM" text1="CONTACT"/>
 
     <UForm :state="state"
