@@ -48,7 +48,7 @@ export interface ReachingWay{
 </script>
 
 <template>
-    <section class="px-2 sm:py-10 py-4 font-dm">
+    <section class="px-2 sm:py-10 py-4 font-dm" id="reach-us">
         <SectionHeader text2="TO US" text1="REACH OUT"/>
 
         <div class="grid md:grid-cols-4 sm:grid-cols-2 grid-cols-1 py-10 mt-5">
