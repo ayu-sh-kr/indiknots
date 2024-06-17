@@ -8,6 +8,7 @@ import ShopColor from "~/components/home/ShopColor.vue";
 import Showcase from "~/components/home/Showcase.vue";
 import StandFor from "~/components/home/StandFor.vue";
 import AboutUs from "~/components/home/AboutUs.vue";
+import Marquee from "~/components/home/Marquee.vue";
 
 
 useHead({
@@ -24,6 +25,7 @@ useHead({
     <ShopColor/>
     <Showcase/>
     <StandFor/>
+    <Marquee text="Indiknots: An Online Store for Traditional, Handmade Rugs and Carpets."/>
     <AboutUs/>
 </template>
 
