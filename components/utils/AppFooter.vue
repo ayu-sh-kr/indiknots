@@ -58,7 +58,8 @@ const knots: Link[] = [
 
     {
         label: 'Consult An Expert',
-        to: '/'
+        to: '/service',
+        hash: '#reach-us'
     },
 
     {
