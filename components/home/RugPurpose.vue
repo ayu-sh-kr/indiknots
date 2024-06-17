@@ -24,6 +24,12 @@ const items: Purpose[] = [
         image: "images/purpose/kids.png"
     },
 
+    {
+        link: "",
+        description: "Introduce a fresh and delightful experience to your culinary activities. Incorporate a timeless hue to your kitchen and dining area with appealing rugs.",
+        label: "Kitchen",
+        image: "images/purpose/kitchen.jpg"
+    },
 
 ];
 
