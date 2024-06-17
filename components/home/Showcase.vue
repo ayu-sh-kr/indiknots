@@ -138,7 +138,7 @@ main{
 }
 
 .image-container {
-    @apply relative overflow-hidden w-full lg:h-[80vh] md:h-[70vh] sm:h-[50vh] h-[40vh]
+    @apply relative overflow-hidden w-full lg:h-[110vh] md:h-[70vh] sm:h-[50vh] h-[40vh]
 }
 
 .slider-image{
