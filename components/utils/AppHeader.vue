@@ -20,7 +20,7 @@ onUnmounted(() => {
 });
 
 function handleScroll() {
-    isScrolled.value = window.scrollY > 10;
+    isScrolled.value = window.scrollY > 50;
     // console.log(`Current Pos: ${currentPos.value} scrollY: ${scrollY}`)
     headerVisible.value = currentPos.value > scrollY;
     setTimeout(() => {
@@ -63,14 +63,14 @@ const handleSideNav = () => {
 
 <template>
     <header class="sticky top-0 z-30 border-gray-200 py-3 px-4
-    w-full hover:bg-white transition-all duration-300 font-helvetica
+    w-full hover:bg-white transition-all duration-300 font-dm
     flex justify-between mx-auto items-center
     dark:hover:bg-[#121212]
 "
-            :class="{'bg-transparent backdrop-blur shadow-none hover:shadow-md': isScrolled, 'bg-white dark:bg-black': !isScrolled, 'hidden': !headerVisible}"
+            :class="{'bg-transparent backdrop-blur shadow-none hover:shadow-md animate-up': isScrolled, 'bg-white dark:bg-black': !isScrolled, 'animate-down': headerVisible}"
     >
 
-        <ul class="hidden lg:flex justify-start items-center gap-x-8 text-sm font-semibold text-gray-900 dark:text-gray-200 mt-2 w-1/3">
+        <ul class="hidden lg:flex justify-start items-center gap-x-8 text-sm font-semibold text-gray-950 dark:text-gray-200 mt-2 w-1/3">
             <li v-for="link in links"
                 class="hover:text-orange-400 group"
                 :class="{'text-orange-400': activeHeader.label === link.label}"
@@ -120,5 +120,14 @@ const handleSideNav = () => {
 </template>
 
 <style scoped>
+
+
+.animate-up {
+    @apply transform -translate-y-full duration-700
+}
+
+.animate-down {
+    @apply transform translate-y-0 duration-700
+}
 
 </style>
