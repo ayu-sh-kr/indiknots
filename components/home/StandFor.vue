@@ -26,17 +26,17 @@ export interface StandFor {
 </script>
 
 <template>
-    <section class="py-16 px-2">
+    <section class="py-6 md:py-16 px-2">
 
         <SectionHeader text2="STAND FOR" text1="WHAT WE"/>
 
-        <div class="flex justify-around flex-wrap items-center mt-10 gap-y-10 py-20">
+        <div class="flex justify-around flex-wrap items-center mt-10 gap-y-10 md:py-20">
             <div v-for="item in items" class="md:h-96 h-72 overflow-hidden relative group parent">
                 <img :src="item.image" :alt="item.label" class="w-full h-full object-cover">
-                <div class="absolute opacity-50 bottom-10 left-10 w-0 group-hover:w-[77.3%] md:group-hover:w-[83%] p-0.5 bg-white transition-all duration-700"></div>
-                <div class="absolute opacity-50 bottom-10 left-10 h-0 group-hover:h-[71%] md:group-hover:h-[79%] p-0.5 bg-white transition-all duration-700"></div>
-                <div class="absolute opacity-50 top-10 right-10 w-0 group-hover:w-[77.3%] md:group-hover:w-[83%] p-0.5 bg-white transition-all duration-700"></div>
-                <div class="absolute opacity-50 top-10 right-10 h-0 group-hover:h-[71%] md:group-hover:h-[79%] p-0.5 bg-white transition-all duration-700"></div>
+                <div class="sm:absolute opacity-50 bottom-10 left-10 w-0 sm:group-hover:w-[77.3%] md:group-hover:w-[83%] p-0.5 bg-white transition-all duration-700"></div>
+                <div class="sm:absolute opacity-50 bottom-10 left-10 h-0 sm:group-hover:h-[71%] md:group-hover:h-[79%] p-0.5 bg-white transition-all duration-700"></div>
+                <div class="sm:absolute opacity-50 top-10 right-10 w-0 sm:group-hover:w-[77.3%] md:group-hover:w-[83%] p-0.5 bg-white transition-all duration-700"></div>
+                <div class="sm:absolute opacity-50 top-10 right-10 h-0 sm:group-hover:h-[71%] md:group-hover:h-[79%] p-0.5 bg-white transition-all duration-700"></div>
                 <div class="absolute bottom-20 w-full text-2xl font-semibold flex justify-center">
                     <h3 class="hidden typer">{{item.label}}</h3>
                 </div>
