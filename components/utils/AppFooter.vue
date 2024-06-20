@@ -34,7 +34,7 @@ const policy: Link[] = [
 
     {
         label: 'Frequently Asked Question',
-        to: '/'
+        to: '/dir/faq'
     },
 
     {
