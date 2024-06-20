@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
 import SectionHeader from "~/components/utils/SectionHeader.vue";
+import CopyText from "~/components/utils/CopyText.vue";
 
 
 const details: ReachingWay[] = [
@@ -31,7 +32,7 @@ const details: ReachingWay[] = [
     {
         icon: 'i-material-symbols-phone-in-talk-watchface-indicator-outline-sharp',
         header: 'Give us a Call',
-        description: "If you need help with an online order, or if you prefer to talk to us, you can give us a call. <br> <span class='font-semibold'>929-317-9471</span> <br> Mon-Fri 9:30am-6:00pm IST",
+        description: "If you need help with an online order, or if you prefer to talk to us, you can give us a call. <br> <span class='font-semibold'>9170748234</span> <br> Mon-Fri 9:30am-6:00pm IST",
         button: 'Call Us',
         button_link: 'tel:929-317-9471'
     }
