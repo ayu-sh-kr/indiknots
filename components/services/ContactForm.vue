@@ -157,9 +157,6 @@ export interface ContactFormData {
 
     </UForm>
 
-
-    <UNotifications/>
-
 </section>
 </template>
 
