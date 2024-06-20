@@ -14,6 +14,7 @@ console.log(isSideNavActive.value)
     <AppHeader @side-nav="toggleSidenav"/>
     <slot/>
     <AppFooter/>
+    <UNotifications/>
 </template>
 
 <style scoped>
