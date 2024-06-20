@@ -91,7 +91,7 @@ const knots: Link[] = [
                 MAIN MENU
             </h4>
 
-            <ul class="flex flex-col gap-y-3 mt-3">
+            <ul class="footer-links">
                 <li v-for="item in menu" class="text-0.75">
                     <NuxtLink :to="item.to" class="hover:text-orange-400">
                         {{item.label}}
@@ -104,7 +104,7 @@ const knots: Link[] = [
                 STORE POLICY
             </h4>
 
-            <ul class="flex flex-col gap-y-3 mt-3">
+            <ul class="footer-links">
                 <li v-for="item in policy" class="text-0.75">
                     <NuxtLink :to="item.to" class="hover:text-orange-400">
                         {{item.label}}
@@ -117,7 +117,7 @@ const knots: Link[] = [
                 INDIKNOTS
             </h4>
 
-            <ul class="flex flex-col gap-y-3 mt-3">
+            <ul class="footer-links">
                 <li v-for="item in knots" class="text-0.75">
                     <NuxtLink :to="{path: item.to, hash: item.hash}"
                               class="hover:text-orange-400">
@@ -133,20 +133,22 @@ const knots: Link[] = [
         </NuxtLink>
 
         <NuxtLink :to="'https://facebook.com'" target="_blank" class="block">
-            <UIcon name="i-mdi-facebook" dynamic class="h-6 w-6 dark:text-gray-700 dark:hover:text-gray-900 text-gray-400 hover:text-gray-200"/>
+            <UIcon name="i-mdi-facebook" dynamic class="h-6 w-6 font-aktive sm:font-dm dark:text-gray-700 dark:hover:text-gray-900 text-gray-400 hover:text-gray-200"/>
         </NuxtLink>
 
-        <NuxtLink :to="'https://linkedin.com/in/ayu-sh-kr'" target="_blank" class="block">
-            <UIcon name="i-mdi-linkedin" dynamic class="h-6 w-6 dark:text-gray-700 dark:hover:text-gray-900 text-gray-400 hover:text-gray-200"/>
+        <NuxtLink :to="'https://linkedin.com/in/indiknots'" target="_blank" class="block">
+            <UIcon name="i-mdi-linkedin" dynamic class="h-6 w-6 font-aktive sm:font-dm dark:text-gray-700 dark:hover:text-gray-900 text-gray-400 hover:text-gray-200"/>
         </NuxtLink>
 
         <NuxtLink :to="'https://whatsapp.com'" target="_blank" class="block">
-            <UIcon name="i-mdi-whatsapp" dynamic class="h-6 w-6 dark:text-gray-700 dark:hover:text-gray-900 text-gray-400 hover:text-gray-200"/>
+            <UIcon name="i-mdi-whatsapp" dynamic class="h-6 w-6 font-aktive sm:font-dm dark:text-gray-700 dark:hover:text-gray-900 text-gray-400 hover:text-gray-200"/>
         </NuxtLink>
     </div>
 </footer>
 </template>
 
 <style scoped>
-
+.footer-links{
+    @apply flex flex-col gap-y-3 mt-3 font-aktive sm:font-dm;
+}
 </style>
