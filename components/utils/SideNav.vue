@@ -30,7 +30,7 @@ export interface IconType {
                                icon: {
                                    active: 'text-orange-400 dark:text-orange-600',
                                    inactive: 'text-gray-500 dark:text-gray-200 group-hover:text-gray-800 dark:group-hover:text-gray-50'
-                               },
+                               }
 
                          }"
     />
