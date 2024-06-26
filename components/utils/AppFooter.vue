@@ -34,7 +34,7 @@ const policy: Link[] = [
 
     {
         label: 'Frequently Asked Question',
-        to: '/dir/faq'
+        to: '/docs/faq'
     },
 
     {
@@ -64,7 +64,7 @@ const knots: Link[] = [
 
     {
         label: 'Our Story',
-        to: '/'
+        to: '/docs/ourstory'
     },
 
     {
