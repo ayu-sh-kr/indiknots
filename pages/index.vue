@@ -12,7 +12,8 @@ import Marquee from "~/components/home/Marquee.vue";
 
 
 useHead({
-    title: 'Indiknots Home'
+    title: 'Indiknots Home',
+    meta: [{property: 'og:title', content: 'Indiknots Home'}]
 })
 
 </script>
