@@ -10,7 +10,7 @@ import TermBody from "~/components/docs/terms/TermBody.vue";
     <section class="py-6 md:py-16 px-2 min-h-screen font-dm">
         <SectionHeader text2="Term & Conditions" text1=""/>
 
-        <div class="grid max-w-7xl mx-auto py-10 text-gray-700 dark:text-gray-300 px-10 space-y-10">
+        <div class="grid w-full md:max-w-7xl md:mx-auto py-10 text-gray-700 dark:text-gray-200 px-2 space-y-10">
             <p class="text-lg">
                 These Terms and Conditions of Trading (‘Agreement’) apply to all online sales between
                 The Indiknots Limited and the Customer (‘you/your’) in relation to all sales of goods and services.
@@ -106,7 +106,7 @@ import TermBody from "~/components/docs/terms/TermBody.vue";
                     'You agree not to use our website for any illegal or harmful purposes. This includes:'
                 ]"
                 />
-                <ul class="mt-3 grid space-y-1 px-8 font-semibold" style="list-style-type: disc">
+                <ul class="mt-3 grid space-y-1 px-4 sm:px-8 font-semibold w-full" style="list-style-type: disc">
                     <li class=''>Breaking any laws</li>
                     <li class=''>Violating our or others' intellectual property rights</li>
                     <li class=''>Harassing, threatening, or disrespecting others</li>
