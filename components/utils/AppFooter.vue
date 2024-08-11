@@ -29,7 +29,7 @@ const menu: Link[] = [
 const policy: Link[] = [
     {
         label: 'Delivery and Return',
-        to: '/'
+        to: '/docs/return-policy'
     },
 
     {
@@ -44,7 +44,7 @@ const policy: Link[] = [
 
     {
         label: 'Terms and Conditions',
-        to: '/'
+        to: '/docs/term-and-conditions'
     }
 ]
 
