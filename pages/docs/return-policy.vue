@@ -10,7 +10,7 @@ import TermBody from "~/components/docs/terms/TermBody.vue";
 <section class="py-6 md:py-16 px-2 min-h-screen font-dm">
     <SectionHeader text2="Delivery And Return Policy" text1=""/>
 
-    <div class="grid max-w-7xl mx-auto py-10 text-gray-700 px-10 space-y-10">
+    <div class="grid max-w-7xl mx-auto py-10 text-gray-700 dark:text-gray-300 px-10 space-y-10">
 
         <Term>
             <TermHeader text="7 Days Money Back Policy"/>
