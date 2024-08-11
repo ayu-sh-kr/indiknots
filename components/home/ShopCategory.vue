@@ -26,7 +26,7 @@ export interface RugCategory {
         <h3>SHOP BY <span class="text-orange-400">CATEGORY</span></h3>
     </div>
 
-    <div class="grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 items-center p-2 gap-x-8 gap-y-4 flex-wrap w-full max-w-7xl mx-auto mt-10">
+    <div class="grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 p-2 gap-x-8 gap-y-4 px-10 mt-10">
         <div v-for="(item, index) in items" :key="index"
              class="cursor-pointer col-span-1"
              v-motion-pop-visible
