@@ -10,7 +10,7 @@ import TermBody from "~/components/docs/terms/TermBody.vue";
     <section class="py-6 md:py-16 px-2 min-h-screen font-dm">
         <SectionHeader text2="Term & Conditions" text1=""/>
 
-        <div class="grid max-w-7xl mx-auto py-10 text-gray-700 px-10 space-y-10">
+        <div class="grid max-w-7xl mx-auto py-10 text-gray-700 dark:text-gray-300 px-10 space-y-10">
             <p class="text-lg">
                 These Terms and Conditions of Trading (‘Agreement’) apply to all online sales between
                 The Indiknots Limited and the Customer (‘you/your’) in relation to all sales of goods and services.
