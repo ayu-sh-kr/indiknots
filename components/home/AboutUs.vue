@@ -40,7 +40,7 @@ import SectionHeader from "~/components/utils/SectionHeader.vue";
                         variant="subtle"
                     />
                 </div>
-                <div class="mt-10 text-sm font-thin flex flex-col gap-y-5 font-aktive text-center text-gray-900 dark:text-gray-200 px-16">
+                <div class="mt-10 text-sm font-thin flex flex-col gap-y-5 font-aktive text-center text-gray-900 dark:text-gray-200 px-3 md:px-16">
                     <p>
                         Indiknots is a premier rug company that seamlessly blends traditional craftsmanship with modern
                         design. Our exquisite, handcrafted rugs enhance living spaces, tying together every element of
