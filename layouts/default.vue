@@ -10,10 +10,14 @@ console.log(isSideNavActive.value)
 
 </script>
 
-<template class="hide-scrollbar h-screen grid grid-rows-[1fr_auto] font-dm">
+<template>
     <AppHeader @side-nav="toggleSidenav"/>
-    <slot/>
-    <AppFooter/>
+    <div class="hide-scrollbar grid grid-rows-[1fr_auto] h-screen font-dm antialiased">
+        <main class="h-full">
+            <slot/>
+        </main>
+        <AppFooter/>
+    </div>
     <UNotifications/>
 </template>
 
