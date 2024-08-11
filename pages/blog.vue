@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import CopyText from "~/components/utils/CopyText.vue";
+import NoContent from "~/components/utils/NoContent.vue";
 
 useHead({
     title: 'Indiknots Blogs',
@@ -9,9 +9,7 @@ useHead({
 </script>
 
 <template>
-
-    <CopyText text="Some text to copy"/>
-
+   <NoContent/>
 </template>
 
 <style scoped>
