@@ -9,7 +9,7 @@ const props = defineProps({
 </script>
 
 <template>
-    <h4 class="font-medium text-xl text-gray-900 dark:text-gray-100">{{text}}</h4>
+    <h4 class="font-medium text-base sm:text-lg md:text-xl text-gray-900 dark:text-gray-50">{{text}}</h4>
 </template>
 
 <style scoped>
