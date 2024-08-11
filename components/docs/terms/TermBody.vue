@@ -16,7 +16,7 @@ const paras = ref<string[]>(<string[]>props.texts);
 
 <template>
 
-    <div class="grid space-y-4 mt-3 text-lg">
+    <div class="grid space-y-4 mt-3 text-sm sm:text-base md:text-lg">
         <p v-for="para in paras" v-html="para" :key="para"/>
     </div>
 
