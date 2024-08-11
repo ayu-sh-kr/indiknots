@@ -1,7 +1,7 @@
 import {type Config} from "tailwindcss";
 
 
-export default <Partial<Config>> {
+const tailwindConfig =  {
     darkMode: 'selector',
     content: [
         "./components/**/*.{js,vue,ts}",
@@ -87,9 +87,27 @@ export default <Partial<Config>> {
                 '0.5': '0.5rem',
                 '0.75': '0.75rem',
                 '0.9': '0.9rem'
-            }
+            },
+            keyframes: {
+                'accordion-down': {
+                    from: { height: 0 },
+                    to: { height: 'var(--radix-accordion-content-height)' },
+                },
+
+                'accordion-up': {
+                    from: { height: 'var(--radix-accordion-content-height)' },
+                    to: { height: 0 },
+                },
+            },
+
+            animation: {
+                'accordion-down': 'accordion-down 0.2s ease-out',
+                'accordion-up': 'accordion-up 0.2s ease-out',
+            },
         }
     },
     plugins: [],
-}
+} as unknown as Partial<Config>;
+
+export default tailwindConfig;
 
