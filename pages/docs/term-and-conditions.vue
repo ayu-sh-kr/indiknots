@@ -28,11 +28,11 @@ import TermBody from "~/components/docs/terms/TermBody.vue";
 
             <Term>
                 <TermHeader text="By using our website, you agree to the following:"/>
-                <TermBody :texts="[
-                    `<span class='font-medium'>•You must be of legal age to use this website.</span> If you're under the legal age, you need your parent or guardian's permission.`,
-                    `<span class='font-medium'>•No illegal activity:</span> You can't use our website for anything illegal or harmful.`,
-                    `<span class='font-medium'>•No harmful code: </span> You can't send viruses or other harmful software through our website.`,
-                    `<span class='font-medium'>•Breaking the rules:  </span> If you break any of these rules, we can stop you from using our website.`,
+                <TermBody class="px-3 text-sm" :texts="[
+                    `<strong>•You must be of legal age to use this website:</strong> If you're under the legal age, you need your parent or guardian's permission.`,
+                    `<strong>•No illegal activity:</strong> You can't use our website for anything illegal or harmful.`,
+                    `<strong>•No harmful code: </strong> You can't send viruses or other harmful software through our website.`,
+                    `<strong>•Breaking the rules:  </strong> If you break any of these rules, we can stop you from using our website.`,
                 ]"
                 />
             </Term>
@@ -60,14 +60,13 @@ import TermBody from "~/components/docs/terms/TermBody.vue";
 
             <Term>
                 <TermHeader text="What you see is what we have (mostly):"/>
-                <TermBody :texts="[
-                    `•\tSome items are only available online and might sell out.`,
-                    `•\tWe try our best to show you accurate product colors, but computer screens can vary.`,
-                    `•\tWe can limit orders or stop selling items anytime, for any reason.`,
-                    `•\tProduct details and prices can change without notice.`,
-                    `•\tWe don't promise that our products or services will be perfect, or that everything will work exactly as you expect.`
-                ]"
-                />
+                <ul class="mt-3 grid space-y-1 px-8" style="list-style-type: disc">
+                    <li class='font-semibold'>Some items are only available online and might sell out.</li>
+                    <li class='font-semibold'>We try our best to show you accurate product colors, but computer screens can vary.</li>
+                    <li class='font-semibold'>We can limit orders or stop selling items anytime, for any reason.</li>
+                    <li class='font-semibold'>Product details and prices can change without notice.</li>
+                    <li class='font-semibold'>We don't promise that our products or services will be perfect, or that everything will work exactly as you expect.</li>
+                </ul>
             </Term>
 
             <Term>
