@@ -3,6 +3,7 @@
 
 import {useDark} from "@vueuse/core";
 import {useToggle} from "@vueuse/shared";
+import SideNav from "~/components/utils/SideNav.vue";
 
 const isDark = useDark();
 const toggleDark = useToggle(isDark);
@@ -22,7 +23,6 @@ onUnmounted(() => {
 
 function handleScroll() {
     isScrolled.value = window.scrollY > 50;
-    // console.log(`Current Pos: ${currentPos.value} scrollY: ${scrollY}`)
     headerVisible.value = currentPos.value > scrollY;
     setTimeout(() => {
         currentPos.value = scrollY;
@@ -49,14 +49,6 @@ export interface Link {
 
 const route = useRoute();
 const activeHeader = computed(() => links.find(link => link.to === route.path) || {label: '', to: ''});
-
-const emit = defineEmits(['side-nav'])
-let sideNav = ref(true);
-const toggleSideNav = useToggle(sideNav);
-
-const handleSideNav = () => {
-    emit('side-nav', toggleSideNav());
-}
 
 
 
@@ -99,13 +91,7 @@ const handleSideNav = () => {
                   aria-hidden="true">
             </span>
             </button>
-            <button class="lg:hidden focus:outline-none cursor-pointer focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 flex-shrink-0
-                            font-medium rounded-md text-sm gap-x-1.5 p-1.5 text-gray-700 dark:text-orange-400 hover:text-gray-900 dark:hover:text-orange-600 hover:bg-gray-100
-                            dark:hover:bg-gray-900 focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400 inline-flex items-center"
-                    @click="handleSideNav"
-            >
-                <UIcon name="i-mdi-menu" dynamic class="flex-shrink-0 h-5 w-5 font-semibold"/>
-            </button>
+            <SideNav/>
             <button class="hidden focus:outline-none cursor-pointer focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 flex-shrink-0
                            font-medium rounded-md text-sm gap-x-1.5 p-1.5 text-gray-700 dark:text-orange-400 hover:text-gray-900 dark:hover:text-orange-600
                            hover:bg-gray-100 dark:hover:bg-gray-900 focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400
@@ -115,9 +101,6 @@ const handleSideNav = () => {
             </button>
         </div>
     </header>
-    <div class="w-1/3 fixed top-16 right-0 z-30 lg:hidden" :hidden="sideNav">
-        <UtilsSideNav/>
-    </div>
 </template>
 
 <style scoped>
