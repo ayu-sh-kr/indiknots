@@ -21,7 +21,7 @@ declare type ProductCategory = "TRADITIONAL" | "MODERN" | "ABSTRACT" | "GEOMETRI
 declare type ProductPriceType = "MERCHANT" | "CUSTOMER";
 declare type ProductShape = "ROUNDED" | "RECTANGLE" | "SQUARE" | "RUNNER" | "UNSHAPED" | "OTHER";
 declare type ProductTechnique = "HAND_KNOTTED" | "HAND_TUFTED" | "HAND_LOOMED" | "FLAT_WEAVE" | "PATCH_WORK" | "SHAGGY" | "OTHER";
-declare type ProductStock = "SOLD_OUT" | "IN_STOCK";
+declare type ProductStock = "SOLD_OUT" | "AVAILABLE";
 
 
 declare interface Product {
@@ -30,12 +30,12 @@ declare interface Product {
     img: string;
     description: string;
     category: ProductCategory;
-    size: ProductSize;
+    size: ProductSize[];
     color: string;
     shape: ProductShape;
     material: ProductMaterial;
     technique: ProductTechnique;
-    price: ProductPrice;
+    price: ProductPrice[];
     sale: boolean;
     stock: ProductStock;
     animal_friendly: boolean;
