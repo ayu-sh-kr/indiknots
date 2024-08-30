@@ -21,8 +21,12 @@ const addToCart = () => {
 <template>
     <div class="p-image relative w-[280px] h-96 overflow-hidden bg-transparent">
         <div class="tag h-full absolute right-0 flex flex-col gap-y-5 items-center p-2">
-            <TagButton @click="addToCart" icon="material-symbols-light:shopping-cart-rounded" title="Add to cart"/>
-            <TagButton icon="material-symbols-light:favorite" title="Add to favourite"/>
+            <UTooltip text="Add To Cart">
+                <TagButton @click="addToCart" icon="material-symbols-light:shopping-cart-rounded"/>
+            </UTooltip>
+            <UTooltip text="Add To Favourite">
+                <TagButton icon="material-symbols-light:favorite"/>
+            </UTooltip>
         </div>
         <img :src="url" alt="Rug Image" class="w-full h-full">
     </div>
