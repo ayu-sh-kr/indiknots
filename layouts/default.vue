@@ -4,14 +4,10 @@ import {useToggle} from "@vueuse/shared";
 import AppHeader from "~/components/utils/AppHeader.vue";
 import AppFooter from "~/components/utils/AppFooter.vue";
 
-let isSideNavActive = ref(false);
-let toggleSidenav = useToggle(isSideNavActive);
-console.log(isSideNavActive.value)
-
 </script>
 
 <template>
-    <AppHeader @side-nav="toggleSidenav"/>
+    <AppHeader/>
     <main class="font-dm antialiased">
         <slot/>
     </main>
