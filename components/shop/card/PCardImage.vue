@@ -10,12 +10,18 @@ const props = defineProps({
     }
 });
 
+const emit = defineEmits(['add-cart'])
+
+const addToCart = () => {
+    emit("add-cart");
+}
+
 </script>
 
 <template>
     <div class="p-image relative w-[280px] h-96 overflow-hidden bg-transparent">
         <div class="tag h-full absolute right-0 flex flex-col gap-y-5 items-center p-2">
-            <TagButton icon="material-symbols-light:shopping-cart-rounded" title="Add to cart"/>
+            <TagButton @click="addToCart" icon="material-symbols-light:shopping-cart-rounded" title="Add to cart"/>
             <TagButton icon="material-symbols-light:favorite" title="Add to favourite"/>
         </div>
         <img :src="url" alt="Rug Image" class="w-full h-full">
