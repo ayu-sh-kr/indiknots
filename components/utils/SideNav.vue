@@ -3,7 +3,7 @@
 const links: Link[] = [
     {label: 'Home', to: '/', icon: 'i-heroicons-home'},
 
-    {label: 'Discover', to: '/discover', icon: 'i-material-symbols-add-location-alt-rounded'},
+    {label: 'Shop', to: '/shop', icon: 'i-material-symbols-add-location-alt-rounded'},
 
     {label: 'Services', to: '/service', icon: 'i-mdi-account-supervisor'},
 
