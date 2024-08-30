@@ -10,8 +10,8 @@ const menu: Link[] = [
     },
 
     {
-        label: 'Discover',
-        to: '/discover',
+        label: 'Shop',
+        to: '/shop',
     },
 
     {
