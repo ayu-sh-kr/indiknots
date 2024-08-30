@@ -1,9 +1,8 @@
 <script setup lang="ts">
-
 </script>
 
 <template>
-    <div class="flex flex-col items-center justify-center space-y-3">
+    <div class="relative flex flex-col items-center justify-center gap-y-3 w-fit overflow-hidden">
         <slot/>
     </div>
 </template>
