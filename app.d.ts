@@ -73,3 +73,5 @@ const schema = {
     "stock": "",
     "animal_friendly": ""
 }
+
+declare type InputState = "ERROR" | "DEFAULT" | "SUCCESS";
