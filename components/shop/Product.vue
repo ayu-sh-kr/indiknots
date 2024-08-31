@@ -2,6 +2,7 @@
 
 import ProductCard from "~/components/shop/card/ProductCard.vue";
 import PCardImage from "~/components/shop/card/PCardImage.vue";
+import {toast} from "~/composables/useToast";
 
 const props = defineProps({
     product: {
@@ -13,8 +14,6 @@ const props = defineProps({
         required: true
     }
 });
-
-const toast = useToast();
 
 const capitalize = (str: string): string => {
     if (!str) return str;
@@ -40,22 +39,11 @@ const addToCart = () => {
     let cart = props.cart;
 
     if(cart.get(product.id)) {
-        toast.add({
-            color: "orange",
-            title: "Removed",
-            description: `${props.product.name} removed from cart`,
-            timeout: 5000,
-            icon: "i-heroicons-check-circle"
-        })
+        cart.delete(product.id)
+        toast().info(`${props.product.name} removed from cart`)
     } else {
         cart.set(product.id, product.name)
-        toast.add({
-            color: "orange",
-            title: "Added",
-            description: `${props.product.name} added to cart`,
-            timeout: 5000,
-            icon: "i-heroicons-check-circle"
-        })
+        toast().success(`${props.product.name} added to cart`)
     }
 }
 
