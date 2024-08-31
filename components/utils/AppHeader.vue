@@ -88,7 +88,8 @@ const activeHeader = computed(() => links.find(link => link.to === route.path) |
 
             <UButton to="/shop/cart" icon="i-material-symbols-light:shopping-cart-rounded" variant="ghost"/>
 
-            <UButton icon="i-material-symbols-logout-rounded" variant="ghost"/>
+<!--            <UButton icon="i-material-symbols-logout-rounded" variant="ghost"/>-->
+            <UButton to="/login" icon="i-material-symbols-login-rounded" variant="ghost"/>
 
             <SideNav/>
 
