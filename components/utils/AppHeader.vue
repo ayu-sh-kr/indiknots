@@ -78,27 +78,20 @@ const activeHeader = computed(() => links.find(link => link.to === route.path) |
         </div>
 
         <div class="flex justify-end gap-x-4 items-center w-1/3">
-            <button type="button"
-                    class="focus:outline-none focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 flex-shrink-0
-                           font-medium rounded-md text-sm gap-x-1.5 p-1.5 text-gray-700 dark:text-orange-400 hover:text-gray-900 dark:hover:text-orange-600
-                           hover:bg-gray-100 dark:hover:bg-gray-900 focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400
-                           inline-flex items-center"
-                    aria-label="Switch to light mode"
-                    @click="toggleDark()"
-            >
-            <span class="flex-shrink-0 h-5 w-5"
-                  :class="isDark ? 'i-heroicons-moon-20-solid' : 'i-heroicons-sun-20-solid'"
-                  aria-hidden="true">
-            </span>
-            </button>
+
+            <UButton dynamic
+                     :icon="isDark ? 'i-heroicons-moon-20-solid' : 'i-heroicons-sun-20-solid'"
+                     :color="isDark ? 'gray' : 'orange'"
+                     variant="ghost"
+                     @click="toggleDark()"
+            />
+
+            <UButton to="/shop/cart" icon="i-material-symbols-light:shopping-cart-rounded" variant="ghost"/>
+
+            <UButton icon="i-material-symbols-logout-rounded" variant="ghost"/>
+
             <SideNav/>
-            <button class="hidden focus:outline-none cursor-pointer focus-visible:outline-0 disabled:cursor-not-allowed disabled:opacity-75 flex-shrink-0
-                           font-medium rounded-md text-sm gap-x-1.5 p-1.5 text-gray-700 dark:text-orange-400 hover:text-gray-900 dark:hover:text-orange-600
-                           hover:bg-gray-100 dark:hover:bg-gray-900 focus-visible:ring-inset focus-visible:ring-2 focus-visible:ring-primary-500 dark:focus-visible:ring-primary-400
-                           lg:inline-flex items-center"
-            >
-                <UIcon name="i-material-symbols-logout-rounded" dynamic class="flex-shrink-0 h-5 w-5 font-semibold"/>
-            </button>
+
         </div>
     </header>
 </template>
