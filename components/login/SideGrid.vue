@@ -1,7 +1,7 @@
 <template>
     <div class="flex flex-col items-center bg-orange-300 rounded-xl max-sm:h-16 max-md:h-32 overflow-hidden">
-        <div>
-            <img :src="'/images/login/login.png'" alt="Login Rug">
+        <div class="max-w-[520px] overflow-hidden">
+            <img :src="'/images/login/login.png'" alt="Login Rug" class="w-full">
         </div>
 
         <h2 class="text-white font-semibold">Be Trendy</h2>
