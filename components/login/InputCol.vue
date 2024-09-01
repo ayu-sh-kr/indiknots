@@ -19,9 +19,9 @@ const updateValue = (event: Event) => {
 };
 
 const STYLE_CONFIG = {
-    'default': 'focus:ring-orange-200',
-    success: 'focus:ring-emerald-200',
-    error: 'focus:ring-red-200'
+    'default': 'focus:ring-orange-300',
+    success: 'focus:ring-emerald-300',
+    error: 'focus:ring-red-300'
 }
 
 const processState = () => {
@@ -38,7 +38,7 @@ const processState = () => {
     <div class="w-full">
         <input
             :type="type"
-            :placeholder="placeholder" class="text-lg border border-gray-200 focus:outline-none focus:ring-4 focus:ring-orange-200 p-3 w-full h-full rounded-md"
+            :placeholder="placeholder" class="text-lg border border-gray-200 focus:outline-none focus:ring-4 p-3 w-full h-full rounded-md"
             :class="`${processState()}`"
             @input="updateValue"
         >
