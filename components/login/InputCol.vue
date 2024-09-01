@@ -26,23 +26,25 @@ const STYLE_CONFIG = {
 
 const processState = () => {
     switch (props.error) {
-        case "DEFAULT" : return STYLE_CONFIG.default;
-        case "SUCCESS": return STYLE_CONFIG.success;
-        case "ERROR": return STYLE_CONFIG.error;
+        case "DEFAULT" :
+            return STYLE_CONFIG.default;
+        case "SUCCESS":
+            return STYLE_CONFIG.success;
+        case "ERROR":
+            return STYLE_CONFIG.error;
     }
 }
 
 </script>
 
 <template>
-    <div class="w-full">
-        <input
-            :type="type"
-            :placeholder="placeholder" class="text-lg border border-gray-200 focus:outline-none focus:ring-4 p-3 w-full h-full rounded-md"
-            :class="`${processState()}`"
-            @input="updateValue"
-        >
-    </div>
+    <input
+        :type="type"
+        :placeholder="placeholder"
+        class="text-lg border border-gray-200 focus:outline-none focus:ring-4 p-3 w-full rounded-md"
+        :class="`${processState()}`"
+        @input="updateValue"
+    >
 </template>
 
 <style scoped>
