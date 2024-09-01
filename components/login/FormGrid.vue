@@ -63,7 +63,7 @@ const validatePassword = (password: string) => {
 </script>
 
 <template>
-    <div class="w-full py-2 sm:py-4 md:py-8 lg:py-12 px-2 md:px-3 lg:px-5 flex flex-col space-y-2 md:space-y-3 lg:space-y-5 text-slate-600">
+    <div class="w-full py-2 sm:py-4 md:py-8 lg:py-10 px-2 md:px-3 lg:px-5 flex flex-col space-y-2 md:space-y-3 lg:space-y-5 text-slate-600">
 
         <h1 class="font-light">Hello, Again</h1>
 
