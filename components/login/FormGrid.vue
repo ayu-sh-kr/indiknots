@@ -63,14 +63,14 @@ const validatePassword = (password: string) => {
 </script>
 
 <template>
-    <div class="w-full py-2 sm:py-4 md:py-8 lg:py-10 px-2 md:px-3 lg:px-5 flex flex-col space-y-2 md:space-y-3 lg:space-y-5 text-slate-600">
+    <div class="py-2 px-2 md:px-3 lg:px-5 flex flex-col space-y-2 md:space-y-3 lg:space-y-5 text-slate-600">
 
         <h1 class="font-light">Hello, Again</h1>
 
         <p class="text-lg">We are happy to have you back</p>
 
-        <form class="w-full flex flex-col pt-4 md:pt-6 lg:pt-10 gap-y-3">
-            <div class=" space-y-4 md:space-y-6 lg:space-y-10">
+        <form class="w-full flex flex-col pt-4 gap-y-3">
+            <div class=" space-y-4 md:space-y-6 lg:space-y-8">
 
                 <InputCol ref="emailField" type="email" placeholder="Email Address"
                           @update:model-value="validateEmail"
