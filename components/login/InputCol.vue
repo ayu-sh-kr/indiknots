@@ -41,7 +41,7 @@ const processState = () => {
     <input
         :type="type"
         :placeholder="placeholder"
-        class="text-lg border border-gray-200 focus:outline-none focus:ring-4 p-3 w-full rounded-md"
+        class="text-lg md:text-xl border border-gray-200 focus:outline-none focus:ring-4 py-2 px-3 w-full rounded-md"
         :class="`${processState()}`"
         @input="updateValue"
     >
