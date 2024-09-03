@@ -20,7 +20,7 @@ isDark.value = false;
 <template>
     <Scaffold class="flex items-center justify-center bg-slate-200 h-screen w-full">
 
-        <div class="grid md:grid-cols-2 grid-cols-1 bg-white shadow-2xl rounded-2xl p-2 sm:p-4 md:p-6 lg:p-8 border border-gray-100 gap-5 w-fit h-fit">
+        <div class="grid md:grid-cols-2 grid-cols-1 bg-white shadow-2xl rounded-2xl p-2 sm:p-4 md:p-6 border border-gray-100 gap-5 h-fit w-full sm:w-4/5 lg:w-2/3">
 
             <SideGrid/>
 
