@@ -1,0 +1,33 @@
+version: "3.8"
+
+name: "indinknots-build"
+
+services:
+  frontend:
+    image: ayushkrjaiswal/indiknots:development
+    container_name: indiknots-frontend
+    networks:
+      - indiknots
+    environment:
+      NUXT_PUBLIC_BACKEND_URL: ""
+    ports:
+      - "3000:3000"
+
+  local-frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: ayushkrjaiswal/indiknots:local
+    container_name: indiknots-local-frontend
+    networks:
+      - indiknots
+    environment:
+      NUXT_PUBLIC_BACKEND_URL: ""
+    ports:
+      - "3000:3000"
+
+
+
+networks:
+  indiknots:
+    driver: bridge
