@@ -64,7 +64,7 @@ const addToCart = () => {
                 state: {product: JSON.stringify(product)}
             })
         }">
-            <p class="text-gray-950 dark:text-gray-50 text-lg">From ${{product.price[0].price}}</p>
+            <p class="text-gray-950 dark:text-gray-50 text-lg group-hover:text-white transition-all">From ${{product.price[0].price}}</p>
         </ViewButton>
     </div>
 </ProductCard>
