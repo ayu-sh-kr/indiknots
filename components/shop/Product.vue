@@ -3,6 +3,7 @@
 import ProductCard from "~/components/shop/card/ProductCard.vue";
 import PCardImage from "~/components/shop/card/PCardImage.vue";
 import {toast} from "~/composables/useToast";
+import ViewButton from "~/components/shop/card/ViewButton.vue";
 
 const props = defineProps({
     product: {
@@ -52,11 +53,19 @@ const addToCart = () => {
 <template>
 <ProductCard>
     <PCardImage @addCart="addToCart" :url="product.img"/>
-    <div class="text-center">
+    <div class="text-center flex flex-col items-center">
         <h4 class="text-lg font-medium text-gray-800 dark:text-gray-100">{{ product.name.toUpperCase() }}</h4>
         <p class="font-extralight text-gray-600 dark:text-gray-300 text-sm">{{processShortDescription(product)}}</p>
         <p class="font-light text-gray-800/95 dark:text-gray-200/95 mt-2">{{processProductLength(product.size[0])}}</p>
-        <p class="text-gray-950 dark:text-gray-50 text-lg">From ${{product.price[0].price}}</p>
+        <ViewButton @click="() => {
+            navigateTo({
+                path: '/shop/product',
+                query: {'id': `${product.id}`},
+                state: {product: JSON.stringify(product)}
+            })
+        }">
+            <p class="text-gray-950 dark:text-gray-50 text-lg">From ${{product.price[0].price}}</p>
+        </ViewButton>
     </div>
 </ProductCard>
 </template>
