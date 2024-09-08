@@ -34,14 +34,14 @@ const calculatePrice = () => {
 <template>
 <div v-if="product" class="relative grid grid-cols-1 md:grid-cols-2 mt-10 tracking-wider place-items-start gap-y-10 px-5">
     <div class="flex flex-col items-center gap-y-3 w-full overflow-scroll">
-        <img :src="product.img" :alt="product.name" class="w-[520px]">
+        <img :src="product.img" :alt="product.name" class="w-[460px]">
     </div>
     <div class="flex flex-col items-center gap-y-3 w-full sticky top-10">
         <ContentWrapper class="w-2/3">
             <h3 class="pb-4 border-b border-gray-600 dark:border-gray-200 w-full text-left">{{product.name}}</h3>
         </ContentWrapper>
 
-        <ContentWrapper class="flex gap-x-5 flex-wrap">
+        <ContentWrapper class="flex gap-x-3 sm:gap-x-5 gap-y-3 flex-wrap">
             <UBadge variant="soft">{{product.material}}</UBadge>
             <UBadge variant="soft">{{product.category}}</UBadge>
             <UBadge variant="soft">{{product.technique.split("_").join(" ")}}</UBadge>
@@ -55,7 +55,7 @@ const calculatePrice = () => {
             Size: {{selected.length}} x {{selected.width}} {{selected.unit}}
         </ContentWrapper>
 
-        <ContentWrapper class="grid grid-cols-2 w-2/3 gap-x-5 gap-y-3">
+        <ContentWrapper class="grid grid-cols-2 md:grid-cols-3 w-2/3 gap-x-5 gap-y-3">
             <SizeView @click="() => {
                 selected = price.size
             }" v-for="price in product.price" :size="price.size" :selected="selected === price.size"/>
