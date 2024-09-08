@@ -4,7 +4,6 @@
 import NoContent from "~/components/utils/NoContent.vue";
 import SizeView from "~/components/shop/details/SizeView.vue";
 import ContentWrapper from "~/components/shop/details/ContentWrapper.vue";
-import ViewButton from "~/components/shop/card/ViewButton.vue";
 
 const props = defineProps({
     product: {
