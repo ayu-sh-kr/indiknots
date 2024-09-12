@@ -50,7 +50,7 @@ export interface Link {
 const route = useRoute();
 const activeHeader = computed(() => links.find(link => link.to === route.path) || {label: '', to: ''});
 
-
+const cartStore = useCartStore();
 
 </script>
 
@@ -86,7 +86,9 @@ const activeHeader = computed(() => links.find(link => link.to === route.path) |
                      @click="toggleDark()"
             />
 
-            <UButton to="/shop/cart" icon="i-material-symbols-light:shopping-cart-rounded" variant="ghost"/>
+            <UChip :text="cartStore.getCartSize()" size="lg">
+                <UButton to="/shop/cart" icon="i-material-symbols-light:shopping-cart-rounded" variant="ghost"/>
+            </UChip>
 
 <!--            <UButton icon="i-material-symbols-logout-rounded" variant="ghost"/>-->
             <UButton to="/login" icon="i-material-symbols-login-rounded" variant="ghost"/>
