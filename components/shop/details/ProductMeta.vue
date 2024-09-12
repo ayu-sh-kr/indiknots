@@ -2,6 +2,7 @@
 
 import ContentWrapper from "~/components/shop/details/ContentWrapper.vue";
 import SizeView from "~/components/shop/details/SizeView.vue";
+import {useCartStore} from "~/stores/cart.store";
 
 const props = defineProps({
     product: {
@@ -24,6 +25,24 @@ const calculatePrice = () => {
     }
 
     return prices[0] ? `USD. ${prices[0].price}` : 'Price not found';
+}
+
+const cartStore = useCartStore();
+
+const cartActionButton = () => {
+    if(cartStore.isProductExist(props.product.id)) {
+        return 'Remove from Cart'
+    } else {
+        return 'Add to Cart'
+    }
+}
+
+const addToCart = () => {
+    if(!cartStore.isProductExist(props.product.id)) {
+        cartStore.addToCart(props.product)
+    } else {
+        cartStore.removeFromCart(props.product.id)
+    }
 }
 
 
@@ -60,9 +79,9 @@ const calculatePrice = () => {
                 <UIcon name="i-icon-park-outline:buy" class="text-lg font-semibold"/>
                 <span>Buy Now</span>
             </button>
-            <button class="w-full py-2 px-3 text-center transition-all bg-orange-400 hover:bg-orange-500 dark:bg-orange-500 dark:hover:bg-orange-600 text-white rounded-lg shadow-lg z-10 flex gap-x-3 justify-center items-center">
+            <button @click="addToCart" class="w-full py-2 px-3 text-center transition-all bg-orange-400 hover:bg-orange-500 dark:bg-orange-500 dark:hover:bg-orange-600 text-white rounded-lg shadow-lg z-10 flex gap-x-3 justify-center items-center">
                 <UIcon name="i-material-symbols:add-shopping-cart-outline-rounded" class="text-lg font-semibold"/>
-                <span>Add to Cart</span>
+                <span>{{ cartActionButton() }}</span>
             </button>
         </div>
 
