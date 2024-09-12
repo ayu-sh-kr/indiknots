@@ -1,6 +1,5 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
-import Product from "~/components/shop/Product.vue";
 
 export const useProductStore = defineStore('products', () => {
     const products = ref<Product[]>([]);
