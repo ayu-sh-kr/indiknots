@@ -4,6 +4,7 @@ import NoContent from "~/components/utils/NoContent.vue";
 import Scaffold from "~/components/utils/Scaffold.vue";
 import SectionHeader from "~/components/utils/SectionHeader.vue";
 import Product from "~/components/shop/Product.vue";
+import {useProductStore} from "~/stores/useProductStore";
 
 useHead({
     title: 'Indiknots Shop'
@@ -13,14 +14,11 @@ const products = ref<Product[]>();
 const cart: Map<number, string> = new Map();
 
 const page = ref(1)
+const productStore = useProductStore();
 
 onMounted(async () => {
-    const response = await fetch('/data/product.json');
-
-    if(response.status === 200) {
-        products.value = await response.json() as Product[]
-    }
-})
+    products.value = await productStore.fetchOrRefresh()
+});
 
 const visible = computed(() => {
     return products.value?.slice((page.value -1) * 10, (page.value) * 10);
