@@ -4,8 +4,8 @@ import NoContent from "~/components/utils/NoContent.vue";
 import Scaffold from "~/components/utils/Scaffold.vue";
 import SectionHeader from "~/components/utils/SectionHeader.vue";
 import Product from "~/components/shop/Product.vue";
-import {useProductStore} from "~/stores/useProductStore";
 import MetaAction from "~/components/shop/details/MetaAction.vue";
+import {useProductStore} from "~/stores/product.store";
 
 useHead({
     title: 'Indiknots Shop'
@@ -38,9 +38,9 @@ const visible = computed(() => {
         <div class="space-y-10 relative">
             <div class="flex items-center justify-end gap-x-5 px-10 text-gray-800 dark:text-gray-200 font-medium tracking-wider">
 
-                <MetaAction text="Filters" icon="mdi:filter-multiple-outline" :action="true"/>
+                <MetaAction text="Filters" icon="material-symbols-light:filter-alt-off-outline" :action="true"/>
 
-                <MetaAction text="Sort" icon="solar:square-sort-vertical-outline" :action="true"/>
+                <MetaAction text="Sort" icon="ph:sort-descending-light" :action="true"/>
 
                 <MetaAction :text="`${products.length} Products`" :action="false"/>
 
