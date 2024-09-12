@@ -20,6 +20,10 @@ onMounted(async () => {
     products.value = await productStore.fetchOrRefresh()
 });
 
+watch(() => productStore.products, (newProducts) => {
+    products.value = newProducts
+})
+
 const visible = computed(() => {
     return products.value?.slice((page.value -1) * 10, (page.value) * 10);
 })
