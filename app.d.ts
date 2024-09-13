@@ -75,3 +75,9 @@ const schema = {
 }
 
 declare type InputState = "ERROR" | "DEFAULT" | "SUCCESS";
+
+declare interface CartItem {
+    itemId: string
+    count: string
+    size: ProductSize
+}
