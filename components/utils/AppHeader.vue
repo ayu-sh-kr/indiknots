@@ -4,6 +4,7 @@
 import {useDark} from "@vueuse/core";
 import {useToggle} from "@vueuse/shared";
 import SideNav from "~/components/utils/SideNav.vue";
+import HeaderCartAction from "~/components/shop/cart/header/HeaderCartAction.vue";
 
 const isDark = useDark();
 const toggleDark = useToggle(isDark);
@@ -50,8 +51,6 @@ export interface Link {
 const route = useRoute();
 const activeHeader = computed(() => links.find(link => link.to === route.path) || {label: '', to: ''});
 
-const cartStore = useCartStore();
-
 </script>
 
 <template>
@@ -86,11 +85,7 @@ const cartStore = useCartStore();
                      @click="toggleDark()"
             />
 
-            <UChip v-if="cartStore.getCartSize() > 0" :text="cartStore.getCartSize()" size="2xl">
-                <UButton to="/shop/cart" icon="i-material-symbols-light:shopping-cart-rounded" variant="ghost"/>
-            </UChip>
-
-            <UButton v-else to="/shop/cart" icon="i-material-symbols-light:shopping-cart-rounded" variant="ghost"/>
+            <HeaderCartAction/>
 
 
 <!--            <UButton icon="i-material-symbols-logout-rounded" variant="ghost"/>-->
