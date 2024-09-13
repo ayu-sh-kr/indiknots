@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import NoContent from "~/components/utils/NoContent.vue";
 import ProductMeta from "~/components/shop/details/ProductMeta.vue";
+import type {ProductModal} from "~/modals/product.modal";
 
 const props = defineProps({
     product: {
-        type: Object as PropType<Product>,
+        type: Object as PropType<ProductModal>,
         required: true
     }
 });
