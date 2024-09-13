@@ -5,10 +5,11 @@ import PCardImage from "~/components/shop/card/PCardImage.vue";
 import {toast} from "~/composables/useToast";
 import ViewButton from "~/components/shop/card/ViewButton.vue";
 import {useCartStore} from "~/stores/cart.store";
+import type {ProductModal} from "~/modals/product.modal";
 
 const props = defineProps({
     product: {
-        type: Object as PropType<Product>,
+        type: Object as PropType<ProductModal>,
         required: true
     },
     cart: {
@@ -50,6 +51,15 @@ const addToCart = () => {
     }
 }
 
+const productView = () => {
+    console.log(props.product)
+    navigateTo({
+        path: '/shop/product',
+        query: {'id': `${props.product.id}`},
+        state: {product: JSON.stringify(props.product)}
+    })
+}
+
 </script>
 
 <template>
@@ -59,13 +69,7 @@ const addToCart = () => {
         <h4 class="text-lg font-medium text-gray-800 dark:text-gray-100">{{ product.name.toUpperCase() }}</h4>
         <p class="font-extralight text-gray-600 dark:text-gray-300 text-sm">{{processShortDescription(product)}}</p>
         <p class="font-light text-gray-800/95 dark:text-gray-200/95 mt-2">{{processProductLength(product.size[0])}}</p>
-        <ViewButton @click="() => {
-            navigateTo({
-                path: '/shop/product',
-                query: {'id': `${product.id}`},
-                state: {product: JSON.stringify(product)}
-            })
-        }">
+        <ViewButton @click="productView()">
             <p class="text-gray-950 dark:text-gray-50 text-lg group-hover:text-white transition-all">From ${{product.price[0].price}}</p>
         </ViewButton>
     </div>
