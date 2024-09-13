@@ -1,16 +1,17 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
+import type {ProductModal} from "~/modals/product.modal";
 
 
 export const useCartStore = defineStore('cart', () => {
 
-    const cart = ref<Product[]>([]);
+    const cart = ref<ProductModal[]>([]);
 
     function isProductExist(id: string): boolean {
         return !!cart.value.find(product => product.id === id)
     }
 
-    function addToCart(product: Product) {
+    function addToCart(product: ProductModal) {
         cart.value.push(product);
     }
 
