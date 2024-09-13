@@ -6,12 +6,13 @@ import SectionHeader from "~/components/utils/SectionHeader.vue";
 import Product from "~/components/shop/Product.vue";
 import MetaAction from "~/components/shop/details/MetaAction.vue";
 import {useProductStore} from "~/stores/product.store";
+import type {ProductModal} from "~/modals/product.modal";
 
 useHead({
     title: 'Indiknots Shop'
 });
 
-const products = ref<Product[]>();
+const products = ref<ProductModal[]>();
 const cart: Map<number, string> = new Map();
 
 const page = ref(1)
@@ -19,6 +20,7 @@ const productStore = useProductStore();
 
 onMounted(async () => {
     products.value = await productStore.fetchOrRefresh()
+    console.log(products.value)
 });
 
 watch(() => productStore.products, (newProducts) => {
