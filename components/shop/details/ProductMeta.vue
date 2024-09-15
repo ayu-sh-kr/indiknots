@@ -3,7 +3,7 @@
 import ContentWrapper from "~/components/shop/details/ContentWrapper.vue";
 import SizeView from "~/components/shop/details/SizeView.vue";
 import {useCartStore} from "~/stores/cart.store";
-import type {ProductModal} from "~/modals/product.modal";
+import {getPrizeText, type ProductModal} from "~/modals/product.modal";
 
 const props = defineProps({
     product: {
@@ -17,14 +17,6 @@ const selected = ref<ProductSize>()
 onMounted(() => {
     selected.value = props.product.price[0].size;
 });
-
-const calculatePrice = () => {
-
-    if(selected.value) {
-        const price = props.product.getPrizeBySize(selected.value)
-        return price ? `USD. ${price.price}` : 'Price not found';
-    }
-}
 
 const cartStore = useCartStore();
 
@@ -64,7 +56,7 @@ const addToCart = () => {
         </ContentWrapper>
 
         <ContentWrapper>
-            <span class="font-medium text-lg tracking-wide text-gray-700 dark:text-gray-300">{{calculatePrice()}}</span>
+            <span v-if="selected" class="font-medium text-lg tracking-wide text-gray-700 dark:text-gray-300">{{ getPrizeText(product, selected) }}</span>
         </ContentWrapper>
 
         <ContentWrapper class="w-2/3 text-gray-900 dark:text-gray-100 font-semibold text-sm" v-if="selected">
