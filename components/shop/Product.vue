@@ -5,7 +5,7 @@ import PCardImage from "~/components/shop/card/PCardImage.vue";
 import {toast} from "~/composables/useToast";
 import ViewButton from "~/components/shop/card/ViewButton.vue";
 import {useCartStore} from "~/stores/cart.store";
-import type {ProductModal} from "~/modals/product.modal";
+import {cartActionHandler, type ProductModal} from "~/modals/product.modal";
 
 const props = defineProps({
     product: {
@@ -39,16 +39,8 @@ const processProductLength = (size: ProductSize) => {
 const cartStore = useCartStore();
 
 const addToCart = () => {
-
     let product = props.product;
-
-    if(cartStore.isProductExist(product.id)) {
-        cartStore.removeFromCart(product.id)
-        toast().info(`${props.product.name} removed from cart`)
-    } else {
-        cartStore.addToCart(product)
-        toast().success(`${props.product.name} added to cart`)
-    }
+    cartActionHandler(product, useCartStore);
 }
 
 const productView = () => {
