@@ -1,4 +1,4 @@
-export class ProductModal implements Product {
+class ProductModal implements Product {
 
     id!: string
     animal_friendly!: boolean;
@@ -27,19 +27,15 @@ export class ProductModal implements Product {
     }
 
     getMaterialText = () => {
-        return this.processUnderscoreText(this.material)
+        return processUnderscoreText(this.material)
     }
 
     getTechniqueText = () => {
-        return this.processUnderscoreText(this.technique)
+        return processUnderscoreText(this.technique)
     }
 
     getCategoryText = () => {
-        return this.processUnderscoreText(this.category)
-    }
-
-    processUnderscoreText = (text: string) => {
-        return text.split("_").join(" ")
+        return processUnderscoreText(this.category)
     }
 
     getSizeText(size: ProductSize) {
@@ -48,9 +44,9 @@ export class ProductModal implements Product {
 
 }
 
-export class ProductBuilder {
+class ProductBuilder {
 
-    private product: ProductModal;
+    private readonly product: ProductModal;
 
     constructor() {
         this.product = new ProductModal();
@@ -66,7 +62,7 @@ export class ProductBuilder {
         return this;
     }
 
-    Category(category: ProductCategory): ProductBuilder {
+    category(category: ProductCategory): ProductBuilder {
         this.product.category = category;
         return this;
     }
@@ -127,20 +123,20 @@ export class ProductBuilder {
     }
 
     fromProduct(product: Product): ProductBuilder {
-        this.product.id = product.id;
-        this.product.animal_friendly = product.animal_friendly;
-        this.product.category = product.category;
-        this.product.color = product.color;
-        this.product.description = product.description;
-        this.product.img = product.img;
-        this.product.material = product.material;
-        this.product.name = product.name;
-        this.product.price = product.price;
-        this.product.sale = product.sale;
-        this.product.shape = product.shape;
-        this.product.size = product.size;
-        this.product.stock = product.stock;
-        this.product.technique = product.technique;
+        this.id(product.id)
+            .animalFriendly(product.animal_friendly)
+            .category(product.category)
+            .color(product.color)
+            .description(product.description)
+            .img(product.img)
+            .material(product.material)
+            .name(product.name)
+            .price(product.price)
+            .sale(product.sale)
+            .shape(product.shape)
+            .size(product.size)
+            .stock(product.stock)
+            .technique(product.technique)
         return this;
     }
 
@@ -148,3 +144,14 @@ export class ProductBuilder {
         return this.product;
     }
 }
+
+const getPrizeText = (product: ProductModal, size: ProductSize) => {
+    const price = product.getPrizeBySize(size);
+    return price ? `USD. ${price.price}` : 'Price not found';
+}
+
+const processUnderscoreText = (text: string) => {
+    return text.split("_").join(" ")
+}
+
+export {ProductModal, ProductBuilder, getPrizeText, processUnderscoreText}
