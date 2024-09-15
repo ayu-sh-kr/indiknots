@@ -4,10 +4,7 @@ let items = ref<RugCategory[]>();
 
 onMounted( async () => {
     const response = await fetch('data/category.json');
-
-    // Step 4: Assign the fetched data to your ref
     items.value = await response.json() as RugCategory[];
-    console.log(items.value)
 })
 
 
