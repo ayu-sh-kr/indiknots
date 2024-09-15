@@ -1,3 +1,6 @@
+import type {ProductStore} from "~/stores/product.store";
+import type {CartStore} from "~/stores/cart.store";
+
 class ProductModal implements Product {
 
     id!: string
@@ -154,4 +157,14 @@ const processUnderscoreText = (text: string) => {
     return text.split("_").join(" ")
 }
 
-export {ProductModal, ProductBuilder, getPrizeText, processUnderscoreText}
+const cartActionHandler = (product: ProductModal, cartStore: CartStore) => {
+    if(!cartStore().isProductExist(product.id) && product.stock === "AVAILABLE") {
+        cartStore().addToCart(product);
+        return true;
+    } else {
+        cartStore().removeFromCart(product.id);
+        return false;
+    }
+}
+
+export {ProductModal, ProductBuilder, getPrizeText, processUnderscoreText, cartActionHandler}
