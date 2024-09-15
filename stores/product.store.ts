@@ -38,4 +38,6 @@ export const useProductStore = defineStore('products', () => {
     }
 
     return {products, fetchOrRefresh, hardRefreshOrUpdate, removeById, clearProducts}
-})
+});
+
+export type ProductStore = typeof useProductStore;
