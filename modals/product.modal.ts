@@ -42,6 +42,10 @@ export class ProductModal implements Product {
         return text.split("_").join(" ")
     }
 
+    getSizeText(size: ProductSize) {
+        return `${size.length} x ${size.width} ${size.unit}`
+    }
+
 }
 
 export class ProductBuilder {
