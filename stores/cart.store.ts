@@ -24,4 +24,6 @@ export const useCartStore = defineStore('cart', () => {
     }
 
     return {cart, addToCart, removeFromCart, getCartSize, isProductExist}
-})
+});
+
+export type CartStore = typeof useCartStore;
