@@ -3,7 +3,7 @@
 import ContentWrapper from "~/components/shop/details/ContentWrapper.vue";
 import SizeView from "~/components/shop/details/SizeView.vue";
 import {useCartStore} from "~/stores/cart.store";
-import {getPrizeText, type ProductModal} from "~/modals/product.modal";
+import {cartActionHandler, getPrizeText, type ProductModal} from "~/modals/product.modal";
 
 const props = defineProps({
     product: {
@@ -31,13 +31,7 @@ const cartActionButton = () => {
 const addedToCart = ref<boolean>(false)
 
 const addToCart = () => {
-    if(!cartStore.isProductExist(props.product.id)) {
-        cartStore.addToCart(props.product)
-        addedToCart.value = true;
-    } else {
-        cartStore.removeFromCart(props.product.id)
-        addedToCart.value = false;
-    }
+    addedToCart.value = cartActionHandler(props.product, useCartStore)
 }
 
 
@@ -69,7 +63,7 @@ const addToCart = () => {
             }" v-for="price in product.price" :size="price.size" :selected="selected === price.size"/>
         </ContentWrapper>
 
-        <div class="max-md:space-y-2 flex-col md:grid grid-cols-2 md:place-items-center items-center mt-5 w-full md:w-2/3 gap-x-5 transition-all">
+        <div v-if="product.stock === 'AVAILABLE'" class="meta-div">
             <button class="meta-action bg-yellow-400 hover:bg-yellow-500 dark:bg-yellow-500 dark:hover:bg-yellow-600">
                 <UIcon name="i-icon-park-outline:buy" class="text-lg font-semibold"/>
                 <span>Buy Now</span>
@@ -80,6 +74,13 @@ const addToCart = () => {
             </button>
         </div>
 
+        <ContentWrapper v-else class="mt-3">
+            <button class="flex justify-center items-center gap-x-5 bg-gray-200 dark:bg-gray-800 w-full py-1.5 rounded-lg" disabled>
+                <UIcon name="ep:sold-out" class="text-lg font-semibold"/>
+                <span>Sold Out</span>
+            </button>
+        </ContentWrapper>
+
         <ContentWrapper class="mt-3">
             <UAccordion :items="[{label: 'Description', content: product.description}]" color="gray" variant="ghost" />
         </ContentWrapper>
@@ -89,5 +90,9 @@ const addToCart = () => {
 <style scoped>
 .meta-action {
     @apply w-full py-2 px-3 text-center transition-all text-white rounded-lg shadow-lg z-10 flex gap-x-3 justify-center items-center active:scale-95;
+}
+
+.meta-div {
+    @apply max-md:space-y-2 max-md:flex max-md:flex-col max-md:items-center md:grid grid-cols-2 md:place-items-center mt-5 w-full md:w-2/3 gap-x-5 transition-all;
 }
 </style>
