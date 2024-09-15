@@ -820,7 +820,7 @@
       }
     ],
     "sale": true,
-    "stock": "AVAILABLE",
+    "stock": "SOLD_OUT",
     "animal_friendly": true
   }
 ]
