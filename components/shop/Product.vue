@@ -2,7 +2,6 @@
 
 import ProductCard from "~/components/shop/card/ProductCard.vue";
 import PCardImage from "~/components/shop/card/PCardImage.vue";
-import {toast} from "~/composables/useToast";
 import ViewButton from "~/components/shop/card/ViewButton.vue";
 import {useCartStore} from "~/stores/cart.store";
 import {cartActionHandler, type ProductModal} from "~/modals/product.modal";
@@ -10,10 +9,6 @@ import {cartActionHandler, type ProductModal} from "~/modals/product.modal";
 const props = defineProps({
     product: {
         type: Object as PropType<ProductModal>,
-        required: true
-    },
-    cart: {
-        type: Map,
         required: true
     }
 });
