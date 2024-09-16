@@ -9,4 +9,4 @@ export const usePaginationStore = defineStore('pagination', () => {
     }
 
     return {productPage, updateProductPage}
-})
+});
