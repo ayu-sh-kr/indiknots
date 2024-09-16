@@ -7,24 +7,26 @@ import {useProductStore} from "~/stores/product.store";
 import NoContent from "~/components/utils/NoContent.vue";
 import Scaffold from "~/components/utils/Scaffold.vue";
 import SectionHeader from "~/components/utils/SectionHeader.vue";
+import {usePaginationStore} from "~/stores/pagination.store";
 
 const products = ref<ProductModal[]>();
-const cart: Map<number, string> = new Map();
+const pageStore = usePaginationStore();
 
-const page = ref(1)
+const {productPage: page} = storeToRefs(pageStore)
 const productStore = useProductStore();
 
 onMounted(async () => {
-    products.value = await productStore.fetchOrRefresh()
+    products.value = await productStore.fetchOrRefresh();
 });
 
 watch(() => productStore.products, (newProducts) => {
     products.value = newProducts
-})
+});
 
 const visible = computed(() => {
-    return products.value?.slice((page.value -1) * 10, (page.value) * 10);
-})
+    return products.value?.slice((page.value -1) * 8, (page.value) * 8);
+});
+
 </script>
 
 <template>
@@ -47,11 +49,11 @@ const visible = computed(() => {
 
             <div
                 class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 max-sm:place-items-center gap-y-20 gap-x-10">
-                <Product v-for="product in visible" :key="product.id" :product="product" :cart="cart"/>
+                <Product v-for="product in visible" :key="product.id" :product="product"/>
             </div>
 
             <div class="flex justify-center items-center pt-10">
-                <UPagination v-model="page" :page-count="10" :total="products.length" show-first show-last/>
+                <UPagination v-model="page" :page-count="8" :total="products.length" show-first show-last/>
             </div>
         </div>
         <NoContent v-else/>
