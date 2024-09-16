@@ -31,15 +31,12 @@ const processProductLength = (size: ProductSize) => {
     return `${size.length} x ${size.width} ${size.unit}`
 }
 
-const cartStore = useCartStore();
-
 const addToCart = () => {
     let product = props.product;
     cartActionHandler(product, useCartStore);
 }
 
 const productView = () => {
-    console.log(props.product)
     navigateTo({
         path: '/shop/product',
         query: {'id': `${props.product.id}`},
