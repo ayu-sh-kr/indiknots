@@ -1,4 +1,3 @@
-import type {ProductStore} from "~/stores/product.store";
 import type {CartStore} from "~/stores/cart.store";
 
 class ProductModal implements Product {
@@ -8,7 +7,7 @@ class ProductModal implements Product {
     category!: ProductCategory;
     color!: string;
     description!: string;
-    img!: string;
+    img!: ProductImage[];
     material!: ProductMaterial;
     name!: string;
     price!: ProductPrice[];
@@ -80,7 +79,7 @@ class ProductBuilder {
         return this;
     }
 
-    img(img: string): ProductBuilder {
+    img(img: ProductImage[]): ProductBuilder {
         this.product.img = img;
         return this;
     }
