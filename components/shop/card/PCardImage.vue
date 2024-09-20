@@ -7,6 +7,10 @@ const props = defineProps({
     product: {
         type: Object as PropType<Product>,
         required: false
+    },
+    image: {
+        type: Object as PropType<ProductImage>,
+        required: true
     }
 });
 
@@ -28,7 +32,7 @@ const addToCart = () => {
                 <TagButton icon="material-symbols-light:favorite"/>
             </UTooltip>
         </div>
-        <img :src="url" alt="Rug Image" class="w-full h-full">
+        <img :src="image.url" :alt="image.text" class="w-full h-full">
     </div>
 </template>
 
