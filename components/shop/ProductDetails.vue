@@ -15,7 +15,7 @@ const props = defineProps({
 
 <template>
 <div v-if="product" class="relative grid grid-cols-1 md:grid-cols-2 mt-10 tracking-wider place-items-start gap-y-10 px-5">
-    <ProductImage/>
+    <ProductImage :images="product.img"/>
     <ProductMeta :product="product" />
 </div>
 <NoContent v-else />
