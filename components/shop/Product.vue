@@ -48,7 +48,7 @@ const productView = () => {
 
 <template>
 <ProductCard>
-    <PCardImage @addCart="addToCart" :url="product.img"/>
+    <PCardImage @addCart="addToCart" :url="product.img[0].url" :image="product.img[0]"/>
     <div class="text-center flex flex-col items-center">
         <h4 class="text-lg font-medium text-gray-800 dark:text-gray-100">{{ product.name.toUpperCase() }}</h4>
         <p class="font-extralight text-gray-600 dark:text-gray-300 text-sm">{{processShortDescription(product)}}</p>
