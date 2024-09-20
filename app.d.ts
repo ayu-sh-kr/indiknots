@@ -16,6 +16,11 @@ declare interface ProductPrice {
     price_type: ProductPriceType
 }
 
+declare interface ProductImage {
+    url: string,
+    text: string
+}
+
 declare type ProductMaterial = "WOOL" | "VISCOSE" | "SILK" | "JUTE" | "PET" | "BOMBOO_SILK" | "TENCIL" | "OTHER";
 declare type ProductCategory = "TRADITIONAL" | "MODERN" | "ABSTRACT" | "GEOMETRIC" | "FLORAL" | "UNSHAPED" | "DHURRIES" | "PLAYROOM" | "DESIGNER" | "CUSHION&PILLOW" | "ACCESSORIES";
 declare type ProductPriceType = "MERCHANT" | "CUSTOMER";
@@ -27,7 +32,7 @@ declare type ProductStock = "SOLD_OUT" | "AVAILABLE";
 declare interface Product {
     id: string;
     name: string;
-    img: string;
+    img: ProductImage[];
     description: string;
     category: ProductCategory;
     size: ProductSize[];
@@ -78,6 +83,7 @@ declare type InputState = "ERROR" | "DEFAULT" | "SUCCESS";
 
 declare interface CartItem {
     itemId: string
-    count: string
+    count: number
     size: ProductSize
+    color: string
 }
