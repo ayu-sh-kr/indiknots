@@ -82,8 +82,9 @@ const schema = {
 declare type InputState = "ERROR" | "DEFAULT" | "SUCCESS";
 
 declare interface CartItem {
-    itemId: string
+    productId: string
     count: number
     size: ProductSize
     color: string
+    price: ProductPrice
 }
