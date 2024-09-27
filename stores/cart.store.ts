@@ -1,26 +1,26 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
-import type {ProductModal} from "~/modals/product.modal";
+import type {CartModal} from "~/modals/cart.modal";
 
 
 export const useCartStore = defineStore('cart', () => {
 
-    const cart = ref<ProductModal[]>([]);
+    const cart = ref<CartModal[]>([])
 
     function isProductExist(id: string): boolean {
-        return !!cart.value.find(product => product.id === id)
+        return !!cart.value.find(cart => cart.productId === id)
     }
 
-    function addToCart(product: ProductModal) {
-        cart.value.push(product);
+    function addToCart(product: CartModal) {
+        cart.value.push(product)
     }
 
     function removeFromCart(id: string) {
-        cart.value = cart.value.filter(product => product.id !== id);
+        cart.value = cart.value.filter(modal => modal.productId !== id)
     }
 
     function getCartSize() {
-        return cart.value.length;
+        return cart.value.length
     }
 
     return {cart, addToCart, removeFromCart, getCartSize, isProductExist}
