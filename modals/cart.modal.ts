@@ -7,6 +7,16 @@ class CartModal implements CartItem {
     productId!: string;
     size!: ProductSize;
     product!: ProductModal
+
+    incrementCount = () => {
+        this.count += 1;
+        console.log(this.count)
+    }
+
+    decrementCount = () => {
+        if (this.count === 1) return;
+        this.count -= 1;
+    }
 }
 
 class CartModalBuilder {
