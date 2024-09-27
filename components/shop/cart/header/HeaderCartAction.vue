@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import {useCartStore} from "~/stores/cart.store";
 import CartPreview from "~/components/shop/cart/header/CartPreview.vue";
-import type {ProductModal} from "~/modals/product.modal";
+import type {CartModal} from "~/modals/cart.modal";
 
 const cartStore = useCartStore();
 
-const products = ref<ProductModal[]>([])
+const products = ref<CartModal[]>([])
 
 onMounted(() => {
     products.value = cartStore.cart;
@@ -27,7 +27,7 @@ watch(() => cartStore.cart, (newProducts) => {
 
         <template #panel>
             <div v-for="(product, index) in products" :key="index">
-                <CartPreview :product="product" />
+                <CartPreview :product="product.product" />
             </div>
         </template>
     </UPopover>
