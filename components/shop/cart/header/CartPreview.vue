@@ -25,7 +25,7 @@ const deleteFromCart = () => {
             grid grid-cols-6 space-x-2 w-52"
 >
     <div class="w-6 h-8 col-span-1 overflow-hidden">
-        <img :src="product.img" :alt="product.name" class="w-full h-full">
+        <img :src="product.img[0].url" :alt="product.name" class="w-full h-full">
     </div>
     <div class="col-span-4 flex flex-col items-start gap-y-1 w-full">
         <p class="text-xs font-semibold line-clamp-1">{{product.name}}</p>
