@@ -3,7 +3,8 @@
 import ContentWrapper from "~/components/shop/details/ContentWrapper.vue";
 import SizeView from "~/components/shop/details/SizeView.vue";
 import {useCartStore} from "~/stores/cart.store";
-import {cartActionHandler, getPrizeText, type ProductModal} from "~/modals/product.modal";
+import {getPrizeText, type ProductModal} from "~/modals/product.modal";
+import {cartAction2Handler, CartModalBuilder} from "~/modals/cart.modal";
 
 const props = defineProps({
     product: {
@@ -31,7 +32,17 @@ const cartActionButton = () => {
 const addedToCart = ref<boolean>(false)
 
 const addToCart = () => {
-    addedToCart.value = cartActionHandler(props.product, useCartStore)
+    const product = props.product;
+    const builder = new CartModalBuilder()
+    const cartModal = builder.product(product)
+        .productId(product.id)
+        .color(product.color)
+        .count(1)
+        .price(product.getPrizeBySize(selected.value ?? product.price[0].size) ?? product.price[0])
+        .size(selected.value ?? product.price[0].size)
+        .build()
+
+    addedToCart.value = cartAction2Handler(cartModal, useCartStore)
 }
 
 
