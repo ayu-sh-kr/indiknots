@@ -1,4 +1,5 @@
 import type {CartStore} from "~/stores/cart.store";
+import {cartAction2Handler, CartModalBuilder} from "~/modals/cart.modal";
 
 class ProductModal implements Product {
 
@@ -157,13 +158,17 @@ const processUnderscoreText = (text: string) => {
 }
 
 const cartActionHandler = (product: ProductModal, cartStore: CartStore) => {
-    if(!cartStore().isProductExist(product.id) && product.stock === "AVAILABLE") {
-        cartStore().addToCart(product);
-        return true;
-    } else {
-        cartStore().removeFromCart(product.id);
-        return false;
-    }
+
+    const builder = new CartModalBuilder()
+    const cartModal = builder.product(product)
+        .productId(product.id)
+        .count(1)
+        .color(product.color)
+        .price(product.price[0])
+        .size(product.price[0].size)
+        .build();
+
+    return cartAction2Handler(cartModal, cartStore)
 }
 
 export {ProductModal, ProductBuilder, getPrizeText, processUnderscoreText, cartActionHandler}
