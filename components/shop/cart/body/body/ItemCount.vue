@@ -28,10 +28,7 @@ const decrement = (item: CartModal) => {
 </script>
 
 <template>
-    <div class="object-contain overflow-hidden">
-        <img :src="item.product.img[0].url" :alt="item.product.img[0].text" class="w-full h-full">
-    </div>
-    <div class="flex gap-x-5 items-center justify-center p-2">
+    <div class="flex gap-x-3 items-center justify-center">
         <UButton type="button" @click="decrement(item)" icon="i-carbon:subtract-filled"
                  color="orange" variant="soft"/>
         <span>{{ count }}</span>
