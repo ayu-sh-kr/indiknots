@@ -45,6 +45,22 @@ class ProductModal implements Product {
         return `${size.length} x ${size.width} ${size.unit}`
     }
 
+    getDiscountedPrice(price: ProductPrice) {
+        const originalPrice = price.price;
+        const discount = price.sale_percentage;
+        const discountPrice = originalPrice - originalPrice * (discount / 100);
+        return Math.round(discountPrice * 100) / 100;
+    }
+
+    getSizeOptions(): ProductSizeOption[] {
+        return this.price.map(price => {
+            return {
+                label: this.getSizeText(price.size),
+                value: price.size
+            } as ProductSizeOption
+        })
+    }
+
 }
 
 class ProductBuilder {
@@ -169,6 +185,11 @@ const cartActionHandler = (product: ProductModal, cartStore: CartStore) => {
         .build();
 
     return cartAction2Handler(cartModal, cartStore)
+}
+
+type ProductSizeOption = {
+    label: String,
+    value: ProductSize
 }
 
 export {ProductModal, ProductBuilder, getPrizeText, processUnderscoreText, cartActionHandler}
