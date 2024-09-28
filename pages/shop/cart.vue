@@ -6,7 +6,7 @@ import CartBody from "~/components/shop/cart/body/CartBody.vue";
 </script>
 
 <template>
-    <Scaffold class="min-h-screen dark:bg-gray-800 bg-gray-200">
+    <Scaffold class="min-h-screen dark:bg-gray-950 bg-gray-100">
         <SectionHeader text2="Cart" text1=""/>
         <CartBody/>
     </Scaffold>
