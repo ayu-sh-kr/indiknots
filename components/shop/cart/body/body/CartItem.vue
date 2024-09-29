@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import type {CartModal} from "~/modals/cart.modal";
+import {cartAction2Handler, type CartModal} from "~/modals/cart.modal";
 import ItemCount from "~/components/shop/cart/body/body/ItemCount.vue";
 import InfoText from "~/components/shop/cart/body/body/InfoText.vue";
 
@@ -25,6 +25,10 @@ watch((selectedSize), (value: ProductSizeOption) => {
 
 const updatedQuantity = (value: number) => {
     quantity.value = value
+}
+
+const removeFromCart = () => {
+    cartAction2Handler(props.item, useCartStore)
 }
 
 </script>
@@ -57,10 +61,22 @@ const updatedQuantity = (value: number) => {
                     <USelectMenu placeholder="Select Size" v-model="selectedSize" :options="item.product.getSizeOptions()" />
                 </div>
             </div>
+            <div class="flex justify-end items-center gap-x-5 w-full">
+                <button @click="removeFromCart()" class="bg-beige-400 dark:bg-beige-500 cart-action-button">
+                    <span>Remove From Cart</span>
+                </button>
+                <button class="bg-orange-400 dark:bg-orange-500 cart-action-button">
+                    <span>Buy This Now</span>
+                </button>
+            </div>
         </div>
     </div>
 </template>
 
 <style scoped>
+
+.cart-action-button {
+    @apply px-3 py-1 text-white rounded-lg active:scale-95 transition-all;
+}
 
 </style>
