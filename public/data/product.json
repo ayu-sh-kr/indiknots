@@ -31,7 +31,7 @@
     "shape": "RECTANGLE",
     "material": "SILK",
     "technique": "HAND_KNOTTED",
-    "price": [
+    "prices": [
       {
         "size": {
           "length": 6,
@@ -96,7 +96,7 @@
     "shape": "RECTANGLE",
     "material": "WOOL",
     "technique": "HAND_KNOTTED",
-    "price": [
+    "prices": [
       {
         "size": {
           "length": 6,
@@ -151,7 +151,7 @@
     "shape": "ROUNDED",
     "material": "BOMBOO_SILK",
     "technique": "HAND_KNOTTED",
-    "price": [
+    "prices": [
       {
         "size": {
           "length": 6,
