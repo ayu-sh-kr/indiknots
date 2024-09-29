@@ -16,7 +16,7 @@ const quantity = ref(1)
 
 onMounted(() => {
     selectedSize.value = props.item.selectedSize();
-    quantity.value = props.item.count
+    quantity.value = props.item.quantity
 })
 
 watch((selectedSize), (value: ProductSizeOption) => {
