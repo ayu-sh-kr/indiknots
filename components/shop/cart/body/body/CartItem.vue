@@ -12,14 +12,20 @@ const props = defineProps({
 });
 
 const selectedSize = ref();
+const quantity = ref(1)
 
 onMounted(() => {
     selectedSize.value = props.item.selectedSize();
+    quantity.value = props.item.count
 })
 
 watch((selectedSize), (value: ProductSizeOption) => {
     props.item.updateSelectedSize(value)
 });
+
+const updatedQuantity = (value: number) => {
+    quantity.value = value
+}
 
 </script>
 
@@ -29,7 +35,7 @@ watch((selectedSize), (value: ProductSizeOption) => {
             <div class="object-contain overflow-hidden w-2/3 md:h-2/3">
                 <img :src="item.product.img[0].url" :alt="item.product.img[0].text" class="w-full">
             </div>
-            <ItemCount :item="item"/>
+            <ItemCount :item="item" @update-quantity="updatedQuantity"/>
         </div>
         <div class="col-span-4 flex flex-col gap-y-2">
             <h3>{{item.product.name}}</h3>
@@ -41,8 +47,8 @@ watch((selectedSize), (value: ProductSizeOption) => {
             </div>
             <InfoText details="Indiknots" heading="Seller" size="sm"/>
             <div class="flex items-baseline gap-x-3 flex-wrap">
-                <span class="text-gray-600 dark:text-gray-300 line-through">${{item.price.price}}</span>
-                <span class="text-gray-700 dark:text-gray-200 text-xl font-semibold">${{item.product.getDiscountedPrice(item.price)}}</span>
+                <span class="text-gray-600 dark:text-gray-300 line-through">${{Math.round(item.price.price * quantity * 100) / 100}}</span>
+                <span class="text-gray-700 dark:text-gray-200 text-xl font-semibold">${{item.product.getDiscountedPrice(item.price) * quantity}}</span>
                 <span class="text-orange-400 dark:text-orange-500 text-sm">{{item.price.sale_percentage}}% OFF</span>
                 <span class="text-xs text-orange-400 dark:text-orange-500">DISCOUNT APPLIED</span>
             </div>
