@@ -19,10 +19,10 @@ const props = defineProps({
 const Style = {
     size: {
         xs: 'text-xs',
-        sm: 'text-sm',
-        md: 'text-base',
-        lg: 'text-lg',
-        xl: 'text-xl'
+        sm: 'text-sm max-sm:text-xs',
+        md: 'text-base max-sm:text-sm',
+        lg: 'text-lg max-sm:text-base',
+        xl: 'text-xl max-sm:text-lg'
     }
 }
 
