@@ -15,14 +15,18 @@ onMounted(() => {
     count.value = props.item.count;
 });
 
+const emit = defineEmits(['update-quantity'])
+
 const increment = (item: CartModal) => {
     item.incrementCount()
     count.value = item.count;
+    emit("update-quantity", item.count)
 }
 
 const decrement = (item: CartModal) => {
     item.decrementCount();
     count.value = item.count
+    emit("update-quantity", item.count)
 }
 
 </script>
