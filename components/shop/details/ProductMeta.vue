@@ -16,7 +16,7 @@ const props = defineProps({
 const selected = ref<ProductSize>()
 
 onMounted(() => {
-    selected.value = props.product.price[0].size;
+    selected.value = props.product.prices[0].size;
 });
 
 const cartStore = useCartStore();
@@ -37,9 +37,9 @@ const addToCart = () => {
     const cartModal = builder.product(product)
         .productId(product.id)
         .color(product.color)
-        .count(1)
-        .price(product.getPrizeBySize(selected.value ?? product.price[0].size) ?? product.price[0])
-        .size(selected.value ?? product.price[0].size)
+        .quantity(1)
+        .price(product.getPrizeBySize(selected.value ?? product.prices[0].size) ?? product.prices[0])
+        .size(selected.value ?? product.prices[0].size)
         .build()
 
     addedToCart.value = cartAction2Handler(cartModal, useCartStore)
