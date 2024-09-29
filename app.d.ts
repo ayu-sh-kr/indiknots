@@ -40,7 +40,7 @@ declare interface Product {
     shape: ProductShape;
     material: ProductMaterial;
     technique: ProductTechnique;
-    price: ProductPrice[];
+    prices: ProductPrice[];
     sale: boolean;
     stock: ProductStock;
     animal_friendly: boolean;
