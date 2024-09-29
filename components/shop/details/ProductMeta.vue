@@ -71,7 +71,7 @@ const addToCart = () => {
         <ContentWrapper class="grid grid-cols-2 md:grid-cols-3 w-2/3 gap-x-5 gap-y-3">
             <SizeView @click="() => {
                 selected = price.size
-            }" v-for="price in product.price" :size="price.size" :selected="selected === price.size"/>
+            }" v-for="price in product.prices" :size="price.size" :selected="selected === price.size"/>
         </ContentWrapper>
 
         <div v-if="product.stock === 'AVAILABLE'" class="meta-div">
