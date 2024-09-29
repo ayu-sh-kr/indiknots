@@ -11,7 +11,7 @@ class ProductModal implements Product {
     img!: ProductImage[];
     material!: ProductMaterial;
     name!: string;
-    price!: ProductPrice[];
+    prices!: ProductPrice[];
     sale!: boolean;
     shape!: ProductShape;
     size!: ProductSize[];
@@ -22,7 +22,7 @@ class ProductModal implements Product {
     }
 
     getPrizeBySize = (size: ProductSize): ProductPrice | undefined => {
-        return this.price.find(price => {
+        return this.prices.find(price => {
             if (price.size.length === size.length && price.size.width === size.width && price.size.unit === size.unit) {
                 return price
             }
@@ -53,7 +53,7 @@ class ProductModal implements Product {
     }
 
     getSizeOptions(): ProductSizeOption[] {
-        return this.price.map(price => {
+        return this.prices.map(price => {
             return {
                 label: this.getSizeText(price.size),
                 value: price.size
@@ -112,7 +112,7 @@ class ProductBuilder {
     }
 
     price(price: ProductPrice[]): ProductBuilder {
-        this.product.price = price;
+        this.product.prices = price;
         return this;
     }
 
@@ -150,7 +150,7 @@ class ProductBuilder {
             .img(product.img)
             .material(product.material)
             .name(product.name)
-            .price(product.price)
+            .price(product.prices)
             .sale(product.sale)
             .shape(product.shape)
             .size(product.size)
@@ -180,8 +180,8 @@ const cartActionHandler = (product: ProductModal, cartStore: CartStore) => {
         .productId(product.id)
         .count(1)
         .color(product.color)
-        .price(product.price[0])
-        .size(product.price[0].size)
+        .price(product.prices[0])
+        .size(product.prices[0].size)
         .build();
 
     return cartAction2Handler(cartModal, cartStore)
