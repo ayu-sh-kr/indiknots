@@ -54,7 +54,8 @@ const productView = () => {
         <p class="font-extralight text-gray-600 dark:text-gray-300 text-sm">{{processShortDescription(product)}}</p>
         <p class="font-light text-gray-800/95 dark:text-gray-200/95 mt-2">{{processProductLength(product.size[0])}}</p>
         <ViewButton @click="productView()">
-            <p class="text-gray-950 dark:text-gray-50 text-lg group-hover:text-white transition-all">From ${{product.price[0].price}}</p>
+            <p class="text-gray-950 dark:text-gray-50 text-lg group-hover:text-white transition-all">From
+                ${{ product.prices[0].price }}</p>
         </ViewButton>
     </div>
 </ProductCard>
