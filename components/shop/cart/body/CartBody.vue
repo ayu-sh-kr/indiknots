@@ -2,8 +2,6 @@
 
 import type {CartModal} from "~/modals/cart.modal";
 import {useCartStore} from "~/stores/cart.store";
-import ItemCount from "~/components/shop/cart/body/body/ItemCount.vue";
-import InfoText from "~/components/shop/cart/body/body/InfoText.vue";
 import CartItem from "~/components/shop/cart/body/body/CartItem.vue";
 
 
