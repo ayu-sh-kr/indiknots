@@ -88,3 +88,8 @@ declare interface CartItem {
     color: string
     price: ProductPrice
 }
+
+declare type ProductSizeOption = {
+    label: String,
+    value: ProductSize
+}
