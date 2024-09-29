@@ -187,9 +187,4 @@ const cartActionHandler = (product: ProductModal, cartStore: CartStore) => {
     return cartAction2Handler(cartModal, cartStore)
 }
 
-type ProductSizeOption = {
-    label: String,
-    value: ProductSize
-}
-
 export {ProductModal, ProductBuilder, getPrizeText, processUnderscoreText, cartActionHandler}
