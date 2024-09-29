@@ -83,7 +83,7 @@ declare type InputState = "ERROR" | "DEFAULT" | "SUCCESS";
 
 declare interface CartItem {
     productId: string
-    count: number
+    quantity: number
     size: ProductSize
     color: string
     price: ProductPrice
