@@ -103,4 +103,21 @@ const cartAction2Handler = (cartModal: CartModal, cartStore: CartStore) => {
     }
 }
 
-export {CartModal, CartModalBuilder, cartAction2Handler}
+const getTotalPrice = (cartModals: CartModal[]) => {
+    let price = 0;
+    cartModals.forEach(modal => {
+        price += modal.price.price * modal.quantity
+    });
+
+    return price;
+}
+
+const getDiscountedPrice = (cartModals: CartModal[]) => {
+    let discounted = 0;
+    cartModals.forEach(modal => {
+        discounted += modal.product.getDiscountedPrice(modal.price) * modal.quantity
+    });
+    return discounted;
+}
+
+export {CartModal, CartModalBuilder, cartAction2Handler, getTotalPrice, getDiscountedPrice}
