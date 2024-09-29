@@ -11,11 +11,15 @@ const props = defineProps({
     }
 });
 
-const selectedSize = ref(props.item.size);
+const selectedSize = ref();
 
 onMounted(() => {
-    selectedSize.value = props.item.size;
+    selectedSize.value = props.item.selectedSize();
 })
+
+watch((selectedSize), (value: ProductSizeOption) => {
+    props.item.updateSelectedSize(value)
+});
 
 </script>
 
@@ -37,7 +41,7 @@ onMounted(() => {
             </div>
             <InfoText details="Indiknots" heading="Seller" size="sm"/>
             <div class="flex items-baseline gap-x-3 flex-wrap">
-                <span class="text-gray-600 dark:text-gray-300">${{item.price.price}} </span>
+                <span class="text-gray-600 dark:text-gray-300 line-through">${{item.price.price}}</span>
                 <span class="text-gray-700 dark:text-gray-200 text-xl font-semibold">${{item.product.getDiscountedPrice(item.price)}}</span>
                 <span class="text-orange-400 dark:text-orange-500 text-sm">{{item.price.sale_percentage}}% OFF</span>
                 <span class="text-xs text-orange-400 dark:text-orange-500">DISCOUNT APPLIED</span>
