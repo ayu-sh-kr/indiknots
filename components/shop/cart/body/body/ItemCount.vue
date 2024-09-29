@@ -12,21 +12,21 @@ const props = defineProps({
 const count = ref(0)
 
 onMounted(() => {
-    count.value = props.item.count;
+    count.value = props.item.quantity;
 });
 
 const emit = defineEmits(['update-quantity'])
 
 const increment = (item: CartModal) => {
     item.incrementCount()
-    count.value = item.count;
-    emit("update-quantity", item.count)
+    count.value = item.quantity;
+    emit("update-quantity", item.quantity)
 }
 
 const decrement = (item: CartModal) => {
     item.decrementCount();
-    count.value = item.count
-    emit("update-quantity", item.count)
+    count.value = item.quantity
+    emit("update-quantity", item.quantity)
 }
 
 </script>
