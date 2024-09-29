@@ -17,6 +17,27 @@ class CartModal implements CartItem {
         if (this.count === 1) return;
         this.count -= 1;
     }
+
+    selectedSize = () => {
+        const sizeOption: ProductSizeOption = {
+            label: this.product.getSizeText(this.size),
+            value: this.size
+        }
+        return sizeOption
+    }
+
+    updateSelectedSize = (option: ProductSizeOption) => {
+        this.size = option.value;
+        this.updatePrice(this.size)
+    }
+
+    updatePrice = (size: ProductSize) => {
+        const price = this.product.getPrizeBySize(size)
+
+        if(price) {
+            this.price = price
+        }
+    }
 }
 
 class CartModalBuilder {
