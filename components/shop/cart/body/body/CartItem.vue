@@ -56,7 +56,7 @@ const removeFromCart = () => {
             <InfoText details="Indiknots" heading="Seller" size="sm"/>
             <div class="flex items-baseline gap-x-3 flex-wrap">
                 <span class="text-gray-600 dark:text-gray-300 line-through">${{roundedTo2(item.price.price * quantity)}}</span>
-                <span class="text-gray-700 dark:text-gray-200 text-xl font-semibold">${{roundedTo2(item.product.getDiscountedPrice(item.price) * quantity)}}</span>
+                <span class="text-gray-700 dark:text-gray-200 text-lg md:text-xl font-semibold">${{roundedTo2(item.product.getDiscountedPrice(item.price) * quantity)}}</span>
                 <span class="text-orange-400 dark:text-orange-500 text-sm">{{item.price.sale_percentage}}% OFF</span>
                 <span class="text-xs text-orange-400 dark:text-orange-500">DISCOUNT APPLIED</span>
             </div>
@@ -65,7 +65,7 @@ const removeFromCart = () => {
                     <USelectMenu placeholder="Select Size" v-model="selectedSize" :options="item.product.getSizeOptions()" />
                 </div>
             </div>
-            <div class="flex justify-end items-center gap-x-5 w-full">
+            <div class="flex justify-end items-center gap-x-5 w-full text-sm sm:text-base">
                 <button @click="removeFromCart()" class="bg-rose-400 dark:bg-rose-500 cart-action-button">
                     <span>Remove From Cart</span>
                 </button>
