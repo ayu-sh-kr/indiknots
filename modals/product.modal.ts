@@ -178,7 +178,7 @@ const cartActionHandler = (product: ProductModal, cartStore: CartStore) => {
     const builder = new CartModalBuilder()
     const cartModal = builder.product(product)
         .productId(product.id)
-        .count(1)
+        .quantity(1)
         .color(product.color)
         .price(product.prices[0])
         .size(product.prices[0].size)
