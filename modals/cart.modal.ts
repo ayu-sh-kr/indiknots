@@ -2,20 +2,20 @@ import type {ProductModal} from "~/modals/product.modal";
 
 class CartModal implements CartItem {
     color!: string;
-    count!: number;
+    quantity!: number;
     price!: ProductPrice;
     productId!: string;
     size!: ProductSize;
     product!: ProductModal
 
     incrementCount = () => {
-        this.count += 1;
-        console.log(this.count)
+        this.quantity += 1;
+        console.log(this.quantity)
     }
 
     decrementCount = () => {
-        if (this.count === 1) return;
-        this.count -= 1;
+        if (this.quantity === 1) return;
+        this.quantity -= 1;
     }
 
     selectedSize = () => {
@@ -57,8 +57,8 @@ class CartModalBuilder {
         return this;
     }
 
-    count(count: number): CartModalBuilder {
-        this.cart.count = count;
+    quantity(count: number): CartModalBuilder {
+        this.cart.quantity = count;
         return this;
     }
 
@@ -80,7 +80,7 @@ class CartModalBuilder {
     fromCart(cart: CartModal): CartModalBuilder {
         this.product(cart.product)
             .color(cart.color)
-            .count(cart.count)
+            .quantity(cart.quantity)
             .price(cart.price)
             .productId(cart.productId)
             .size(cart.size);
