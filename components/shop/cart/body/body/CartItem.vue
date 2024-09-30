@@ -24,6 +24,7 @@ onMounted(() => {
 
 watch((selectedSize), (value: ProductSizeOption) => {
     props.item.updateSelectedSize(value)
+    emit("update-total");
 });
 
 const updatedQuantity = (value: number) => {
