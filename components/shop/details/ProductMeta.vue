@@ -74,7 +74,7 @@ const addToCart = () => {
             }" v-for="price in product.prices" :size="price.size" :selected="selected === price.size"/>
         </ContentWrapper>
 
-        <div v-if="product.stock === 'AVAILABLE'" class="meta-div">
+        <div v-if="product.stock.status === 'AVAILABLE'" class="meta-div">
             <button class="meta-action bg-yellow-400 hover:bg-yellow-500 dark:bg-yellow-500 dark:hover:bg-yellow-600">
                 <UIcon name="i-icon-park-outline:buy" class="text-lg font-semibold"/>
                 <span>Buy Now</span>
