@@ -70,8 +70,11 @@ const removeFromCart = () => {
                 <button @click="removeFromCart()" class="bg-rose-400 dark:bg-rose-500 cart-action-button">
                     <span>Remove From Cart</span>
                 </button>
-                <button class="bg-orange-400 dark:bg-orange-500 cart-action-button">
+                <button v-if="item.product.stock.status === 'AVAILABLE'" class="bg-orange-400 dark:bg-orange-500 cart-action-button">
                     <span>Buy This Now</span>
+                </button>
+                <button v-else class="bg-brown-400 dark:bg-brown-500 cart-action-button">
+                    <span>Sold Out</span>
                 </button>
             </div>
         </div>
