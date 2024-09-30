@@ -11,7 +11,7 @@ import {usePaginationStore} from "~/stores/pagination.store";
 import {useCartStore} from "~/stores/cart.store";
 import SortAction from "~/components/shop/product/SortAction.vue";
 
-const products = ref<ProductModal[]>();
+const products = ref<ProductModal[]>([]);
 const pageStore = usePaginationStore();
 
 const {productPage: page, productSort: sort} = storeToRefs(pageStore)
@@ -27,11 +27,8 @@ watch(() => productStore.products, (newProducts) => {
 });
 
 let visible = computed(() => {
-    const paginated = products.value?.slice((page.value -1) * pageSize.value, (page.value) * pageSize.value);
-    if(paginated)
-        return handleProductSorting(paginated, sort.value)
-
-    return paginated;
+    const sorted = handleProductSorting(products.value, sort.value)
+    return sorted.slice((page.value -1) * pageSize.value, (page.value) * pageSize.value);
 });
 
 const applySort = (updatedSort: ProductSort) => {
@@ -46,7 +43,7 @@ const applySort = (updatedSort: ProductSort) => {
         <SectionHeader text2="Products" text1="Shop Our" />
         <div v-if="products" class="space-y-10 relative">
             <div
-                class="flex items-center justify-end gap-x-5 px-10 text-gray-800 dark:text-gray-200 font-medium tracking-wider">
+                class="flex items-center justify-end flex-wrap max-sm:justify-between max-sm:mt-10 max-sm:gap-y-2 gap-x-5 px-10 text-gray-800 dark:text-gray-200 font-medium tracking-wider">
 
                 <MetaAction text="Filters" icon="material-symbols-light:filter-alt-off-outline" :action="true"/>
 
