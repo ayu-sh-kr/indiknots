@@ -16,6 +16,10 @@ class CartModal implements CartItem {
      * Increments the quantity of the product in the cart by 1.
      */
     incrementCount = () => {
+        if(this.product.stock.status === "SOLD_OUT") {
+            this.quantity = 0
+            return;
+        }
         if(this.product.stock.quantity === this.quantity) return;
         this.quantity += 1;
         console.log(this.quantity)
