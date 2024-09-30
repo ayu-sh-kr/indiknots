@@ -322,6 +322,20 @@ const sortByStock = (products: ProductModal[]) => {
     })
 }
 
+
+/**
+ * Sorts an array of ProductModal instances based on the specified sorting criteria.
+ *
+ * @param products - The array of ProductModal instances to be sorted.
+ * @param sort - The sorting criteria to be applied. It can be one of the following:
+ *   - "Alphabetical": Sorts products alphabetically by their name.
+ *   - "Alphabetical-Reverse": Sorts products in reverse alphabetical order by their name.
+ *   - "Price - High to Low": Sorts products by their price in descending order.
+ *   - "Price - Low to High": Sorts products by their price in ascending order.
+ *   - "Stock": Sorts products by their stock status, with "AVAILABLE" products coming before "SOLD_OUT" products.
+ *   - "None": Returns the products array without any sorting.
+ * @returns The sorted array of ProductModal instances based on the specified sorting criteria.
+ */
 const handleProductSorting = (products: ProductModal[], sort: ProductSort) => {
     switch (sort) {
         case "Alphabetical": {
