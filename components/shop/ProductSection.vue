@@ -2,19 +2,21 @@
 
 import MetaAction from "~/components/shop/details/MetaAction.vue";
 import Product from "~/components/shop/Product.vue";
-import type {ProductModal} from "~/modals/product.modal";
+import {handleProductSorting, type ProductModal} from "~/modals/product.modal";
 import {useProductStore} from "~/stores/product.store";
 import NoContent from "~/components/utils/NoContent.vue";
 import Scaffold from "~/components/utils/Scaffold.vue";
 import SectionHeader from "~/components/utils/SectionHeader.vue";
 import {usePaginationStore} from "~/stores/pagination.store";
 import {useCartStore} from "~/stores/cart.store";
+import SortAction from "~/components/shop/product/SortAction.vue";
 
 const products = ref<ProductModal[]>();
 const pageStore = usePaginationStore();
 
-const {productPage: page} = storeToRefs(pageStore)
+const {productPage: page, productSort: sort} = storeToRefs(pageStore)
 const productStore = useProductStore();
+const pageSize = ref(8);
 
 onMounted(async () => {
     products.value = await productStore.fetchOrRefresh();
@@ -24,9 +26,18 @@ watch(() => productStore.products, (newProducts) => {
     products.value = newProducts
 });
 
-const visible = computed(() => {
-    return products.value?.slice((page.value -1) * 8, (page.value) * 8);
+let visible = computed(() => {
+    const paginated = products.value?.slice((page.value -1) * pageSize.value, (page.value) * pageSize.value);
+    if(paginated)
+        return handleProductSorting(paginated, sort.value)
+
+    return paginated;
 });
+
+const applySort = (updatedSort: ProductSort) => {
+    sort.value = updatedSort;
+    pageStore.updateProductSort(updatedSort);
+}
 
 </script>
 
@@ -39,7 +50,7 @@ const visible = computed(() => {
 
                 <MetaAction text="Filters" icon="material-symbols-light:filter-alt-off-outline" :action="true"/>
 
-                <MetaAction text="Sort" icon="ph:sort-descending-light" :action="true"/>
+                <SortAction text="Sort" icon="ph:sort-descending-light" :disabled="false" @sort-action="applySort"/>
 
                 <MetaAction :text="`${products.length} Products`" :action="false"/>
 
@@ -58,7 +69,7 @@ const visible = computed(() => {
             </div>
 
             <div class="flex justify-center items-center pt-10">
-                <UPagination v-model="page" :page-count="8" :total="products.length" show-first show-last/>
+                <UPagination v-model="page" :page-count="pageSize" :total="products.length" show-first show-last/>
             </div>
         </div>
         <NoContent v-else/>
