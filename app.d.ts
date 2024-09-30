@@ -26,7 +26,7 @@ declare type ProductCategory = "TRADITIONAL" | "MODERN" | "ABSTRACT" | "GEOMETRI
 declare type ProductPriceType = "MERCHANT" | "CUSTOMER";
 declare type ProductShape = "ROUNDED" | "RECTANGLE" | "SQUARE" | "RUNNER" | "UNSHAPED" | "OTHER";
 declare type ProductTechnique = "HAND_KNOTTED" | "HAND_TUFTED" | "HAND_LOOMED" | "FLAT_WEAVE" | "PATCH_WORK" | "SHAGGY" | "OTHER";
-declare type ProductStock = "SOLD_OUT" | "AVAILABLE";
+declare type ProductStockStatus = "SOLD_OUT" | "AVAILABLE";
 
 
 declare interface Product {
@@ -75,7 +75,10 @@ const schema = {
         }
     ],
     "sale": true,
-    "stock": "",
+    "stock": {
+        "value": "false",
+        "quantity": 0
+    },
     "animal_friendly": ""
 }
 
@@ -92,4 +95,9 @@ declare interface CartItem {
 declare type ProductSizeOption = {
     label: String,
     value: ProductSize
+}
+
+declare type ProductStock = {
+    status: ProductStockStatus,
+    quantity: number
 }
