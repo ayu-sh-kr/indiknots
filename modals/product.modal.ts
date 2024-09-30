@@ -323,10 +323,8 @@ const sortByStock = (products: ProductModal[]) => {
 }
 
 const handleProductSorting = (products: ProductModal[], sort: ProductSort) => {
-    console.log("Handling Sort")
     switch (sort) {
         case "Alphabetical": {
-            console.log(`Implementing sort ${sort}`)
             return sortAlphabetical(products)
         }
 

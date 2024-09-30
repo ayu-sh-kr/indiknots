@@ -21,7 +21,6 @@ const props = defineProps({
 const emit = defineEmits(['sort-action']);
 
 const updateSort = (sort: ProductSort) => {
-    console.log('Starting Sort')
     emit("sort-action", sort)
 }
 
