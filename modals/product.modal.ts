@@ -1,6 +1,9 @@
 import type {CartStore} from "~/stores/cart.store";
 import {cartAction2Handler, CartModalBuilder} from "~/modals/cart.modal";
 
+/**
+ * Represents a product with various attributes and methods to interact with its properties.
+ */
 class ProductModal implements Product {
 
     id!: string
@@ -21,6 +24,11 @@ class ProductModal implements Product {
     constructor() {
     }
 
+    /**
+     * Retrieves the price details for a given size.
+     * @param size - The size of the product.
+     * @returns The price details for the specified size, or `undefined` if not found.
+     */
     getPrizeBySize = (size: ProductSize): ProductPrice | undefined => {
         return this.prices.find(price => {
             if (price.size.length === size.length && price.size.width === size.width && price.size.unit === size.unit) {
@@ -29,22 +37,45 @@ class ProductModal implements Product {
         });
     }
 
+    /**
+     * Processes and returns the material text.
+     * @returns The processed material text.
+     */
     getMaterialText = () => {
         return processUnderscoreText(this.material)
     }
 
+    /**
+     * Processes and returns the technique text.
+     * @returns The processed technique text.
+     */
     getTechniqueText = () => {
         return processUnderscoreText(this.technique)
     }
 
+    /**
+     * Processes and returns the category text.
+     * @returns The processed category text.
+     */
     getCategoryText = () => {
         return processUnderscoreText(this.category)
     }
 
+    /**
+     * Retrieves the size text for a given size.
+     * @param size - The size of the product.
+     * @returns The size text.
+     */
     getSizeText(size: ProductSize) {
         return `${size.length} x ${size.width} ${size.unit}`
     }
 
+
+    /**
+     * Calculates and returns the discounted price for a given price.
+     * @param price - The original price details.
+     * @returns The discounted price.
+     */
     getDiscountedPrice(price: ProductPrice) {
         const originalPrice = price.price;
         const discount = price.sale_percentage;
@@ -52,6 +83,11 @@ class ProductModal implements Product {
         return Math.round(discountPrice * 100) / 100;
     }
 
+
+    /**
+     * Retrieves the size options available for the product.
+     * @returns An array of size options.
+     */
     getSizeOptions(): ProductSizeOption[] {
         return this.prices.map(price => {
             return {
@@ -164,15 +200,50 @@ class ProductBuilder {
     }
 }
 
+/**
+ * Retrieves the price text for a given product and size.
+ *
+ * This function uses the `getPrizeBySize` method of the `ProductModal` class
+ * to find the price details for the specified size. If the price is found,
+ * it returns a formatted string with the price in USD. If the price is not found,
+ * it returns a 'Price not found' message.
+ *
+ * @param product - The `ProductModal` instance representing the product.
+ * @param size - The `ProductSize` instance representing the size of the product.
+ * @returns A string representing the price text in USD or a 'Price not found' message.
+ */
 const getPrizeText = (product: ProductModal, size: ProductSize) => {
     const price = product.getPrizeBySize(size);
     return price ? `USD. ${price.price}` : 'Price not found';
 }
 
+
+/**
+ * Processes a given text by replacing all underscores with spaces.
+ *
+ * This function takes a string input, splits it by underscores, and then joins the resulting array
+ * with spaces to form a new string. It is useful for converting text with underscores into a more
+ * readable format.
+ *
+ * @param text - The input string containing underscores.
+ * @returns A new string with all underscores replaced by spaces.
+ */
 const processUnderscoreText = (text: string) => {
     return text.split("_").join(" ")
 }
 
+
+/**
+ * Handles the action of adding a product to the cart.
+ *
+ * This function creates a new `CartModal` instance using the `CartModalBuilder` class,
+ * populates it with the provided product details, and then calls the `cartAction2Handler`
+ * function to process the cart action.
+ *
+ * @param product - The `ProductModal` instance representing the product to be added to the cart.
+ * @param cartStore - The `CartStore` instance representing the cart store where the product will be added.
+ * @returns The result of the `cartAction2Handler` function, which processes the cart action.
+ */
 const cartActionHandler = (product: ProductModal, cartStore: CartStore) => {
 
     const builder = new CartModalBuilder()
