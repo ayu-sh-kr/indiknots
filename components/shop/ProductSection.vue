@@ -8,6 +8,7 @@ import NoContent from "~/components/utils/NoContent.vue";
 import Scaffold from "~/components/utils/Scaffold.vue";
 import SectionHeader from "~/components/utils/SectionHeader.vue";
 import {usePaginationStore} from "~/stores/pagination.store";
+import {useCartStore} from "~/stores/cart.store";
 
 const products = ref<ProductModal[]>();
 const pageStore = usePaginationStore();
@@ -43,7 +44,11 @@ const visible = computed(() => {
                 <MetaAction :text="`${products.length} Products`" :action="false"/>
 
                 <MetaAction @click="async () => {
-                    await productStore.hardRefreshOrUpdate()
+                    await productStore.hardRefreshOrUpdate();
+                    // Temporary patch, will be removed in future
+                    products?.forEach(product => {
+                       useCartStore().updateProduct(product);
+                    })
                 }" text="Refresh" icon="material-symbols-light:refresh-rounded" :action="true"/>
             </div>
 
