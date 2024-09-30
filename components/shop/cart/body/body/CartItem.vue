@@ -3,7 +3,7 @@
 import {cartAction2Handler, type CartModal} from "~/modals/cart.modal";
 import ItemCount from "~/components/shop/cart/body/body/ItemCount.vue";
 import InfoText from "~/components/shop/cart/body/body/InfoText.vue";
-import {roundedTo2} from "../../../../../utils/GeneralUtils";
+import {roundedTo2} from "~/utils/GeneralUtils";
 
 const props = defineProps({
     item: {
