@@ -101,3 +101,5 @@ declare type ProductStock = {
     status: ProductStockStatus,
     quantity: number
 }
+
+declare type ProductSort = "Alphabetical" | "Alphabetical-Reverse" | "Price - High to Low" | "Price - Low to High" | "Stock" | "None"
