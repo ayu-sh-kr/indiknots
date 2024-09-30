@@ -16,6 +16,7 @@ class CartModal implements CartItem {
      * Increments the quantity of the product in the cart by 1.
      */
     incrementCount = () => {
+        if(this.product.stock.quantity === this.quantity) return;
         this.quantity += 1;
         console.log(this.quantity)
     }
@@ -126,7 +127,7 @@ class CartModalBuilder {
  * @returns `true` if the product was added to the cart, `false` if the product was removed from the cart.
  */
 const cartAction2Handler = (cartModal: CartModal, cartStore: CartStore) => {
-    if(!cartStore().isProductExist(cartModal.productId) && cartModal.product.stock === "AVAILABLE") {
+    if(!cartStore().isProductExist(cartModal.productId) && cartModal.product.stock.status === "AVAILABLE") {
         cartStore().addToCart(cartModal)
         return true
     } else {
