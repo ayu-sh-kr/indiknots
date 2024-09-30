@@ -258,4 +258,98 @@ const cartActionHandler = (product: ProductModal, cartStore: CartStore) => {
     return cartAction2Handler(cartModal, cartStore)
 }
 
-export {ProductModal, ProductBuilder, getPrizeText, processUnderscoreText, cartActionHandler}
+
+/**
+ * Sorts an array of ProductModal instances alphabetically by their name.
+ *
+ * @param products - The array of ProductModal instances to be sorted.
+ * @returns The sorted array of ProductModal instances.
+ */
+const sortAlphabetical = (products: ProductModal[]): ProductModal[] => {
+    return products.sort((a, b) => a.name.localeCompare(b.name));
+}
+
+
+/**
+ * Sorts an array of ProductModal instances in reverse alphabetical order by their name.
+ *
+ * @param products - The array of ProductModal instances to be sorted.
+ * @returns The sorted array of ProductModal instances.
+ */
+const sortAlphabeticalReverse = (products: ProductModal[]): ProductModal[] => {
+    return products.sort((a, b) => b.name.localeCompare(a.name));
+}
+
+
+/**
+ * Sorts an array of ProductModal instances by their price in descending order.
+ *
+ * @param products - The array of ProductModal instances to be sorted.
+ * @returns The sorted array of ProductModal instances.
+ */
+const sortPriceHighToLow = (products: ProductModal[]): ProductModal[] => {
+    return products.sort((a, b) => b.prices[0].price - a.prices[0].price);
+}
+
+
+/**
+ * Sorts an array of ProductModal instances by their price in ascending order.
+ *
+ * @param products - The array of ProductModal instances to be sorted.
+ * @returns The sorted array of ProductModal instances.
+ */
+const sortPriceLowToHigh = (products: ProductModal[]): ProductModal[] => {
+    return products.sort((a, b) => a.prices[0].price - b.prices[0].price);
+}
+
+
+/**
+ * Sorts an array of ProductModal instances by their stock status.
+ * Products with "AVAILABLE" status will come before those with "SOLD_OUT" status.
+ *
+ * @param products - The array of ProductModal instances to be sorted.
+ * @returns The sorted array of ProductModal instances.
+ */
+const sortByStock = (products: ProductModal[]) => {
+    return products.sort((a, b) => {
+        if(a.stock.status === "AVAILABLE" && b.stock.status === "SOLD_OUT") {
+            return -1
+        } else if(a.stock.status === "SOLD_OUT" && b.stock.status === "AVAILABLE") {
+            return 1
+        } else {
+            return 0
+        }
+    })
+}
+
+const handleProductSorting = (products: ProductModal[], sort: ProductSort) => {
+    console.log("Handling Sort")
+    switch (sort) {
+        case "Alphabetical": {
+            console.log(`Implementing sort ${sort}`)
+            return sortAlphabetical(products)
+        }
+
+        case "Alphabetical-Reverse": {
+            return sortAlphabeticalReverse(products)
+        }
+
+        case "Price - High to Low": {
+            return sortPriceHighToLow(products)
+        }
+
+        case "Price - Low to High": {
+            return sortPriceLowToHigh(products)
+        }
+
+        case "Stock": {
+            return sortByStock(products)
+        }
+
+        case "None": {
+            return products;
+        }
+    }
+}
+
+export {ProductModal, ProductBuilder, getPrizeText, processUnderscoreText, cartActionHandler, handleProductSorting}
