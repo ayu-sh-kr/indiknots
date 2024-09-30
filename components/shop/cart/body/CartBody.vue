@@ -12,8 +12,8 @@ const discounted = ref()
 
 onMounted(() => {
     cart.value = cartStore.cart
-    totalPrice.value = getTotalPrice(cart.value)
-    discounted.value = getDiscountedPrice(cart.value)
+    totalPrice.value = getTotalPrice(cart.value as CartModal[])
+    discounted.value = getDiscountedPrice(cart.value as CartModal[])
 });
 
 watch(() => cartStore.cart, (newProducts) => {
@@ -23,11 +23,11 @@ watch(() => cartStore.cart, (newProducts) => {
 });
 
 const updateTotal = () => {
-  totalPrice.value = roundedTo2(getTotalPrice(cart.value));
+  totalPrice.value = roundedTo2(getTotalPrice(cart.value as CartModal[]));
 }
 
 const updateDiscounted = () => {
-  discounted.value = roundedTo2(getDiscountedPrice(cart.value))
+  discounted.value = roundedTo2(getDiscountedPrice(cart.value as CartModal[]))
 }
 </script>
 
@@ -35,7 +35,7 @@ const updateDiscounted = () => {
 
     <section class="grid grid-cols-1 md:grid-cols-8 max-w-7xl mx-auto font-tahoma">
         <div class="col-span-6 space-y-5 p-2">
-            <CartItem v-for="(item, index) in cart" :key="index" :item="item" @update-total="updateTotal(); updateDiscounted()"/>
+            <CartItem v-for="(item, index) in cart" :key="index" :item="item as CartModal" @update-total="updateTotal(); updateDiscounted()"/>
         </div>
         <div class="col-span-2 flex justify-center p-2 w-full">
             <div class="w-full bg-white dark:bg-slate-800 text-gray-700 dark:text-gray-300 rounded-xl space-y-2 tracking-wide p-2 max-sm:text-sm">
