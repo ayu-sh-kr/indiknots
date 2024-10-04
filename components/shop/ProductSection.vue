@@ -10,6 +10,7 @@ import SectionHeader from "~/components/utils/SectionHeader.vue";
 import {usePaginationStore} from "~/stores/pagination.store";
 import {useCartStore} from "~/stores/cart.store";
 import SortAction from "~/components/shop/product/SortAction.vue";
+import FilterAction from "~/components/shop/product/FilterAction.vue";
 
 const products = ref<ProductModal[]>([]);
 const pageStore = usePaginationStore();
@@ -36,6 +37,8 @@ const applySort = (updatedSort: ProductSort) => {
     pageStore.updateProductSort(updatedSort);
 }
 
+const filterStatus = ref(false)
+
 </script>
 
 <template>
@@ -45,7 +48,7 @@ const applySort = (updatedSort: ProductSort) => {
             <div
                 class="flex items-center justify-end flex-wrap max-sm:justify-between max-sm:mt-10 max-sm:gap-y-2 gap-x-5 px-10 text-gray-800 dark:text-gray-200 font-medium tracking-wider">
 
-                <MetaAction text="Filters" icon="material-symbols-light:filter-alt-off-outline" :action="true"/>
+                <MetaAction @click="filterStatus = !filterStatus" text="Filters" icon="material-symbols-light:filter-alt-off-outline" :action="true"/>
 
                 <SortAction text="Sort" icon="ph:sort-descending-light" :disabled="false" @sort-action="applySort"/>
 
@@ -60,9 +63,11 @@ const applySort = (updatedSort: ProductSort) => {
                 }" text="Refresh" icon="material-symbols-light:refresh-rounded" :action="true"/>
             </div>
 
-            <div
-                class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 max-sm:place-items-center gap-y-20 gap-x-10">
+            <FilterAction :is-open="filterStatus"/>
+
+            <div class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 max-sm:place-items-center gap-y-20 gap-x-10">
                 <Product v-for="product in visible" :key="product.id" :product="product"/>
+                <!--Expandable-->
             </div>
 
             <div class="flex justify-center items-center pt-10">
