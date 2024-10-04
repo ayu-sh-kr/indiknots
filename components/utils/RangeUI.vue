@@ -28,7 +28,7 @@ watch((current), (value) => {
         ${{current}}
         <p>${{max}}</p>
     </div>
-    <URange :step="50" :min="min" :max="max" v-model="current"/>
+    <URange :step="50" :min="min" :max="max" size="sm" v-model="current"/>
 </div>
 </template>
 
