@@ -109,7 +109,10 @@ declare type ProductFilter = {
     category: ProductCategory[],
     technique: ProductTechnique[],
     priceL2H: number,
-    priceH2L: number
+    priceH2L: number,
+    filterType: FilterType
 }
+
+declare type FilterType = "UNION" | "INTERSECTION";
 
 declare type NONE = "NONE";
