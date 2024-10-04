@@ -31,7 +31,6 @@ watch(() => productStore.products, (newProducts) => {
 
 let visible = computed(() => {
     const filtered = filter.value !== "NONE" ? handleProductFiltering(filter.value, products.value) : products.value;
-    console.log(filtered)
     const sorted = handleProductSorting(filtered, sort.value)
     return sorted.slice((page.value -1) * pageSize.value, (page.value) * pageSize.value);
 });
@@ -41,22 +40,31 @@ const applySort = (updatedSort: ProductSort) => {
     pageStore.updateProductSort(updatedSort);
 }
 
+const filterStatus = ref(false)
+
 const applyFilters = (updatedFilter: ProductFilter) => {
     console.log(updatedFilter)
     filter.value = updatedFilter;
     pageStore.updateProductFilters(updatedFilter);
 }
 
-const filterStatus = ref(false)
+const applyRefresh = async () => {
+    await productStore.hardRefreshOrUpdate();
+    // remove filter on refresh
+    filter.value = 'NONE';
+    // Temporary patch, will be removed in future
+    products.value.forEach(product => {
+        useCartStore().updateProduct(product);
+    })
+}
 
 </script>
 
 <template>
     <Scaffold>
         <SectionHeader text2="Products" text1="Shop Our" />
-        <div v-if="products" class="space-y-10 relative">
-            <div
-                class="flex items-center justify-end flex-wrap max-sm:justify-between max-sm:mt-10 max-sm:gap-y-2 gap-x-5 px-10 text-gray-800 dark:text-gray-200 font-medium tracking-wider">
+        <div v-if="products" class="space-y-10 relative mt-8 md:mt-12 lg:mt-16">
+            <div class="flex items-center justify-end flex-wrap max-sm:justify-between max-sm:mt-10 max-sm:gap-y-2 gap-x-5 px-10 text-gray-800 dark:text-gray-200 font-medium tracking-wider">
 
                 <MetaAction @click="filterStatus = !filterStatus" text="Filters" icon="material-symbols-light:filter-alt-off-outline" :action="true"/>
 
@@ -64,17 +72,12 @@ const filterStatus = ref(false)
 
                 <MetaAction :text="`${products.length} Products`" :action="false"/>
 
-                <MetaAction @click="async () => {
-                    await productStore.hardRefreshOrUpdate();
-                    filter = 'NONE';
-                    // Temporary patch, will be removed in future
-                    products?.forEach(product => {
-                       useCartStore().updateProduct(product);
-                    })
-                }" text="Refresh" icon="material-symbols-light:refresh-rounded" :action="true"/>
+                <MetaAction @click="applyRefresh" text="Refresh" icon="material-symbols-light:refresh-rounded" :action="true"/>
             </div>
 
-            <Transition name="height">
+            <Transition enter-active-class="height-enter-active" enter-from-class="height-enter-from" enter-to-class="height-enter-to" name="height"
+                        leave-active-class="height-leave-active" leave-from-class="height-leave-from" leave-to-class="height-leave-to"
+            >
                 <div v-show="filterStatus">
                     <FilterAction @filer-action="applyFilters"/>
                 </div>
