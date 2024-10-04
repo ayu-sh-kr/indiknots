@@ -63,7 +63,11 @@ const filterStatus = ref(false)
                 }" text="Refresh" icon="material-symbols-light:refresh-rounded" :action="true"/>
             </div>
 
-            <FilterAction :is-open="filterStatus"/>
+            <Transition name="height">
+                <div v-show="filterStatus">
+                    <FilterAction :is-open="filterStatus"/>
+                </div>
+            </Transition>
 
             <div class="grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 max-sm:place-items-center gap-y-20 gap-x-10">
                 <Product v-for="product in visible" :key="product.id" :product="product"/>
@@ -79,5 +83,13 @@ const filterStatus = ref(false)
 </template>
 
 <style scoped>
-
+.height-enter-active, .height-leave-active {
+    transition: height 0.5s ease-in-out;
+}
+.height-enter-from, .height-leave-to {
+    @apply h-0 hidden;
+}
+.height-enter-to, .height-leave-from {
+   @apply h-fit
+}
 </style>
