@@ -103,3 +103,11 @@ declare type ProductStock = {
 }
 
 declare type ProductSort = "Alphabetical" | "Alphabetical-Reverse" | "Price - High to Low" | "Price - Low to High" | "Stock" | "None"
+
+declare type ProductFilter = {
+    material: ProductMaterial,
+    category: ProductCategory,
+    technique: ProductTechnique,
+    priceL2H: number,
+    priceH2L: number
+}
