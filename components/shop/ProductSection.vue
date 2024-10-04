@@ -52,6 +52,10 @@ const applyRefresh = async () => {
     await productStore.hardRefreshOrUpdate();
     // remove filter on refresh
     filter.value = 'NONE';
+
+    // close the filter component
+    filterStatus.value = false;
+
     // Temporary patch, will be removed in future
     products.value.forEach(product => {
         useCartStore().updateProduct(product);
