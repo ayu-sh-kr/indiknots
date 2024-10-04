@@ -2,7 +2,7 @@
 
 import MetaAction from "~/components/shop/details/MetaAction.vue";
 import Product from "~/components/shop/Product.vue";
-import {handleProductSorting, type ProductModal} from "~/modals/product.modal";
+import {type ProductModal} from "~/modals/product.modal";
 import {useProductStore} from "~/stores/product.store";
 import NoContent from "~/components/utils/NoContent.vue";
 import Scaffold from "~/components/utils/Scaffold.vue";
@@ -11,11 +11,13 @@ import {usePaginationStore} from "~/stores/pagination.store";
 import {useCartStore} from "~/stores/cart.store";
 import SortAction from "~/components/shop/product/SortAction.vue";
 import FilterAction from "~/components/shop/product/FilterAction.vue";
+import {handleProductSorting} from "~/utils/SortUtils";
+import {handleProductFiltering} from "~/utils/FilterUtils";
 
 const products = ref<ProductModal[]>([]);
 const pageStore = usePaginationStore();
 
-const {productPage: page, productSort: sort} = storeToRefs(pageStore)
+const {productPage: page, productSort: sort, productFilter: filter} = storeToRefs(pageStore)
 const productStore = useProductStore();
 const pageSize = ref(8);
 
@@ -28,13 +30,21 @@ watch(() => productStore.products, (newProducts) => {
 });
 
 let visible = computed(() => {
-    const sorted = handleProductSorting(products.value, sort.value)
+    const filtered = filter.value !== "NONE" ? handleProductFiltering(filter.value, products.value) : products.value;
+    console.log(filtered)
+    const sorted = handleProductSorting(filtered, sort.value)
     return sorted.slice((page.value -1) * pageSize.value, (page.value) * pageSize.value);
 });
 
 const applySort = (updatedSort: ProductSort) => {
     sort.value = updatedSort;
     pageStore.updateProductSort(updatedSort);
+}
+
+const applyFilters = (updatedFilter: ProductFilter) => {
+    console.log(updatedFilter)
+    filter.value = updatedFilter;
+    pageStore.updateProductFilters(updatedFilter);
 }
 
 const filterStatus = ref(false)
@@ -56,6 +66,7 @@ const filterStatus = ref(false)
 
                 <MetaAction @click="async () => {
                     await productStore.hardRefreshOrUpdate();
+                    filter = 'NONE';
                     // Temporary patch, will be removed in future
                     products?.forEach(product => {
                        useCartStore().updateProduct(product);
@@ -65,7 +76,7 @@ const filterStatus = ref(false)
 
             <Transition name="height">
                 <div v-show="filterStatus">
-                    <FilterAction :is-open="filterStatus"/>
+                    <FilterAction @filer-action="applyFilters"/>
                 </div>
             </Transition>
 
