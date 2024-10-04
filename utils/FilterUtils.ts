@@ -43,7 +43,6 @@ const filterByTechniques = (products: ProductModal[], techniques: ProductTechniq
 }
 
 
-
 /**
  * Filters an array of ProductModal instances based on the specified filter criteria.
  * The function applies category, material, and technique filters separately and then
@@ -58,9 +57,23 @@ const handleProductFiltering = (filter: ProductFilter, products: ProductModal[])
     const filteredByMaterials = filterByMaterials(products, filter.material);
     const filteredByTechniques = filterByTechniques(products, filter.technique);
 
-    return filteredByCategories.filter(product => {
-        return filteredByMaterials.includes(product) && filteredByTechniques.includes(product);
-    });
+    switch (filter.filterType) {
+        case "INTERSECTION": {
+            return filteredByCategories.filter(product => {
+                return filteredByMaterials.includes(product) && filteredByTechniques.includes(product);
+            });
+        }
+
+        case "UNION": {
+            const unionSet = new Set<ProductModal>([
+                ...filteredByCategories,
+                ...filteredByMaterials,
+                ...filteredByTechniques
+            ]);
+
+            return Array.from(unionSet);
+        }
+    }
 }
 
 export {handleProductFiltering}
