@@ -21,12 +21,14 @@ const materials = ref([])
 const emit = defineEmits(['filer-action']);
 
 const emitFilteredData = () => {
+    const filterType: FilterType = categories.value.length && materials.value.length && techniques.value.length ? "INTERSECTION" : "UNION";
     const data: ProductFilter = {
         technique: techniques.value,
         material: materials.value,
         category: categories.value,
         priceH2L: 0,
-        priceL2H: 0
+        priceL2H: 0,
+        filterType: filterType
     }
     emit("filer-action", data)
 }
