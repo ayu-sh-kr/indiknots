@@ -3,7 +3,7 @@
 import Scaffold from "~/components/utils/Scaffold.vue";
 import SectionHeader from "~/components/utils/SectionHeader.vue";
 import ProductDetails from "~/components/shop/ProductDetails.vue";
-import {ProductBuilder, type ProductModal} from "~/modals/product.modal";
+import {type ProductModal} from "~/modals/product.modal";
 
 
 const route = useRoute();
@@ -13,16 +13,16 @@ useHead({
     title: 'Indiknots | Product'
 });
 
-const product = ref<ProductModal | null>()
-const builder = new ProductBuilder();
+const product = ref<ProductModal | undefined>()
 
-onMounted(() => {
-    const parsed = history.state ? JSON.parse(history.state['product']) as Product : null;
+const productStore = useProductStore();
 
-    if(parsed) {
-        product.value = builder.fromProduct(parsed).build();
-    }
+onMounted(async () => {
+    product.value = await productStore.getById(productId);
+});
 
+watch((productStore.products), async () => {
+    product.value = await productStore.getById(productId);
 })
 </script>
 
