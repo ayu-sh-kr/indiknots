@@ -16,8 +16,6 @@ const onImageSelection = (data: number) => {
     selected.value = data;
     carouselRef.value.select(selected.value + 1);
 }
-
-console.log(props.images)
 </script>
 
 <template>
