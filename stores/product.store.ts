@@ -37,7 +37,12 @@ export const useProductStore = defineStore('products', () => {
         products.value = [];
     }
 
-    return {products, fetchOrRefresh, hardRefreshOrUpdate, removeById, clearProducts}
+    async function getById(id: string): Promise<ProductModal | undefined> {
+        if(!products.value.length) await hardRefreshOrUpdate();
+        return products.value.find(product => product.id === id)
+    }
+
+    return {products, fetchOrRefresh, hardRefreshOrUpdate, removeById, clearProducts, getById}
 });
 
 export type ProductStore = typeof useProductStore;
