@@ -22,7 +22,6 @@ class CartModal implements CartItem {
         }
         if(this.product.stock.quantity === this.quantity) return;
         this.quantity += 1;
-        console.log(this.quantity)
     }
 
     /**
