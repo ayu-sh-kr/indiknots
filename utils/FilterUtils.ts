@@ -42,6 +42,22 @@ const filterByTechniques = (products: ProductModal[], techniques: ProductTechniq
     });
 }
 
+const filterByPrice = (value: number, filter: RangeType, products: ProductModal[]) => {
+    switch (filter) {
+        case "IN-Range": {
+            return products.filter(products => {
+                return products.prices[0].price <= value;
+            })
+        }
+
+        case "OFF-Range": {
+            return products.filter(products => {
+                return products.prices[0].price > value;
+            })
+        }
+    }
+}
+
 
 /**
  * Filters an array of ProductModal instances based on the specified filter criteria.
@@ -56,11 +72,12 @@ const handleProductFiltering = (filter: ProductFilter, products: ProductModal[])
     const filteredByCategories = filterByCategories(products, filter.category);
     const filteredByMaterials = filterByMaterials(products, filter.material);
     const filteredByTechniques = filterByTechniques(products, filter.technique);
+    const filteredByPrice = filterByPrice(filter.price.value, filter.price.range, products);
 
     switch (filter.filterType) {
         case "INTERSECTION": {
             return filteredByCategories.filter(product => {
-                return filteredByMaterials.includes(product) && filteredByTechniques.includes(product);
+                return filteredByMaterials.includes(product) && filteredByTechniques.includes(product) && (filter.price.value > 0 ? filteredByPrice.includes(product) : true);
             });
         }
 
@@ -68,7 +85,8 @@ const handleProductFiltering = (filter: ProductFilter, products: ProductModal[])
             const unionSet = new Set<ProductModal>([
                 ...filteredByCategories,
                 ...filteredByMaterials,
-                ...filteredByTechniques
+                ...filteredByTechniques,
+                ...filteredByPrice
             ]);
 
             return Array.from(unionSet);
