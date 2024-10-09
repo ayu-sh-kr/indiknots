@@ -94,4 +94,32 @@ const handleProductFiltering = (filter: ProductFilter, products: ProductModal[])
     }
 }
 
-export {handleProductFiltering}
+
+const defaultCategoryFilter = (category: ProductCategory): ProductFilter => {
+    return {
+        material: [],
+            category: [category],
+        technique: [],
+        price: {
+        value: 0,
+            range: "OFF-Range"
+    },
+        filterType: "UNION"
+    }
+}
+
+
+const defaultTechniqueFilter = (technique: ProductTechnique): ProductFilter => {
+    return {
+        material: [],
+        category: [],
+        technique: [technique],
+        price: {
+            value: 0,
+            range: "OFF-Range"
+        },
+        filterType: "UNION"
+    }
+}
+
+export {handleProductFiltering, defaultCategoryFilter, defaultTechniqueFilter}
