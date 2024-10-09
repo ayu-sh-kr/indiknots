@@ -12,7 +12,7 @@ import {useCartStore} from "~/stores/cart.store";
 import SortAction from "~/components/shop/product/SortAction.vue";
 import FilterAction from "~/components/shop/product/FilterAction.vue";
 import {handleProductSorting} from "~/utils/SortUtils";
-import {handleProductFiltering} from "~/utils/FilterUtils";
+import {defaultCategoryFilter, handleProductFiltering} from "~/utils/FilterUtils";
 
 const products = ref<ProductModal[]>([]);
 const pageStore = usePaginationStore();
@@ -21,8 +21,13 @@ const {productPage: page, productSort: sort, productFilter: filter} = storeToRef
 const productStore = useProductStore();
 const pageSize = ref(8);
 
+const route = useRoute();
+
 onMounted(async () => {
     products.value = await productStore.fetchOrRefresh();
+    const category = route.query.category as string;
+    
+    if(category) filter.value = defaultCategoryFilter(category.toUpperCase() as ProductCategory)
 });
 
 watch(() => productStore.products, (newProducts) => {
@@ -59,6 +64,10 @@ const applyRefresh = async () => {
     // Temporary patch, will be removed in future
     products.value.forEach(product => {
         useCartStore().updateProduct(product);
+    });
+
+    navigateTo({
+        path: "/shop"
     })
 }
 
