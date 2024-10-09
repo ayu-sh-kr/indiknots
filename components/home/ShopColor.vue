@@ -52,6 +52,13 @@ const items: ColorRug[] = [
     },
 ];
 
+const redirectToShop = (color: string) => {
+    navigateTo({
+        path: '/shop',
+        query: {'color': color}
+    })
+}
+
 
 
 export interface ColorRug {
@@ -71,7 +78,7 @@ export interface ColorRug {
                 <div class="h-48 overflow-hidden object-cover bg-white/80 rounded-lg">
                     <img :src="item.image" :alt="item.color" class="w-full h-full">
                 </div>
-                <UButton :color="item.color.toLocaleLowerCase()" :label="item.color" variant="soft"/>
+                <UButton @click="redirectToShop(item.color.toLowerCase())" :color="item.color.toLocaleLowerCase()" :label="item.color" variant="soft"/>
             </div>
         </div>
     </section>
