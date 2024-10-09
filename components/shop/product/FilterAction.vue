@@ -18,16 +18,29 @@ const materialOptions: ProductMaterial[] = [
 ]
 const materials = ref([])
 
+const range = ref<number>(0)
+const rangeType = ref<RangeType>("OFF-Range");
+
+const updateRange = (value: number) => {
+    range.value = value;
+}
+
+const updateRangeType = (value: RangeType) => {
+    rangeType.value = value;
+}
+
 const emit = defineEmits(['filer-action']);
 
 const emitFilteredData = () => {
-    const filterType: FilterType = categories.value.length && materials.value.length && techniques.value.length ? "INTERSECTION" : "UNION";
+    const filterType: FilterType = categories.value.length && materials.value.length && techniques.value.length && range.value > 0 ? "INTERSECTION" : "UNION";
     const data: ProductFilter = {
         technique: techniques.value,
         material: materials.value,
         category: categories.value,
-        priceH2L: 0,
-        priceL2H: 0,
+        price: {
+            value: range.value,
+            range: rangeType.value
+        },
         filterType: filterType
     }
     emit("filer-action", data)
@@ -66,18 +79,19 @@ const emitFilteredData = () => {
     </USelectMenu>
 
     <UPopover>
-        <UButton color="gray" class="w-full flex items-center justify-center">Low to High (Price)</UButton>
+        <UButton color="gray" class="w-full flex items-center justify-center">In Range (Price)</UButton>
         <template #panel>
             <div class="w-56 p-2">
-                <RangeUI :max="10000" :min="0" />
+                <RangeUI :max="10000" :min="0" @range-change="updateRange" @click="updateRangeType('IN-Range')" />
             </div>
         </template>
     </UPopover>
+
     <UPopover>
-        <UButton color="gray" class="w-full flex items-center justify-center">High to Low (Price)</UButton>
+        <UButton color="gray" class="w-full flex items-center justify-center">Off Range (Price)</UButton>
         <template #panel>
             <div class="w-56 p-2">
-                <RangeUI :max="10000" :min="0" />
+                <RangeUI :max="10000" :min="0" @range-change="updateRange" @click="updateRangeType('OFF-Range')" />
             </div>
         </template>
     </UPopover>
