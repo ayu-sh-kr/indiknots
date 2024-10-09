@@ -40,7 +40,6 @@ const productView = () => {
     navigateTo({
         path: '/shop/product',
         query: {'id': `${props.product.id}`},
-        state: {product: JSON.stringify(props.product)}
     })
 }
 
