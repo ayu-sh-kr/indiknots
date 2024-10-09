@@ -7,6 +7,12 @@ onMounted( async () => {
     items.value = await response.json() as RugCategory[];
 })
 
+const redirectToShop = (category: string) => {
+    navigateTo({
+        path: "/shop",
+        query: {'category': category}
+    })
+}
 
 export interface RugCategory {
     label:string,
@@ -24,7 +30,7 @@ export interface RugCategory {
     </div>
 
     <div class="grid lg:grid-cols-5 md:grid-cols-4 sm:grid-cols-3 grid-cols-2 p-2 gap-x-8 gap-y-4 px-3 md:px-10 mt-10">
-        <div v-for="(item, index) in items" :key="index"
+        <div @click="redirectToShop(item.label)" v-for="(item, index) in items" :key="index"
              class="cursor-pointer col-span-1"
              v-motion-pop-visible
         >
