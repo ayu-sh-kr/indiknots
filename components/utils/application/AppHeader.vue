@@ -1,14 +1,9 @@
 <script setup lang="ts">
 
-
-import {useDark} from "@vueuse/core";
-import {useToggle} from "@vueuse/shared";
 import SideNav from "~/components/utils/SideNav.vue";
 import HeaderCartAction from "~/components/shop/cart/header/HeaderCartAction.vue";
-
-const isDark = useDark();
-const toggleDark = useToggle(isDark);
-
+import AppLogo from "~/components/utils/application/AppLogo.vue";
+import AppDarkMode from "~/components/utils/application/AppDarkMode.vue";
 
 let isScrolled = ref(false);
 let currentPos = ref<number>(0);
@@ -72,24 +67,18 @@ const activeHeader = computed(() => links.find(link => link.to === route.path) |
             </li>
         </ul>
 
-        <div class="cursor-pointer w-1/3 flex justify-center" @click="navigateTo('/')">
-            <img :src="'/images/logo/logo-no-background.png'" alt="Indiknots Logo" class="h-20 w-20">
+        <div class="cursor-pointer w-1/3 flex justify-center">
+            <AppLogo/>
         </div>
 
         <div class="flex justify-end gap-x-4 items-center w-1/3">
 
-            <UButton dynamic
-                     :icon="isDark ? 'i-heroicons-moon-20-solid' : 'i-heroicons-sun-20-solid'"
-                     :color="isDark ? 'gray' : 'orange'"
-                     variant="ghost"
-                     @click="toggleDark()"
-            />
+            <AppDarkMode/>
 
             <HeaderCartAction/>
 
-
 <!--            <UButton icon="i-material-symbols-logout-rounded" variant="ghost"/>-->
-            <UButton to="/login" icon="i-material-symbols-login-rounded" variant="ghost"/>
+            <UButton class="hidden lg:flex" to="/login" icon="i-material-symbols-login-rounded" variant="ghost"/>
 
             <SideNav/>
 
