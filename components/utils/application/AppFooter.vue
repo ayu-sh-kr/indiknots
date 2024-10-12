@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
 
-import type {Link} from "~/components/utils/AppHeader.vue";
+import type {Link} from "~/components/utils/application/AppHeader.vue";
 
 const menu: Link[] = [
     {
