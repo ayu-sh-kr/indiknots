@@ -1,5 +1,63 @@
 [
   {
+    "id": "1",
+    "name": "Reverie Blonde",
+    "img": [
+      {
+        "url": "https://d16n7e76tyykgs.cloudfront.net/fit-in/300x400/prod-images/Headshot/Large/RCT_NMS-15-OD-0001.jpg",
+        "text": "Reverie Image Front"
+      }
+    ],
+    "description": "Inspired by Henri Matisse’s series of cut-outs, Rêverie Blonde presents organic shapes that interweave across the surface. The motif features a warm palette and is inset against the neutral Tibetan wool base, creating a collage effect.",
+    "category": "MODERN",
+    "size": [
+      {
+        "length": 6,
+        "width": 4,
+        "unit": "ft"
+      },
+      {
+        "length": 10,
+        "width": 8,
+        "unit": "ft"
+      }
+    ],
+    "color": "Green",
+    "shape": "RECTANGLE",
+    "material": "WOOL",
+    "technique": "HAND_KNOTTED",
+    "prices": [
+      {
+        "size": {
+          "length": 6,
+          "width": 4,
+          "unit": "ft"
+        },
+        "price": 299.99,
+        "sale_percentage": 10,
+        "price_type": "CUSTOMER"
+      },
+
+      {
+        "size": {
+          "length": 10,
+          "width": 8,
+          "unit": "ft"
+        },
+        "price": 799.99,
+        "sale_percentage": 40,
+        "price_type": "CUSTOMER"
+      }
+    ],
+    "sale": true,
+    "stock": {
+      "status": "SOLD_OUT",
+      "quantity": 0
+    },
+    "animal_friendly": true
+  },
+
+  {
     "id": "2",
     "name": "Ramble",
     "img": [
@@ -73,40 +131,40 @@
   },
 
   {
-    "id": "1",
-    "name": "Reverie Blonde",
+    "id": "3",
+    "name": "Phoolon Ki Janjeer",
     "img": [
       {
-        "url": "https://d16n7e76tyykgs.cloudfront.net/fit-in/300x400/prod-images/Headshot/Large/RCT_NMS-15-OD-0001.jpg",
-        "text": "Reverie Image Front"
+        "url": "https://d16n7e76tyykgs.cloudfront.net/fit-in/300x400/prod-images/Headshot/Large/RD_LES-2394-0001.jpg",
+        "text": "Janjeer Top Image"
       }
     ],
     "description": "Inspired by Henri Matisse’s series of cut-outs, Rêverie Blonde presents organic shapes that interweave across the surface. The motif features a warm palette and is inset against the neutral Tibetan wool base, creating a collage effect.",
-    "category": "MODERN",
+    "category": "DESIGNER",
     "size": [
       {
         "length": 6,
-        "width": 4,
+        "width": 0,
         "unit": "ft"
       },
       {
         "length": 10,
-        "width": 8,
+        "width": 0,
         "unit": "ft"
       }
     ],
     "color": "Green",
-    "shape": "RECTANGLE",
-    "material": "WOOL",
+    "shape": "ROUNDED",
+    "material": "BOMBOO_SILK",
     "technique": "HAND_KNOTTED",
     "prices": [
       {
         "size": {
           "length": 6,
-          "width": 4,
+          "width": 0,
           "unit": "ft"
         },
-        "price": 299.99,
+        "price": 129.99,
         "sale_percentage": 10,
         "price_type": "CUSTOMER"
       },
@@ -114,18 +172,18 @@
       {
         "size": {
           "length": 10,
-          "width": 8,
+          "width": 0,
           "unit": "ft"
         },
-        "price": 799.99,
+        "price": 499.99,
         "sale_percentage": 40,
         "price_type": "CUSTOMER"
       }
     ],
     "sale": true,
     "stock": {
-      "status": "SOLD_OUT",
-      "quantity": 0
+      "status": "AVAILABLE",
+      "quantity": 10
     },
     "animal_friendly": true
   },
@@ -242,64 +300,6 @@
     "stock": {
       "status": "SOLD_OUT",
       "quantity": 0
-    },
-    "animal_friendly": true
-  },
-
-  {
-    "id": "3",
-    "name": "Phoolon Ki Janjeer",
-    "img": [
-      {
-        "url": "https://d16n7e76tyykgs.cloudfront.net/fit-in/300x400/prod-images/Headshot/Large/RD_LES-2394-0001.jpg",
-        "text": "Janjeer Top Image"
-      }
-    ],
-    "description": "Inspired by Henri Matisse’s series of cut-outs, Rêverie Blonde presents organic shapes that interweave across the surface. The motif features a warm palette and is inset against the neutral Tibetan wool base, creating a collage effect.",
-    "category": "DESIGNER",
-    "size": [
-      {
-        "length": 6,
-        "width": 0,
-        "unit": "ft"
-      },
-      {
-        "length": 10,
-        "width": 0,
-        "unit": "ft"
-      }
-    ],
-    "color": "Green",
-    "shape": "ROUNDED",
-    "material": "BOMBOO_SILK",
-    "technique": "HAND_KNOTTED",
-    "prices": [
-      {
-        "size": {
-          "length": 6,
-          "width": 0,
-          "unit": "ft"
-        },
-        "price": 129.99,
-        "sale_percentage": 10,
-        "price_type": "CUSTOMER"
-      },
-
-      {
-        "size": {
-          "length": 10,
-          "width": 0,
-          "unit": "ft"
-        },
-        "price": 499.99,
-        "sale_percentage": 40,
-        "price_type": "CUSTOMER"
-      }
-    ],
-    "sale": true,
-    "stock": {
-      "status": "AVAILABLE",
-      "quantity": 10
     },
     "animal_friendly": true
   }
