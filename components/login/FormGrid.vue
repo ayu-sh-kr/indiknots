@@ -63,7 +63,7 @@ const validatePassword = (password: string) => {
 </script>
 
 <template>
-    <div class="py-2 px-2 md:px-3 lg:px-5 flex flex-col space-y-2 md:space-y-3 lg:space-y-5 text-slate-600">
+    <div class="py-2 px-2 md:px-3 lg:px-5 flex flex-col space-y-2 md:space-y-3 lg:space-y-5 text-slate-600 dark:text-slate-200">
 
         <h1 class="font-light">Hello, Again</h1>
 
@@ -93,8 +93,8 @@ const validatePassword = (password: string) => {
             <div class="space-y-5 py-8 w-full">
                 <button @click="() => {
                     console.log(dataState)
-                }" type="button" class="bg-orange-300 rounded-md p-2 font-semibold text-white w-full">Login</button>
-                <button  type="button" class="bg-gray-50 hover:bg-gray-200 transition-all rounded-md p-2 font-light w-full flex items-center justify-center gap-x-3">
+                }" type="button" class="bg-orange-300 dark:bg-orange-500 rounded-md p-2 font-semibold text-white w-full">Login</button>
+                <button  type="button" class="bg-gray-50 dark:bg-gray-600 hover:bg-gray-200 dark:hover:bg-gray-700 transition-all rounded-md p-2 font-light w-full flex items-center justify-center gap-x-3">
                     <UIcon name="i-devicon:google" />
                     Sign in with Google
                 </button>
