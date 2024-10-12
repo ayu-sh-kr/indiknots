@@ -1,5 +1,7 @@
 <script setup lang="ts">
 
+import LoginSideBtn from "~/components/account/security/LoginSideBtn.vue";
+
 const links: Link[] = [
     {label: 'Home', to: '/', icon: 'i-heroicons-home'},
 
@@ -29,7 +31,7 @@ export interface Link {
         </button>
 
         <template #panel>
-            <div class="flex flex-col w-56 gap-x-1.5 py-4">
+            <div class="flex flex-col w-56 gap-y-1.5">
                 <NuxtLink v-for="link in links" :to="link.to"
                           class="transition-all py-2 px-3 flex justify-start gap-x-3 items-center cursor-pointer dark:hover:bg-gray-800
                                 hover:bg-gray-50 text-slate-900 hover:text-orange-400 dark:text-gray-100 dark:hover:text-orange-400"
@@ -37,6 +39,8 @@ export interface Link {
                     <UIcon :name="link.icon || 'Unavailable'"/>
                     <h4>{{link.label}}</h4>
                 </NuxtLink>
+                <span class="w-full border border-gray-300"></span>
+                <LoginSideBtn/>
             </div>
         </template>
     </UPopover>
