@@ -1,8 +1,8 @@
 <script setup lang="ts">
 
 import {useToggle} from "@vueuse/shared";
-import AppHeader from "~/components/utils/AppHeader.vue";
-import AppFooter from "~/components/utils/AppFooter.vue";
+import AppHeader from "~/components/utils/application/AppHeader.vue";
+import AppFooter from "~/components/utils/application/AppFooter.vue";
 
 </script>
 
