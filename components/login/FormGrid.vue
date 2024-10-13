@@ -1,6 +1,7 @@
 <script setup lang="ts">
 
 import InputCol from "~/components/login/InputCol.vue";
+import {isEmail} from "~/utils/GeneralUtils";
 
 const dataState = reactive<DataStateType>({
     email: undefined,
@@ -33,8 +34,7 @@ const validateEmail = (mail: string) => {
         return;
     }
 
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(mail)) {
+    if (!isEmail(mail)) {
         errorState.emailState = "ERROR"
     } else {
         dataState.email = mail;
