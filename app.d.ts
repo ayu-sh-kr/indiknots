@@ -122,3 +122,50 @@ declare type FilterType = "UNION" | "INTERSECTION";
 declare type NONE = "NONE";
 
 declare type RangeType = "OFF-Range" | "IN-Range";
+
+declare type Gender = "Male" | "Female" | "Other";
+
+declare interface Phone {
+    code: string,
+    number: string
+}
+
+declare interface Account {
+    id: string
+    firstName: string,
+    middleName?: string  ,
+    lastName: string,
+    email: string,
+    gender: Gender,
+    phone: Phone,
+    accountType: AccountType
+}
+
+declare type AddressType = "Home" | "Work";
+
+declare interface Address {
+    id: string,
+    name: string,
+    phone: Phone,
+    zipcode: string,
+    area: string,
+    city: string,
+    state: string,
+    landmark?: string
+    alternatePhone?: Phone,
+    addressType: AddressType,
+    referer: string
+}
+
+declare type AccountType = "MERCHANT" | "USER"
+
+declare interface Session {
+    id: string,
+    jwt: string,
+    refreshToken: string
+}
+
+declare interface Credentials {
+    email: string,
+    password: string
+}
