@@ -19,6 +19,8 @@ export interface Link {
     iconClass?: string
 }
 
+const loggedIn = ref(true);
+
 </script>
 
 <template>
@@ -32,6 +34,17 @@ export interface Link {
 
         <template #panel>
             <div class="flex flex-col w-56 gap-y-1.5">
+
+                <NuxtLink v-if="loggedIn" :to="'/account'"
+                          class="transition-all py-2 px-3 flex justify-start gap-x-3 items-center cursor-pointer dark:hover:bg-gray-800
+                                hover:bg-gray-50 text-slate-900 hover:text-orange-400 dark:text-gray-100 dark:hover:text-orange-400"
+                >
+                    <UIcon :name="'i-material-symbols:account-circle' || 'Unavailable'"/>
+                    <h4>My Profile</h4>
+                </NuxtLink>
+
+                <span class="w-full border-[.5px] border-gray-300"></span>
+
                 <NuxtLink v-for="link in links" :to="link.to"
                           class="transition-all py-2 px-3 flex justify-start gap-x-3 items-center cursor-pointer dark:hover:bg-gray-800
                                 hover:bg-gray-50 text-slate-900 hover:text-orange-400 dark:text-gray-100 dark:hover:text-orange-400"
@@ -39,7 +52,9 @@ export interface Link {
                     <UIcon :name="link.icon || 'Unavailable'"/>
                     <h4>{{link.label}}</h4>
                 </NuxtLink>
-                <span class="w-full border border-gray-300"></span>
+
+                <span class="w-full border-[.5px] border-gray-300"></span>
+
                 <LoginSideBtn/>
             </div>
         </template>
