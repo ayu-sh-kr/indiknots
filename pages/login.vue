@@ -1,7 +1,6 @@
 <script setup lang="ts">
 
 import Scaffold from "~/components/utils/Scaffold.vue";
-import {useDark} from "@vueuse/core";
 import SideGrid from "~/components/login/SideGrid.vue";
 import FormGrid from "~/components/login/FormGrid.vue";
 
