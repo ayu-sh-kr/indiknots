@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col items-center bg-orange-300 rounded-xl max-sm:h-16 max-md:h-32 overflow-hidden">
+    <div class="flex flex-col items-center bg-orange-300 dark:bg-orange-500 rounded-xl max-sm:h-16 max-md:h-32 overflow-hidden">
         <div class="max-w-[420px]">
             <img :src="'/images/login/login.png'" alt="Login Rug" class="w-full">
         </div>
