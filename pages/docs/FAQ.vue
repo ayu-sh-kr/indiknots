@@ -105,6 +105,10 @@ export interface FAQ {
     content: string,
 }
 
+useHead({
+    title: 'Indiknots | FAQs'
+});
+
 </script>
 
 <template>
