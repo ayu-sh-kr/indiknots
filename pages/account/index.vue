@@ -21,8 +21,8 @@ import PhoneNumber from "~/components/account/forms/PhoneNumber.vue";
                 <PaymentPageRefer/>
             </div>
         </div>
-        <div class="lg:col-span-7 md:col-span-5 col-span-1">
-            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl border-adaptive px-6 py-2 space-y-10">
+        <div class="lg:col-span-7 md:col-span-5 w-full">
+            <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl border-adaptive px-6 py-2 space-y-10 w-full">
                 <PersonalInformation/>
                 <EmailAddress/>
                 <PhoneNumber/>
