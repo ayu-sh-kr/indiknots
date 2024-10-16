@@ -82,6 +82,19 @@ const isValidAccountType = (value: string) => {
     }
 }
 
+
+/**
+ * Retrieves the active page information from a list of links based on the current route.
+ *
+ * This function searches through an array of link objects to find the one that matches
+ * the current route path. If a matching link is found, it returns the link object.
+ * If no match is found, it returns a default object with empty `label` and `to` properties.
+ *
+ * @template T - The type of the link objects in the array.
+ * @param route - The current route object, which contains the path to be matched.
+ * @param links - An array of link objects to search through. Each link object should have a `to` property.
+ * @returns T - The link object that matches the current route path, or a default object if no match is found.
+ */
 const getActivePageInfo = <T>(route: any, links: T[]) : T => {
     return links.find(link => link.to === route.path) || {label: '', to: ''}
 }
