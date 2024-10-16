@@ -44,7 +44,7 @@ export interface Link {
 
 
 const route = useRoute();
-const activeHeader = computed(() => links.find(link => link.to === route.path) || {label: '', to: ''});
+const activeHeader = computed(() => getActivePageInfo<Link>(route, links));
 
 </script>
 
