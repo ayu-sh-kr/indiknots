@@ -82,4 +82,8 @@ const isValidAccountType = (value: string) => {
     }
 }
 
-export {roundedTo2, isEmail, isValidGender, isValidAddressType, isValidAccountType}
+const getActivePageInfo = <T>(route: any, links: T[]) : T => {
+    return links.find(link => link.to === route.path) || {label: '', to: ''}
+}
+
+export {roundedTo2, isEmail, isValidGender, isValidAddressType, isValidAccountType, getActivePageInfo}
