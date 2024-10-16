@@ -20,7 +20,7 @@ interface Link {
 }
 
 const route = useRoute();
-const activeHeader = computed(() => getActivePageInfo(route, links));
+const activeHeader = computed(() => getActivePageInfo<Link>(route, links));
 </script>
 
 <template>
