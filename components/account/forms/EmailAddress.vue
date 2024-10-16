@@ -2,21 +2,23 @@
 
 import EnrichInput from "~/components/account/utils/EnrichInput.vue";
 import SaveButton from "~/components/account/utils/SaveButton.vue";
+import FormLayout from "~/components/account/utils/ShortFormLayout.vue";
+import InputGridLayout from "~/components/account/utils/InputGridLayout.vue";
 
 const disabled = ref(true);
 </script>
 
 <template>
-    <div class="flex flex-col gap-y-5 font-adaptive">
+    <FormLayout>
         <div class="flex justify-start items-center gap-x-10">
             <h4 class="text-lg">Email <span class="text-orange-400 dark:text-orange-500">Address</span></h4>
             <UButton @click="disabled = !disabled" color="orange" variant="link">{{ disabled ? 'Edit' : 'Cancel' }}</UButton>
         </div>
-        <div class="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-x-10">
+        <InputGridLayout>
             <EnrichInput label="Email" :disabled="disabled" value="akjaiswal2003@gmail.com" />
             <SaveButton :hidden="disabled"/>
-        </div>
-    </div>
+        </InputGridLayout>
+    </FormLayout>
 </template>
 
 <style scoped>
