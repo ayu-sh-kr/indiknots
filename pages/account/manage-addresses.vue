@@ -3,6 +3,10 @@
 definePageMeta({
     layout: 'account'
 })
+
+useHead({
+    title: 'Manage Addresses'
+})
 </script>
 
 <template>
