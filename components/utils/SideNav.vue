@@ -35,7 +35,7 @@ const loggedIn = ref(true);
         <template #panel>
             <div class="flex flex-col w-56 gap-y-1.5">
 
-                <NuxtLink v-if="loggedIn" :to="'/account'"
+                <NuxtLink v-if="loggedIn" :to="'/account/profile'"
                           class="transition-all py-2 px-3 flex justify-start gap-x-3 items-center cursor-pointer dark:hover:bg-gray-800
                                 hover:bg-gray-50 text-slate-900 hover:text-orange-400 dark:text-gray-100 dark:hover:text-orange-400"
                 >
