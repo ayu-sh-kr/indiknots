@@ -3,18 +3,23 @@
 import PhoneNumber from "~/components/account/forms/PhoneNumber.vue";
 import PersonalInformation from "~/components/account/forms/PersonalInformation.vue";
 import EmailAddress from "~/components/account/forms/EmailAddress.vue";
+import AccountContent from "~/components/account/layout/AccountContent.vue";
 
 definePageMeta({
-    layout: 'account'
+    layout: 'account',
+});
+
+useHead({
+    title: 'My Profile'
 })
 </script>
 
 <template>
-    <div class="bg-white dark:bg-gray-800 rounded-lg shadow-xl border-adaptive px-6 py-2 space-y-10 w-full">
+    <AccountContent>
         <PersonalInformation/>
         <EmailAddress/>
         <PhoneNumber/>
-    </div>
+    </AccountContent>
 </template>
 
 <style scoped>
