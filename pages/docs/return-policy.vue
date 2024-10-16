@@ -4,6 +4,10 @@ import SectionHeader from "~/components/utils/SectionHeader.vue";
 import Term from "~/components/docs/terms/Term.vue";
 import TermHeader from "~/components/docs/terms/TermHeader.vue";
 import TermBody from "~/components/docs/terms/TermBody.vue";
+
+useHead({
+    title: 'Indiknots | Return Policy'
+})
 </script>
 
 <template>
