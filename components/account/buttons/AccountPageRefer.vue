@@ -2,7 +2,7 @@
 
 import {getActivePageInfo} from "~/utils/GeneralUtils";
 
-const links: Link = [
+const links: Nav[] = [
     {
         label: 'Personal Information',
         to: '/account/profile'
@@ -14,13 +14,8 @@ const links: Link = [
     }
 ];
 
-interface Link {
-    label: string,
-    to: string
-}
-
 const route = useRoute();
-const activeHeader = computed(() => getActivePageInfo<Link>(route, links));
+const activeHeader = computed(() => getActivePageInfo<Nav>(route, links));
 </script>
 
 <template>
@@ -32,7 +27,7 @@ const activeHeader = computed(() => getActivePageInfo<Link>(route, links));
             <h4 class="flex-1 sidebar-text text-left">Account Settings</h4>
         </div>
         <div>
-            <NuxtLink :to="link.to" v-for="link in links">
+            <NuxtLink :to="link.to" :key="link.to" v-for="link in links">
                 <div class="sidebar-content sidebar-hover" :class="{'text-orange-400 dark:text-orange-500' : activeHeader.label === link.label}">
                     <p>{{ link.label }}</p>
                 </div>
