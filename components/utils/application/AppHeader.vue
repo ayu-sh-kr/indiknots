@@ -4,6 +4,7 @@ import SideNav from "~/components/utils/SideNav.vue";
 import HeaderCartAction from "~/components/shop/cart/header/HeaderCartAction.vue";
 import AppLogo from "~/components/utils/application/AppLogo.vue";
 import AppDarkMode from "~/components/utils/application/AppDarkMode.vue";
+import {getActivePageInfo} from "~/utils/GeneralUtils";
 
 let isScrolled = ref(false);
 let currentPos = ref<number>(0);
@@ -25,7 +26,7 @@ function handleScroll() {
     }, 2000)
 }
 
-const links: Link[] = [
+const links: Links[] = [
     { label: 'Home', to: '/', icon: 'i-heroicons-home' },
 
     { label: 'Shop', to: '/shop', icon: 'i-material-symbols-add-location-alt-rounded' },
@@ -33,8 +34,10 @@ const links: Link[] = [
     { label: 'Services', to: '/service', icon: 'i-mdi-account-supervisor' },
 
     { label: 'Blogs', to: '/blog', icon: 'i-mdi-blogger' }
-]
-export interface Link {
+];
+
+
+export interface Links extends Nav{
     label: string,
     to: string,
     icon?: string,
@@ -44,7 +47,7 @@ export interface Link {
 
 
 const route = useRoute();
-const activeHeader = computed(() => getActivePageInfo<Link>(route, links));
+const activeHeader = computed(() => getActivePageInfo<Links>(route, links));
 
 </script>
 
