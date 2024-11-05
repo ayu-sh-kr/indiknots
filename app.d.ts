@@ -169,3 +169,8 @@ declare interface Credentials {
     email: string,
     password: string
 }
+
+declare interface Nav {
+    label: string,
+    to: string
+}
