@@ -95,8 +95,8 @@ const isValidAccountType = (value: string) => {
  * @param links - An array of link objects to search through. Each link object should have a `to` property.
  * @returns T - The link object that matches the current route path, or a default object if no match is found.
  */
-const getActivePageInfo = <T>(route: any, links: T[]) : T => {
-    return links.find(link => link.to === route.path) || {label: '', to: ''}
+const getActivePageInfo = <T extends Nav>(route: any, links: T[]) : T   => {
+    return links.find(link => link.to === route.path) || {label: '', to: ''} as T
 }
 
 export {roundedTo2, isEmail, isValidGender, isValidAddressType, isValidAccountType, getActivePageInfo}
