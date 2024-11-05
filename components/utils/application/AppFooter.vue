@@ -1,9 +1,9 @@
 <script setup lang="ts">
 
 
-import type {Link} from "~/components/utils/application/AppHeader.vue";
+import type {Links} from "~/components/utils/application/AppHeader.vue";
 
-const menu: Link[] = [
+const menu: Links[] = [
     {
         label: 'Home',
         to: '/',
@@ -26,7 +26,7 @@ const menu: Link[] = [
 ];
 
 
-const policy: Link[] = [
+const policy: Links[] = [
     {
         label: 'Delivery and Return',
         to: '/docs/return-policy'
@@ -49,7 +49,7 @@ const policy: Link[] = [
 ]
 
 
-const knots: Link[] = [
+const knots: Links[] = [
     {
         label: 'Contact Us',
         to: '/service',
