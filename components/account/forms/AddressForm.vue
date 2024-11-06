@@ -5,6 +5,28 @@ import InputGridLayout from "~/components/account/utils/InputGridLayout.vue";
 import EnrichInput from "~/components/account/utils/EnrichInput.vue";
 
 const formOpen = ref(false)
+
+const addressForm = reactive<Address>({
+    id: "",
+    name: "Ayush Kumar Jaiswal",
+    phone: {
+       code: "91",
+       number:  ""
+    },
+    zipcode: "",
+    locality: "",
+    area: "",
+    city: "",
+    state: "",
+    landmark: "",
+    alternatePhone: {
+        code: "91",
+        number: ""
+    },
+    addressType: "Home",
+    referer: ""
+});
+
 </script>
 
 <template>
@@ -20,27 +42,27 @@ const formOpen = ref(false)
 
         <ShortFormLayout class="mt-5">
             <InputGridLayout>
-                <EnrichInput label="Name" :disabled="false" value="" @value-change=""/>
-                <EnrichInput label="10-digit mobile number" :disabled="false" value="" @value-change=""/>
+                <EnrichInput label="Name" :disabled="false" v-model="addressForm.name"/>
+                <EnrichInput label="10-digit mobile number" :disabled="false" v-model="addressForm.phone.number"/>
             </InputGridLayout>
 
             <InputGridLayout>
-                <EnrichInput label="Pincode" :disabled="false" value="" @value-change=""/>
-                <EnrichInput label="Locality" :disabled="false" value="" @value-change=""/>
+                <EnrichInput label="Pincode" :disabled="false" v-model="addressForm.zipcode"/>
+                <EnrichInput label="Locality" :disabled="false" v-model="addressForm.locality"/>
             </InputGridLayout>
 
             <InputGridLayout>
-                <EnrichInput class="lg:col-span-4" label="Address (Area and Street)" :disabled="false" value="" @value-change=""/>
+                <EnrichInput class="lg:col-span-4" label="Address (Area and Street)" :disabled="false" v-model="addressForm.area"/>
             </InputGridLayout>
 
             <InputGridLayout>
-                <EnrichInput label="City" :disabled="false" value="" @value-change=""/>
-                <EnrichInput label="State" :disabled="false" value="" @value-change=""/>
+                <EnrichInput label="City" :disabled="false" v-model="addressForm.city"/>
+                <EnrichInput label="State" :disabled="false" v-model="addressForm.state"/>
             </InputGridLayout>
 
             <InputGridLayout>
-                <EnrichInput label="Landmark (Optional)" :disabled="false" value="" @value-change=""/>
-                <EnrichInput label="Alternate Phone (Optional)" :disabled="false" value="" @value-change=""/>
+                <EnrichInput label="Landmark (Optional)" :disabled="false" v-model="addressForm.landmark"/>
+                <EnrichInput label="Alternate Phone (Optional)" :disabled="false" v-model="addressForm.alternatePhone.number"/>
             </InputGridLayout>
 
             <InputGridLayout>
