@@ -2,8 +2,9 @@
 
 import EnrichInput from "~/components/account/utils/EnrichInput.vue";
 import SaveButton from "~/components/account/utils/SaveButton.vue";
-import FormLayout from "~/components/account/utils/ShortFormLayout.vue";
 import InputGridLayout from "~/components/account/utils/InputGridLayout.vue";
+import AccountLabel from "~/components/account/utils/AccountLabel.vue";
+import ShortFormLayout from "~/components/account/layout/ShortFormLayout.vue";
 
 const disabled = ref(true);
 
@@ -31,9 +32,9 @@ const updateGender = (value: string) => {
 </script>
 
 <template>
-    <FormLayout>
+    <ShortFormLayout>
         <div class="flex justify-start items-center gap-x-10">
-            <h4 class="text-lg">Personal <span class="text-orange-400 dark:text-orange-500">Information</span></h4>
+            <AccountLabel primary="Personal" secondary="Information"/>
             <UButton @click="disabled = !disabled" color="orange" variant="link">{{ disabled ? 'Edit' : 'Cancel' }}</UButton>
         </div>
         <InputGridLayout>
@@ -56,7 +57,7 @@ const updateGender = (value: string) => {
                 />
             </div>
         </div>
-    </FormLayout>
+    </ShortFormLayout>
 </template>
 
 <style scoped>
