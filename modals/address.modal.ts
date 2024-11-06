@@ -8,10 +8,11 @@ class AddressModal implements Address{
     phone!: Phone;
     area!: string;
     city!: string;
-    landmark?: string;
+    locality!: string
+    landmark!: string;
     state!: string;
     zipcode!: string;
-    alternatePhone?: Phone;
+    alternatePhone!: Phone;
     addressType!: AddressType;
     referer!: string;
 
@@ -42,6 +43,11 @@ class AddressModalBuilder {
         return this;
     }
 
+    locality(value: string): AddressModalBuilder {
+        this.modal.locality = value;
+        return this;
+    }
+
     area(value: string): AddressModalBuilder {
         this.modal.area = value;
         return this;
@@ -52,7 +58,7 @@ class AddressModalBuilder {
         return this;
     }
 
-    landmark(value?: string): AddressModalBuilder {
+    landmark(value: string): AddressModalBuilder {
         this.modal.landmark = value;
         return this;
     }
@@ -67,7 +73,7 @@ class AddressModalBuilder {
         return this;
     }
 
-    alternatePhone(value?: Phone): AddressModalBuilder {
+    alternatePhone(value: Phone): AddressModalBuilder {
         this.modal.alternatePhone = value;
         return this;
     }
@@ -87,6 +93,7 @@ class AddressModalBuilder {
         this.id(address.id)
             .name(address.name)
             .phone(address.phone)
+            .locality(address.locality)
             .area(address.area)
             .city(address.city)
             .state(address.state)
