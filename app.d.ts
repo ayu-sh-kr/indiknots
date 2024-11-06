@@ -148,11 +148,12 @@ declare interface Address {
     name: string,
     phone: Phone,
     zipcode: string,
+    locality: string
     area: string,
     city: string,
     state: string,
-    landmark?: string
-    alternatePhone?: Phone,
+    landmark: string
+    alternatePhone: Phone,
     addressType: AddressType,
     referer: string
 }
