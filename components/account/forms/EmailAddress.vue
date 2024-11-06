@@ -15,7 +15,7 @@ const disabled = ref(true);
             <UButton @click="disabled = !disabled" color="orange" variant="link">{{ disabled ? 'Edit' : 'Cancel' }}</UButton>
         </div>
         <InputGridLayout>
-            <EnrichInput label="Email" :disabled="disabled" value="akjaiswal2003@gmail.com" />
+            <EnrichInput label="Email" :disabled="disabled" modelValue="akjaiswal2003@gmail.com" />
             <SaveButton :hidden="disabled"/>
         </InputGridLayout>
     </FormLayout>

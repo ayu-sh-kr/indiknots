@@ -38,9 +38,9 @@ const updateGender = (value: string) => {
             <UButton @click="disabled = !disabled" color="orange" variant="link">{{ disabled ? 'Edit' : 'Cancel' }}</UButton>
         </div>
         <InputGridLayout>
-            <EnrichInput label="First Name" value="Ayush" :disabled="disabled"/>
-            <EnrichInput label="Middle Name" value="Kumar" :disabled="disabled"/>
-            <EnrichInput label="Last Name" value="Jaiswal" :disabled="disabled"/>
+            <EnrichInput label="First Name" modelValue="Ayush" :disabled="disabled"/>
+            <EnrichInput label="Middle Name" modelValue="Kumar" :disabled="disabled"/>
+            <EnrichInput label="Last Name" modelValue="Jaiswal" :disabled="disabled"/>
             <SaveButton :hidden="disabled"/>
         </InputGridLayout>
         <div class="flex flex-col gap-y-3">
