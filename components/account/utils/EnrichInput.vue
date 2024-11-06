@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const props = defineProps({
-    value: {
+    modelValue: {
         type: String,
         required: true
     },
@@ -16,7 +16,7 @@ const props = defineProps({
         type: String,
         required: false,
         default: 'text'
-    }
+    },
 })
 
 const inputRef = ref<HTMLInputElement | null>(null);
@@ -27,13 +27,12 @@ const focusInput = () => {
   }
 }
 
-const emit = defineEmits(['value-change'])
-const model = ref(props.value);
+const emit = defineEmits(['update:modelValue'])
 
-
-watch((model), (newValue) => {
-    emit("value-change", model.value)
-})
+const updateValue = (event: Event) => {
+    const target = event.target as HTMLInputElement;
+    emit('update:modelValue', target.value);
+};
 
 </script>
 
@@ -46,10 +45,10 @@ watch((model), (newValue) => {
         <span class="text-xs text-orange-400 dark:text-orange-500" :hidden="disabled">{{ label }}</span>
         <input ref="inputRef"
                :type="type"
-               :value="value"
+               :value="modelValue"
                :disabled="disabled"
                class="disabled:bg-gray-100 bg-white dark:disabled:bg-gray-700 dark:bg-gray-800 outline-none"
-               v-model="model"
+              @input="updateValue"
         >
     </div>
 
