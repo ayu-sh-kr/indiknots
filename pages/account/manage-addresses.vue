@@ -1,5 +1,9 @@
 <script setup lang="ts">
 
+import AccountContent from "~/components/account/layout/AccountContent.vue";
+import AccountLabel from "~/components/account/utils/AccountLabel.vue";
+import AddressForm from "~/components/account/forms/AddressForm.vue";
+
 definePageMeta({
     layout: 'account'
 })
@@ -10,7 +14,12 @@ useHead({
 </script>
 
 <template>
+    <AccountContent>
+        <AccountLabel primary="Manage" secondary="Addresses" />
 
+        <AddressForm />
+
+    </AccountContent>
 </template>
 
 <style scoped>
