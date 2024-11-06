@@ -2,7 +2,7 @@
 
 import EnrichInput from "~/components/account/utils/EnrichInput.vue";
 import SaveButton from "~/components/account/utils/SaveButton.vue";
-import FormLayout from "~/components/account/utils/ShortFormLayout.vue";
+import FormLayout from "~/components/account/layout/ShortFormLayout.vue";
 import InputGridLayout from "~/components/account/utils/InputGridLayout.vue";
 
 const disabled = ref(true);
