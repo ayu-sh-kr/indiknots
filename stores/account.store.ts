@@ -1,7 +1,7 @@
 import {defineStore} from 'pinia';
 import {ref} from 'vue';
+import {AddressModal} from "~/modals/address.modal";
 import type {AccountModal} from "~/modals/account.modal";
-import type {AddressModal} from "~/modals/address.modal";
 
 
 export const useAccountStore = defineStore('account', () => {
