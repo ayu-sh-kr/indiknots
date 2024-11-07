@@ -4,7 +4,7 @@ import type {AccountModal} from "~/modals/account.modal";
 import type {AddressModal} from "~/modals/address.modal";
 
 
-const useAccountStore = defineStore('account', () => {
+export const useAccountStore = defineStore('account', () => {
 
     const account = ref<AccountModal>();
 
@@ -24,7 +24,11 @@ const useAccountStore = defineStore('account', () => {
          */
     }
 
+    const addAddress = (address: AddressModal) => {
+        addresses.value.push(address);
+    }
 
-    return {account, addresses, fetchAccount, fetchAddresses}
+
+    return {account, addresses, fetchAccount, fetchAddresses, addAddress}
 
 })
