@@ -4,11 +4,15 @@ import ShortFormLayout from "~/components/account/layout/ShortFormLayout.vue";
 import InputGridLayout from "~/components/account/utils/InputGridLayout.vue";
 import EnrichInput from "~/components/account/utils/EnrichInput.vue";
 
+import {useAccountStore} from "~/stores/account.store";
+import {AddressModal} from "~/modals/address.modal";
+import {clearAddressForm} from "~/utils/GeneralUtils";
+
 const formOpen = ref(false)
 
-const addressForm = reactive<Address>({
+let addressForm = reactive<Address>({
     id: "",
-    name: "Ayush Kumar Jaiswal",
+    name: "",
     phone: {
        code: "91",
        number:  ""
@@ -18,6 +22,7 @@ const addressForm = reactive<Address>({
     area: "",
     city: "",
     state: "",
+    country: "",
     landmark: "",
     alternatePhone: {
         code: "91",
@@ -26,6 +31,21 @@ const addressForm = reactive<Address>({
     addressType: "Home",
     referer: ""
 });
+
+const addressType = ['Home', 'Work']
+
+
+const accountStore = useAccountStore();
+
+const submit = () => {
+    console.log(addressForm)
+    const addressModal = AddressModal.builder()
+        .fromAddress(addressForm)
+        .build();
+    accountStore.addAddress(addressModal);
+    clearAddressForm(addressForm);
+    formOpen.value = false;
+}
 
 </script>
 
@@ -66,9 +86,27 @@ const addressForm = reactive<Address>({
             </InputGridLayout>
 
             <InputGridLayout>
-                <button class="px-3 py-2 w-full bg-orange-400 dark:bg-orange-500 text-white font-medium">Save</button>
+                <EnrichInput label="Country" :disabled="false" v-model="addressForm.country" />
+            </InputGridLayout>
+            <div class="flex flex-col gap-y-3">
+                <span class="text-xs text-orange-400 dark:text-orange-500">Address Type</span>
+                <div class="flex gap-x-5 items-center">
+                    <URadio
+                        v-for="(option, index) in addressType"
+                        :key="index"
+                        :label="option"
+                        v-model="addressForm.addressType"
+                        :value="option"
+                        :disabled="false"
+                    />
+                </div>
+            </div>
+
+            <InputGridLayout>
+                <button @click="submit" class="px-3 py-2 w-full bg-orange-400 dark:bg-orange-500 text-white font-medium">Save</button>
                 <button @click="formOpen = !formOpen" class="px-3 py-2 w-full font-adaptive bg-slate-200 dark:bg-slate-700">Close</button>
             </InputGridLayout>
+
         </ShortFormLayout>
     </div>
 </template>
