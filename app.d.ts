@@ -152,6 +152,7 @@ declare interface Address {
     area: string,
     city: string,
     state: string,
+    country: string,
     landmark: string
     alternatePhone: Phone,
     addressType: AddressType,
