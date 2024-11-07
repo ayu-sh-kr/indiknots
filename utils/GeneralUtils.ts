@@ -99,4 +99,31 @@ const getActivePageInfo = <T extends Nav>(route: any, links: T[]) : T   => {
     return links.find(link => link.to === route.path) || {label: '', to: ''} as T
 }
 
-export {roundedTo2, isEmail, isValidGender, isValidAddressType, isValidAccountType, getActivePageInfo}
+const isNotBlank = (value: string) => {
+    return value.length > 1
+}
+
+
+const clearAddressForm = (addressForm: Address) => {
+    addressForm.id = "";
+    addressForm.name = "";
+    addressForm.phone = {
+        code: "+91",
+        number: ""
+    }
+    addressForm.zipcode = "";
+    addressForm.locality = "";
+    addressForm.area = "";
+    addressForm.city = "";
+    addressForm.state = "";
+    addressForm.country = "";
+    addressForm.landmark = "";
+    addressForm.alternatePhone = {
+        code: "+91",
+        number: ""
+    }
+    addressForm.addressType = "Home";
+    addressForm.referer = "";
+}
+
+export {roundedTo2, isEmail, isValidGender, isValidAddressType, isValidAccountType, getActivePageInfo, isNotBlank, clearAddressForm}
