@@ -99,11 +99,33 @@ const getActivePageInfo = <T extends Nav>(route: any, links: T[]) : T   => {
     return links.find(link => link.to === route.path) || {label: '', to: ''} as T
 }
 
+
+/**
+ * Checks if the given string is not blank.
+ *
+ * This function determines if the input string has a length greater than 1,
+ * indicating that it is not blank. It returns `true` if the string is not blank,
+ * otherwise it returns `false`.
+ *
+ * @param value - The string to be checked.
+ * @returns boolean - Returns `true` if the input string is not blank, otherwise `false`.
+ */
 const isNotBlank = (value: string) => {
     return value.length > 1
 }
 
 
+/**
+ * Clears the fields of the given address form.
+ *
+ * This function resets all the properties of the provided address form object
+ * to their default values. It sets the `id`, `name`, `zipcode`, `locality`, `area`,
+ * `city`, `state`, `country`, `landmark`, and `referer` properties to empty strings.
+ * It also sets the `phone` and `alternatePhone` properties to objects with default
+ * values, and the `addressType` property to "Home".
+ *
+ * @param addressForm - The address form object to be cleared.
+ */
 const clearAddressForm = (addressForm: Address) => {
     addressForm.id = "";
     addressForm.name = "";
