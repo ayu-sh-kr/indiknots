@@ -11,12 +11,21 @@ class AddressModal implements Address{
     locality!: string
     landmark!: string;
     state!: string;
+    country!: string
     zipcode!: string;
     alternatePhone!: Phone;
     addressType!: AddressType;
     referer!: string;
 
     constructor() {
+    }
+
+    static builder() {
+        return new AddressModalBuilder();
+    }
+
+    getAdministrativeAddress() {
+        return `${this.city}, ${this.state}, ${this.country} - ${this.zipcode}`
     }
 }
 
@@ -68,6 +77,11 @@ class AddressModalBuilder {
         return this;
     }
 
+    country(value: string): AddressModalBuilder {
+        this.modal.country = value;
+        return this;
+    }
+
     zipcode(value: string): AddressModalBuilder {
         this.modal.zipcode = value;
         return this;
@@ -97,6 +111,7 @@ class AddressModalBuilder {
             .area(address.area)
             .city(address.city)
             .state(address.state)
+            .country(address.country)
             .zipcode(address.zipcode)
             .alternatePhone(address.alternatePhone)
             .landmark(address.landmark)
@@ -107,14 +122,15 @@ class AddressModalBuilder {
     }
 
     build(): AddressModal {
-        assert(this.modal.name != null, "Name is null");
-        assert(this.modal.phone != null, "Phone must not be null")
-        assert(this.modal.zipcode != null, "Zipcode must not be null");
-        assert(this.modal.area != null, "Area must not be null");
-        assert(this.modal.city != null, "City must not be null");
-        assert(this.modal.state != null, "State must not be null");
-        assert(this.modal.addressType != null, "Address Type must not be null");
-        assert(this.modal.referer != null, "Referer id is must");
+        assert(isNotBlank(this.modal.name), "Name is required in address.");
+        assert(isNotBlank(this.modal.phone.number), "Phone number is required in address.")
+        assert(isNotBlank(this.modal.zipcode), "Zipcode is required in address.")
+        assert(isNotBlank(this.modal.locality), "Locality is required in address.")
+        assert(isNotBlank(this.modal.area), "Area is required in address.")
+        assert(isNotBlank(this.modal.city), "City is required in address.")
+        assert(isNotBlank(this.modal.state), "State is required in address.")
+        assert(isNotBlank(this.modal.country), "Country is required in address.")
+        assert(isNotBlank(this.modal.addressType), "Address Type is required in address.")
 
         return this.modal;
     }
