@@ -1,5 +1,6 @@
 import {isValidAddressType} from "~/utils/GeneralUtils";
 import {assert} from "@vueuse/shared";
+import {isNotBlank} from "~/utils/GeneralUtils";
 
 
 class AddressModal implements Address{
