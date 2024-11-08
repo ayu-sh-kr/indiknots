@@ -16,7 +16,7 @@ onMounted(() => {
 const init = () => {
     const addresses1: Address[] = [
         {
-            id: "1",
+            id: 1,
             name: "Ayush Kumar Jaiswal",
             phone: {
                 code: "91",
@@ -38,7 +38,7 @@ const init = () => {
         },
 
         {
-            id: "2",
+            id: 2,
             name: "Ayush Kumar Jaiswal",
             phone: {
                 code: "91",
