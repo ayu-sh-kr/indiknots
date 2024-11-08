@@ -10,7 +10,7 @@ const formOpen = ref(false)
 const accountStore = useAccountStore();
 
 let addressForm = reactive<Address>({
-    id: accountStore.generateAddressIndex(),
+    id: 0,
     name: "",
     phone: {
        code: "91",
@@ -37,7 +37,7 @@ const submit = () => {
         .build();
     accountStore.addAddress(addressModal);
     clearAddressForm(addressForm);
-    addressForm.id = accountStore.generateAddressIndex();
+    addressModal.id = accountStore.generateAddressIndex();
     formOpen.value = false;
 }
 
