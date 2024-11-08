@@ -7,9 +7,10 @@ import {AddressModal} from "~/modals/address.modal";
 import {clearAddressForm} from "~/utils/GeneralUtils";
 
 const formOpen = ref(false)
+const accountStore = useAccountStore();
 
 let addressForm = reactive<Address>({
-    id: "",
+    id: 0,
     name: "",
     phone: {
        code: "91",
@@ -30,18 +31,13 @@ let addressForm = reactive<Address>({
     referer: ""
 });
 
-const addressType = ['Home', 'Work']
-
-
-const accountStore = useAccountStore();
-
 const submit = () => {
-    console.log(addressForm)
     const addressModal = AddressModal.builder()
         .fromAddress(addressForm)
         .build();
     accountStore.addAddress(addressModal);
     clearAddressForm(addressForm);
+    addressModal.id = accountStore.generateAddressIndex();
     formOpen.value = false;
 }
 

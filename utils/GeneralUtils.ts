@@ -127,7 +127,7 @@ const isNotBlank = (value: string) => {
  * @param addressForm - The address form object to be cleared.
  */
 const clearAddressForm = (addressForm: Address) => {
-    addressForm.id = "";
+    addressForm.id = 0;
     addressForm.name = "";
     addressForm.phone = {
         code: "+91",

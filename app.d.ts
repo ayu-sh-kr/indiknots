@@ -144,7 +144,7 @@ declare interface Account {
 declare type AddressType = "Home" | "Work";
 
 declare interface Address {
-    id: string,
+    id: number,
     name: string,
     phone: Phone,
     zipcode: string,

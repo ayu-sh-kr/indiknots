@@ -3,20 +3,20 @@
 import {useAccountStore} from "~/stores/account.store";
 import {AddressModal} from "~/modals/address.modal";
 import AddressView from "~/components/account/address/AddressView.vue";
+import {storeToRefs} from "pinia";
 
 
-const addresses = ref<AddressModal[]>([])
 const accountStore = useAccountStore();
+const {addresses} =  storeToRefs(accountStore);
 
 onMounted(() => {
-    addresses.value = accountStore.addresses;
     addresses.value.length == 0 ? init() : true;
 });
 
 const init = () => {
     const addresses1: Address[] = [
         {
-            id: "1",
+            id: 1,
             name: "Ayush Kumar Jaiswal",
             phone: {
                 code: "91",
@@ -38,7 +38,7 @@ const init = () => {
         },
 
         {
-            id: "2",
+            id: 2,
             name: "Ayush Kumar Jaiswal",
             phone: {
                 code: "91",

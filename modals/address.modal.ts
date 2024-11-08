@@ -4,7 +4,7 @@ import {isNotBlank} from "~/utils/GeneralUtils";
 
 
 class AddressModal implements Address{
-    id!: string;
+    id!: number;
     name!: string;
     phone!: Phone;
     area!: string;
@@ -38,7 +38,7 @@ class AddressModalBuilder {
         this.modal = new AddressModal();
     }
 
-    id(value: string): AddressModalBuilder {
+    id(value: number): AddressModalBuilder {
         this.modal.id = value;
         return this;
     }
