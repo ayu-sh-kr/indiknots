@@ -28,7 +28,22 @@ export const useAccountStore = defineStore('account', () => {
         addresses.value.push(address);
     }
 
+    const deleteAddress = (id: number) => {
+        addresses.value = addresses.value.filter(address => address.id !== id);
+    }
 
-    return {account, addresses, fetchAccount, fetchAddresses, addAddress}
+    const generateAddressIndex = () => {
+        let current = 0;
+        addresses.value.forEach(address => {
+            if(current < address.id) {
+                current = address.id;
+            }
+        });
+
+        return current + 1;
+    }
+
+
+    return {account, addresses, fetchAccount, fetchAddresses, addAddress, deleteAddress, generateAddressIndex}
 
 })
