@@ -2,6 +2,7 @@
 
 import AddressForm from "~/components/account/forms/AddressForm.vue";
 import type {AddressModal} from "~/modals/address.modal";
+import {useAccountStore} from "~/stores/account.store";
 
 const props = defineProps({
     address: {
@@ -10,6 +11,7 @@ const props = defineProps({
     }
 });
 
+const accountStore = useAccountStore();
 const formOpen = ref(false)
 
 const addressForm = reactive<Address>(
@@ -24,6 +26,10 @@ const submit = () => {
     close();
 }
 
+const remove = () => {
+    accountStore.deleteAddress(props.address.id);
+}
+
 </script>
 
 <template>
@@ -36,7 +42,7 @@ const submit = () => {
                 <template #panel>
                     <div class="flex flex-col w-24">
                         <UButton @click="formOpen = !formOpen" label="Edit" color="gray" variant="ghost" icon="i-material-symbols:edit" />
-                        <UButton label="Delete" color="gray" variant="ghost" icon="i-material-symbols:delete"/>
+                        <UButton @click="remove" label="Delete" color="gray" variant="ghost" icon="i-material-symbols:delete"/>
                     </div>
                 </template>
             </UPopover>
