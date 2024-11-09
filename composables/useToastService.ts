@@ -35,7 +35,7 @@ class ToastService {
             title: "Failure",
             description: message,
             timeout: 5000,
-            icon: "i-heroicons-cross-circle"
+            icon: "i-mi:circle-error"
         });
     }
 }
