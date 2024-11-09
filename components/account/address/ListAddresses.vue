@@ -62,7 +62,7 @@ const init = () => {
 
     for (const address of addresses1) {
         const addressModal = AddressModal.builder().fromAddress(address).build();
-        accountStore.addAddress(addressModal);
+        accountStore.saveAddress(addressModal);
     }
 }
 
@@ -73,7 +73,7 @@ watch((accountStore.addresses), (newValue) => {
 </script>
 
 <template>
-    <AddressView v-for="(address, index) in addresses" :key="index" :address="address" />
+    <AddressView v-for="address in addresses" :key="address.id" :address="address" />
 </template>
 
 <style scoped>
