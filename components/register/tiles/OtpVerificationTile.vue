@@ -2,6 +2,12 @@
 
 import InputCol from "~/components/login/InputCol.vue";
 import RegisterButton from "~/components/register/utils/RegisterButton.vue";
+
+const emit = defineEmits(['submit-success']);
+
+const verify = () => {
+    emit('submit-success')
+}
 </script>
 
 <template>
@@ -11,7 +17,7 @@ import RegisterButton from "~/components/register/utils/RegisterButton.vue";
 
         <div class="mt-6 space-y-3">
             <InputCol type="number" placeholder="OTP"/>
-            <RegisterButton label="Verify" color="orange"/>
+            <RegisterButton @click="verify" label="Verify" color="orange"/>
         </div>
 
         <div class="flex justify-between items-center mt-4 text-sm">
