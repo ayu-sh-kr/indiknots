@@ -3,8 +3,9 @@
 import EnrichInput from "~/components/account/utils/EnrichInput.vue";
 import InputGridLayout from "~/components/account/utils/InputGridLayout.vue";
 import ShortFormLayout from "~/components/account/layout/ShortFormLayout.vue";
+import type {FormError} from "#ui/types";
 
-defineProps({
+const props = defineProps({
     address: {
         type: Object as PropType<Address>,
         required: true
@@ -12,6 +13,11 @@ defineProps({
 
     submit: {
         type: Function as PropType<() => void>,
+        required: true
+    },
+
+    errors: {
+        type: Object as PropType<FormError[]>,
         required: true
     }
 });
@@ -23,27 +29,32 @@ const emit = defineEmits(['close-form'])
 const close = () => {
     emit('close-form');
 }
+
+const isError = (path: string): boolean => {
+    return props.errors.some(error => error.path === path)
+}
+
 </script>
 
 <template>
     <ShortFormLayout class="mt-5">
         <InputGridLayout>
-            <EnrichInput label="Name" :disabled="false" v-model="address.name"/>
-            <EnrichInput label="10-digit mobile number" :disabled="false" v-model="address.phone.number"/>
+            <EnrichInput label="Name" :disabled="false" v-model="address.name" :is-error="isError('name')"/>
+            <EnrichInput label="10-digit mobile number" :disabled="false" v-model="address.phone.number" :is-error="isError('phone')"/>
         </InputGridLayout>
 
         <InputGridLayout>
-            <EnrichInput label="Pincode" :disabled="false" v-model="address.zipcode"/>
-            <EnrichInput label="Locality" :disabled="false" v-model="address.locality"/>
+            <EnrichInput label="Pincode" :disabled="false" v-model="address.zipcode" :is-error="isError('zipcode')"/>
+            <EnrichInput label="Locality" :disabled="false" v-model="address.locality" :is-error="isError('locality')"/>
         </InputGridLayout>
 
         <InputGridLayout>
-            <EnrichInput class="lg:col-span-4" label="Address (Area and Street)" :disabled="false" v-model="address.area"/>
+            <EnrichInput class="lg:col-span-4" label="Address (Area and Street)" :disabled="false" v-model="address.area" :is-error="isError('area')"/>
         </InputGridLayout>
 
         <InputGridLayout>
-            <EnrichInput label="City" :disabled="false" v-model="address.city"/>
-            <EnrichInput label="State" :disabled="false" v-model="address.state"/>
+            <EnrichInput label="City" :disabled="false" v-model="address.city" :is-error="isError('city')"/>
+            <EnrichInput label="State" :disabled="false" v-model="address.state" :is-error="isError('state')"/>
         </InputGridLayout>
 
         <InputGridLayout>
@@ -52,7 +63,7 @@ const close = () => {
         </InputGridLayout>
 
         <InputGridLayout>
-            <EnrichInput label="Country" :disabled="false" v-model="address.country" />
+            <EnrichInput label="Country" :disabled="false" v-model="address.country" :is-error="isError('country')"/>
         </InputGridLayout>
         <div class="flex flex-col gap-y-3">
             <span class="text-xs text-orange-400 dark:text-orange-500">Address Type</span>
