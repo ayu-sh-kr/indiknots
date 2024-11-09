@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
 import InputCol from "~/components/login/InputCol.vue";
-import {isEmail, checkError} from "~/utils/GeneralUtils";
+import {isEmail, checkError, validatePassword} from "~/utils/GeneralUtils";
 import type {FormError} from "#ui/types";
 import {useToastService} from "~/composables/useToastService";
 
@@ -26,15 +26,6 @@ const validateEmail = (mail: string | undefined) => {
 
     return isEmail(mail);
 }
-
-const validatePassword = (password: string | undefined): boolean => {
-    if (!password || password.trim().length === 0) return false;
-
-    const minLength = 8;
-    const maliciousPattern = /[<>\/\\;\-]/;
-
-    return password.length >= minLength && !maliciousPattern.test(password);
-};
 
 const submit = () => {
     formErrors.value = [];
