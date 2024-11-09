@@ -7,6 +7,11 @@ import FormGrid from "~/components/login/FormGrid.vue";
 definePageMeta({
     layout: "security",
 });
+
+useHead({
+    title: 'Indiknots | Login'
+})
+
 </script>
 
 <template>

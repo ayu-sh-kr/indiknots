@@ -1,3 +1,5 @@
+import type {FormError} from "#ui/types";
+
 /**
  * `Function` to round off a decimal number to 2 digit.
  * @param value - `number` to round off to 2-digit decimal value.
@@ -148,4 +150,41 @@ const clearAddressForm = (addressForm: Address) => {
     addressForm.referer = "";
 }
 
-export {roundedTo2, isEmail, isValidGender, isValidAddressType, isValidAccountType, getActivePageInfo, isNotBlank, clearAddressForm}
+
+/**
+ * Checks if a specific error path exists in the list of form errors.
+ *
+ * This function iterates through the provided array of form errors and checks
+ * if any error object has a `path` property that matches the specified path.
+ * If a matching error is found, the function returns `true`, indicating that
+ * the specified path has an associated error. Otherwise, it returns `false`.
+ *
+ * @param path - The path to check for errors.
+ * @param errors - An array of form error objects to search through.
+ * @returns boolean - Returns `true` if an error with the specified path is found, otherwise `false`.
+ */
+const checkError = (path: string, errors: FormError[]): boolean => {
+    return errors.some(error => error.path === path)
+}
+
+
+/**
+ * Validates if the given password meets the required criteria.
+ *
+ * This function checks if the input password is not empty, has a minimum length of 8 characters,
+ * and does not contain any malicious characters such as `<`, `>`, `/`, `\`, `;`, or `-`.
+ * If the password meets all these criteria, the function returns `true`. Otherwise, it returns `false`.
+ *
+ * @param password - The password string to be validated.
+ * @returns boolean - Returns `true` if the password is valid, otherwise `false`.
+ */
+const validatePassword = (password: string | undefined): boolean => {
+    if (!password || password.trim().length === 0) return false;
+
+    const minLength = 8;
+    const maliciousPattern = /[<>\/\\;\-]/;
+
+    return password.length >= minLength && !maliciousPattern.test(password);
+};
+
+export {roundedTo2, isEmail, isValidGender, isValidAddressType, isValidAccountType, getActivePageInfo, isNotBlank, clearAddressForm, checkError, validatePassword}
