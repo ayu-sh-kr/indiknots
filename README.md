@@ -3,7 +3,7 @@
 * ~~Address Edit~~
 * ~~Address Delete Functionality~~
 * ~~Input `State Validation` and `Error Message`~~
-* Register Page
+* ~~Register Page~~
 * Order Page
 * Order Modal, Builder and Store
 
