@@ -1,8 +1,11 @@
 <script setup lang="ts">
 
 import AddressForm from "~/components/account/forms/AddressForm.vue";
-import type {AddressModal} from "~/modals/address.modal";
+import {AddressModal, validateAddress} from "~/modals/address.modal";
 import {useAccountStore} from "~/stores/account.store";
+import type {FormError} from "#ui/types";
+import {useToastService} from "~/composables/useToastService";
+
 
 const props = defineProps({
     address: {
@@ -11,6 +14,7 @@ const props = defineProps({
     }
 });
 
+const toast  = useToastService();
 const accountStore = useAccountStore();
 const formOpen = ref(false)
 
@@ -18,11 +22,22 @@ const addressForm = reactive<Address>(
     props.address
 )
 
+const errors = ref<FormError[]>([])
+
 const close = () => {
     formOpen.value = !formOpen.value;
 }
 
 const submit = () => {
+    errors.value = validateAddress(addressForm);
+    if(errors.value.length > 0) {
+        toast.info(
+            errors.value[0].message
+        );
+        return;
+    }
+    const addressModal = AddressModal.builder().fromAddress(addressForm).build();
+    accountStore.saveAddress(addressModal);
     close();
 }
 
@@ -59,7 +74,7 @@ const remove = () => {
         </div>
     </div>
 
-    <AddressForm v-else :submit="submit" :address="addressForm" @close-form="close"/>
+    <AddressForm v-else :submit="submit" :address="addressForm" @close-form="close" :errors="errors"/>
 </template>
 
 <style scoped>

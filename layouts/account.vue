@@ -17,6 +17,7 @@ import AppHeader from "~/components/utils/application/AppHeader.vue";
         </div>
     </Scaffold>
     <AppFooter/>
+    <UNotifications/>
 </template>
 
 <style scoped>

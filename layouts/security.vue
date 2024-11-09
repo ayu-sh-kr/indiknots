@@ -8,6 +8,7 @@ import SecurityHeader from "~/components/utils/application/SecurityHeader.vue";
     <main class="font-dm antialiased">
         <slot/>
     </main>
+    <UNotifications />
 </template>
 
 <style scoped>

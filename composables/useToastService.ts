@@ -40,6 +40,6 @@ class ToastService {
     }
 }
 
-export const toast = () => {
+export const useToastService = () => {
     return new ToastService(useToast());
 }

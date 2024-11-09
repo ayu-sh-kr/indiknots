@@ -24,8 +24,31 @@ export const useAccountStore = defineStore('account', () => {
          */
     }
 
-    const addAddress = (address: AddressModal) => {
+    const existsById = (id: number) => {
+        return addresses.value.some(address => address.id === id)
+    }
+
+    const createAddress = (address: AddressModal) => {
+        console.log(`Id during create: ${address.id}`)
         addresses.value.push(address);
+    }
+
+
+    const saveAddress = (address: AddressModal) => {
+        console.log(`Id during save: ${address.id}`)
+        if(existsById(address.id)) {
+            updateAddress(address)
+        } else {
+            createAddress(address)
+        }
+    }
+
+    const updateAddress = (newAddress: AddressModal) => {
+        console.log(`Id during update: ${newAddress.id}`)
+        const index = addresses.value.findIndex(address => address.id === newAddress.id);
+        if(index !== -1) {
+            addresses.value.splice(index, 1, newAddress);
+        }
     }
 
     const deleteAddress = (id: number) => {
@@ -44,6 +67,6 @@ export const useAccountStore = defineStore('account', () => {
     }
 
 
-    return {account, addresses, fetchAccount, fetchAddresses, addAddress, deleteAddress, generateAddressIndex}
+    return {account, addresses, fetchAccount, fetchAddresses, saveAddress, deleteAddress, generateAddressIndex}
 
 })
