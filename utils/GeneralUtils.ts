@@ -167,4 +167,24 @@ const checkError = (path: string, errors: FormError[]): boolean => {
     return errors.some(error => error.path === path)
 }
 
-export {roundedTo2, isEmail, isValidGender, isValidAddressType, isValidAccountType, getActivePageInfo, isNotBlank, clearAddressForm, checkError}
+
+/**
+ * Validates if the given password meets the required criteria.
+ *
+ * This function checks if the input password is not empty, has a minimum length of 8 characters,
+ * and does not contain any malicious characters such as `<`, `>`, `/`, `\`, `;`, or `-`.
+ * If the password meets all these criteria, the function returns `true`. Otherwise, it returns `false`.
+ *
+ * @param password - The password string to be validated.
+ * @returns boolean - Returns `true` if the password is valid, otherwise `false`.
+ */
+const validatePassword = (password: string | undefined): boolean => {
+    if (!password || password.trim().length === 0) return false;
+
+    const minLength = 8;
+    const maliciousPattern = /[<>\/\\;\-]/;
+
+    return password.length >= minLength && !maliciousPattern.test(password);
+};
+
+export {roundedTo2, isEmail, isValidGender, isValidAddressType, isValidAccountType, getActivePageInfo, isNotBlank, clearAddressForm, checkError, validatePassword}
