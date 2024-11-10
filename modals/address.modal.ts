@@ -162,4 +162,8 @@ const validateAddress = (address: Address) => {
     return errors;
 }
 
-export {AddressModal, AddressModalBuilder, validateAddress}
+const getLocalAddress = (address: Address) => {
+    return `${address.area}, ${address.locality}, ${address.state}, ${address.country} - ${address.zipcode}`
+}
+
+export {AddressModal, AddressModalBuilder, validateAddress, getLocalAddress}
