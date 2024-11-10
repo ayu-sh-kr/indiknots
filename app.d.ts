@@ -82,8 +82,6 @@ const schema = {
     "animal_friendly": ""
 }
 
-declare type InputState = "ERROR" | "DEFAULT" | "SUCCESS";
-
 declare interface CartItem {
     productId: string
     quantity: number
@@ -175,4 +173,38 @@ declare interface Credentials {
 declare interface Nav {
     label: string,
     to: string
+}
+
+declare type OrderStatusValue = 'Pending' | 'Order Confirmed' | 'Shipped' | 'Out for delivery' | 'Delivered' | 'Cancelled' | 'Refunded'
+
+declare interface OrderStatus {
+    value: OrderStatusValue,
+    message: string,
+    date: Date
+}
+
+declare interface OrderUnit {
+    product: OrderProduct,
+    quantity: number,
+    price: number
+}
+
+declare type OrderAction = 'Cancellable' | 'Replaceable' | 'Returnable' | NONE
+
+declare interface OrderProduct {
+    id: number,
+    name: string,
+    image: string,
+    description: string,
+    color: string,
+    price: ProductPrice
+}
+
+declare interface Order {
+    id: number,
+    unit: OrderUnit,
+    status: OrderStatus[],
+    address: Address,
+    invoice: string,
+    action: OrderAction
 }
