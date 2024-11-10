@@ -258,5 +258,9 @@ const cartActionHandler = (product: ProductModal, cartStore: CartStore) => {
     return cartAction2Handler(cartModal, cartStore)
 }
 
+const getSizeText = (size: ProductSize) => {
+    return new ProductModal().getSizeText(size);
+}
 
-export {ProductModal, ProductBuilder, getPrizeText, processUnderscoreText, cartActionHandler}
+
+export {ProductModal, ProductBuilder, getPrizeText, processUnderscoreText, cartActionHandler, getSizeText}
