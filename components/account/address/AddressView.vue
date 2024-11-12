@@ -5,6 +5,7 @@ import {AddressModal, validateAddress} from "~/modals/address.modal";
 import {useAccountStore} from "~/stores/account.store";
 import type {FormError} from "#ui/types";
 import {useToastService} from "~/composables/useToastService";
+import {deepCopy} from "~/utils/GeneralUtils";
 
 
 const props = defineProps({
@@ -19,7 +20,7 @@ const accountStore = useAccountStore();
 const formOpen = ref(false)
 
 const addressForm = reactive<Address>(
-    props.address
+    deepCopy<Address>(props.address)
 )
 
 const errors = ref<FormError[]>([])
