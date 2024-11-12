@@ -187,4 +187,53 @@ const validatePassword = (password: string | undefined): boolean => {
     return password.length >= minLength && !maliciousPattern.test(password);
 };
 
-export {roundedTo2, isEmail, isValidGender, isValidAddressType, isValidAccountType, getActivePageInfo, isNotBlank, clearAddressForm, checkError, validatePassword}
+
+
+/**
+ * Creates a deep copy of the given object.
+ *
+ * This function recursively copies all properties of the input object, ensuring that
+ * nested objects and arrays are also deeply copied. It handles primitive types, Date objects,
+ * arrays, and plain objects. The resulting copy is a new object that is structurally identical
+ * to the input object but does not share any references with it.
+ *
+ * @template T - The type of the input object.
+ * @param obj - The object to be deeply copied.
+ * @returns T - A new object that is a deep copy of the input object.
+ */
+function deepCopy<T>(obj: T): T {
+    // Check if the value is a primitive type
+    if (obj === null || typeof obj !== 'object') {
+        return obj;
+    }
+
+    // Handle Date
+    if (obj instanceof Date) {
+        return new Date(obj.getTime()) as any;
+    }
+
+    // Handle Array
+    if (Array.isArray(obj)) {
+        const arrCopy = [] as any[];
+        for (const item of obj) {
+            arrCopy.push(deepCopy(item));
+        }
+        return arrCopy as any;
+    }
+
+    // Handle Object
+    const objCopy = {} as { [key: string]: any };
+    for (const key in obj) {
+        if (obj.hasOwnProperty(key)) {
+            objCopy[key] = deepCopy(obj[key]);
+        }
+    }
+
+    return objCopy as T;
+}
+
+
+export {
+    roundedTo2, isEmail, isValidGender, isValidAddressType, isValidAccountType,
+    getActivePageInfo, isNotBlank, clearAddressForm, checkError, validatePassword, deepCopy
+}
