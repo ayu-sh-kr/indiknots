@@ -5,17 +5,24 @@ import {getSizeText} from "~/modals/product.modal";
 import OrderPreviewAction from "~/components/account/order/utils/OrderPreviewAction.vue";
 import OrderStatusView from "~/components/account/order/view/OrderStatusView.vue";
 
-defineProps({
+const props = defineProps({
     order: {
         type: Object as PropType<OrderModal>,
         required: true
     }
-})
+});
+
+const goToOrderDetails = () => {
+    navigateTo({
+        path: '/account/order/order-details',
+        query: {id: `${props.order.id}`}
+    })
+}
 
 </script>
 
 <template>
-    <div class="grid grid-cols-3 gap-x-5 rounded-2xl border-adaptive shadow-xl background-adaptive font-adaptive px-3 py-2 cursor-pointer">
+    <div @click="goToOrderDetails" class="grid grid-cols-3 gap-x-5 rounded-2xl border-adaptive shadow-xl background-adaptive font-adaptive px-3 py-2 cursor-pointer">
         <div class="flex gap-x-5 text-left">
             <div class="bg-slate-600 rounded-2xl w-28">
             </div>
