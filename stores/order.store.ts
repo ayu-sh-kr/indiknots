@@ -1,7 +1,8 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
+import {OrderModal} from "~/modals/order.modal";
 
-const useOrderStore = defineStore('orders', () => {
+export const useOrderStore = defineStore('orders', () => {
 
     const orders = ref<OrderModal[]>([])
 
