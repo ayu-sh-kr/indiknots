@@ -2,6 +2,7 @@
 
 import {OrderModal} from "~/modals/order.modal";
 import OrderPreview from "~/components/account/order/view/OrderPreview.vue";
+import {useOrderStore} from "~/stores/order.store";
 
 definePageMeta({
     layout: 'account'
@@ -124,6 +125,12 @@ const orders = ref<OrderModal[]>([
         }
     ).build()
 ]);
+
+const orderStore = useOrderStore()
+
+onMounted(() => {
+    orderStore.orders = orders.value;
+})
 
 </script>
 
