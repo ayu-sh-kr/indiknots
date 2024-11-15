@@ -4,6 +4,9 @@ import {cartAction2Handler, type CartModal} from "~/modals/cart.modal";
 import ItemCount from "~/components/shop/cart/body/body/ItemCount.vue";
 import InfoText from "~/components/shop/cart/body/body/InfoText.vue";
 import {roundedTo2} from "~/utils/GeneralUtils";
+import {useOrderStore} from "~/stores/order.store";
+import {createOrder, OrderModal} from "~/modals/order.modal";
+import {useAccountStore} from "~/stores/account.store";
 
 const props = defineProps({
     item: {
@@ -34,6 +37,21 @@ const updatedQuantity = (value: number) => {
 
 const removeFromCart = () => {
     cartAction2Handler(props.item, useCartStore)
+}
+
+const orderStore = useOrderStore();
+const addressStore = useAccountStore();
+const buyThisNow = () => {
+    const order = createOrder(
+        props.item.product,
+        addressStore.addresses[0],
+        selectedSize.value,
+        quantity.value
+    );
+    orderStore.addToStore(
+        OrderModal.builder().fromOrder(order).build()
+    );
+    navigateTo("/account/order");
 }
 
 </script>
@@ -70,7 +88,7 @@ const removeFromCart = () => {
                 <button @click="removeFromCart()" class="bg-rose-400 dark:bg-rose-500 cart-action-button">
                     <span>Remove From Cart</span>
                 </button>
-                <button v-if="item.product.stock.status === 'AVAILABLE'" class="bg-orange-400 dark:bg-orange-500 cart-action-button">
+                <button @click="buyThisNow" v-if="item.product.stock.status === 'AVAILABLE'" class="bg-orange-400 dark:bg-orange-500 cart-action-button">
                     <span>Buy This Now</span>
                 </button>
                 <button v-else class="bg-brown-400 dark:bg-brown-500 cart-action-button">
