@@ -17,11 +17,18 @@ export const useAccountStore = defineStore('account', () => {
          */
     }
 
-    const fetchAddresses = (session: Session) => {
+    const fetchAddresses = async (session?: Session) => {
         /**
          * TODO: Use the session to fetch the address associated with account
          * TODO: Update the addresses in the store
          */
+        const response = await fetch('/data/address.json');
+        if (response.status === 200) {
+            const result = await response.json() as Address[];
+            addresses.value = result.map(address => {
+                return AddressModal.builder().fromAddress(address).build();
+            })
+        }
     }
 
     const existsById = (id: number) => {
