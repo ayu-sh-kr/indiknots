@@ -1,3 +1,5 @@
+import type {ProductModal} from "~/modals/product.modal";
+import type {AddressModal} from "~/modals/address.modal";
 
 
 class OrderModal implements Order {
@@ -72,4 +74,33 @@ class OrderModalBuilder {
     }
 }
 
-export {OrderModal, OrderModalBuilder}
+const createOrder = (product: ProductModal, address: AddressModal, sizeOption: ProductSizeOption, quantity: number): Order => {
+    const prize = product.getPrizeBySize(sizeOption.value)!!;
+    return {
+        id: parseInt(product.id, 10),
+        status: [
+            {
+                value: "Pending",
+                date: new Date(),
+                message: "Waiting for confirmation from seller."
+            }
+        ],
+        address: address,
+        action: "Cancellable",
+        invoice: "",
+        unit: {
+            quantity: quantity,
+            price: quantity * prize.price,
+            product: {
+                price: prize,
+                id: parseInt(product.id, 10),
+                color: product.color,
+                name: product.name,
+                image: product.img[0].url,
+                description: product.description
+            }
+        }
+    };
+}
+
+export {OrderModal, OrderModalBuilder, createOrder}
