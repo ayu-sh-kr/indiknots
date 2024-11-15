@@ -1,9 +1,12 @@
 <script setup lang="ts">
+
 import {useOrderStore} from "~/stores/order.store";
 import type {OrderModal} from "~/modals/order.modal";
 import Scaffold from "~/components/utils/Scaffold.vue";
 import SectionHeader from "~/components/utils/SectionHeader.vue";
 import NoContent from "~/components/utils/NoContent.vue";
+import OrderPaymentDescription from "~/components/account/order/view/OrderPaymentDescription.vue";
+import OrderShipmentDescription from "~/components/account/order/view/OrderShipmentDescription.vue";
 
 const route = useRoute();
 const orderStore = useOrderStore();
@@ -27,9 +30,9 @@ const init = () => {
 
     toast.info(`Order id is ${orderId}`);
     order.value = orderStore.findById(orderId);
-    console.log(order.value)
-    console.log(orderStore.orders)
 }
+
+
 
 </script>
 
@@ -42,9 +45,9 @@ const init = () => {
 
             </div>
 
-            <div class="md:col-span-2 col-span-1 text-nowrap w-full md:min-w-fit">
-                // Price Details
-                // Shipment Details
+            <div class="md:col-span-2 col-span-1 text-nowrap w-full md:min-w-fit space-y-10">
+                <OrderPaymentDescription :order="order" />
+                <OrderShipmentDescription :order="order" />
             </div>
         </div>
         <NoContent v-else />
