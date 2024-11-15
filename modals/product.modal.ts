@@ -262,5 +262,12 @@ const getSizeText = (size: ProductSize) => {
     return `${size.length} x ${size.width} ${size.unit}`
 }
 
+const getDiscountedPrice = (price: ProductPrice) => {
+    const originalPrice = price.price;
+    const discount = price.sale_percentage;
+    const discountPrice = originalPrice - originalPrice * (discount / 100);
+    return Math.round(discountPrice * 100) / 100;
+}
 
-export {ProductModal, ProductBuilder, getPrizeText, processUnderscoreText, cartActionHandler, getSizeText}
+
+export {ProductModal, ProductBuilder, getPrizeText, processUnderscoreText, cartActionHandler, getSizeText, getDiscountedPrice}
