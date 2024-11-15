@@ -8,8 +8,8 @@ import CartDescription from "~/components/shop/cart/body/body/CartDescription.vu
 
 const cart = ref<CartModal[]>([])
 const cartStore = useCartStore()
-const totalPrice = ref()
-const discounted = ref()
+const totalPrice = ref(0)
+const discounted = ref(0)
 
 onMounted(() => {
     cart.value = cartStore.cart
