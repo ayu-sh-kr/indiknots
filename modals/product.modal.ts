@@ -259,7 +259,7 @@ const cartActionHandler = (product: ProductModal, cartStore: CartStore) => {
 }
 
 const getSizeText = (size: ProductSize) => {
-    return new ProductModal().getSizeText(size);
+    return `${size.length} x ${size.width} ${size.unit}`
 }
 
 
