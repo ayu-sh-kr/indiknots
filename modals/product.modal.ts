@@ -279,5 +279,16 @@ const extractSizes = (prices: ProductPrice[]): ProductSize[] => {
     return prices.map(price => price.size);
 }
 
+const getSizeText = (size: ProductSize) => {
+    return `${size.length} x ${size.width} ${size.unit}`
+}
 
-export {ProductModal, ProductBuilder, getPrizeText, processUnderscoreText, cartActionHandler}
+const getDiscountedPrice = (price: ProductPrice) => {
+    const originalPrice = price.value;
+    const discount = price.sale_percentage;
+    const discountPrice = originalPrice - originalPrice * (discount / 100);
+    return Math.round(discountPrice * 100) / 100;
+}
+
+
+export {ProductModal, ProductBuilder, getPrizeText, processUnderscoreText, cartActionHandler, getSizeText, getDiscountedPrice}

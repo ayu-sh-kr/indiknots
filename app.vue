@@ -14,5 +14,17 @@
             At Indiknots we provide buyer with ready to ship, custom design and bulk order facilities on the go. We always keep up with the market trends and provide our customers
             with best in quality products. Our rugs are manufactures with the local craftsmanship which is developed over centuries and our workers show excellence in their skills.
         `
-    })
+    });
+
+    const accountStore = useAccountStore();
+    const productStore = useProductStore();
+
+    onMounted(() => {
+        init()
+    });
+
+    const init = async () => {
+      await accountStore.fetchAddresses();
+      await productStore.fetchOrRefresh()
+    }
 </script>
