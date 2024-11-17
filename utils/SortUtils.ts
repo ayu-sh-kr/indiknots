@@ -27,7 +27,7 @@ const sortAlphabeticalReverse = (products: ProductModal[]): ProductModal[] => {
  * @returns The sorted array of ProductModal instances.
  */
 const sortPriceHighToLow = (products: ProductModal[]): ProductModal[] => {
-    return products.sort((a, b) => b.prices[0].price - a.prices[0].price);
+    return products.sort((a, b) => b.prices[0].value - a.prices[0].value);
 }
 
 
@@ -38,7 +38,7 @@ const sortPriceHighToLow = (products: ProductModal[]): ProductModal[] => {
  * @returns The sorted array of ProductModal instances.
  */
 const sortPriceLowToHigh = (products: ProductModal[]): ProductModal[] => {
-    return products.sort((a, b) => a.prices[0].price - b.prices[0].price);
+    return products.sort((a, b) => a.prices[0].value - b.prices[0].value);
 }
 
 

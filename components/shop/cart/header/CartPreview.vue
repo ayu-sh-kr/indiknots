@@ -30,8 +30,8 @@ const deleteFromCart = () => {
     <div class="col-span-4 flex flex-col items-start gap-y-1 w-full">
         <p class="text-xs font-semibold line-clamp-1">{{product.name}}</p>
         <div class="text-xs flex justify-start items-center gap-x-2">
-            <span class="w-fit text-nowrap">{{product.getSizeText(product.size[0])}}</span>
-            <span class="w-fit text-nowrap">{{ getPrizeText(product, product.size[0]) }}</span>
+            <span class="w-fit text-nowrap">{{ product.getSizeText(product.sizes[0]) }}</span>
+            <span class="w-fit text-nowrap">{{ getPrizeText(product, product.sizes[0]) }}</span>
         </div>
     </div>
     <div class="col-span-1 flex justify-center items-center w-full">

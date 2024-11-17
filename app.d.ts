@@ -6,12 +6,13 @@ declare module '*.svg' {
 declare type ProductSize = {
     length: number,
     width: number,
-    unit: string
+    unit: string,
+    stock: ProductStock
 }
 
 declare interface ProductPrice {
     size: ProductSize;
-    price: number;
+    value: number;
     sale_percentage: number
     price_type: ProductPriceType
 }
@@ -35,14 +36,12 @@ declare interface Product {
     img: ProductImage[];
     description: string;
     category: ProductCategory;
-    size: ProductSize[];
     color: string;
     shape: ProductShape;
     material: ProductMaterial;
     technique: ProductTechnique;
     prices: ProductPrice[];
     sale: boolean;
-    stock: ProductStock;
     animal_friendly: boolean;
 }
 
