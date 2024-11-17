@@ -90,7 +90,7 @@ const createOrder = (product: ProductModal, address: AddressModal, sizeOption: P
         invoice: "",
         unit: {
             quantity: quantity,
-            price: quantity * prize.price,
+            price: quantity * prize.value,
             product: {
                 price: prize,
                 id: parseInt(product.id, 10),

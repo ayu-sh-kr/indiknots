@@ -13,7 +13,7 @@ const props = defineProps({
 
 const getDiscountOnPrice = () => {
     if(props.order){
-        const result = props.order.unit.product.price.price - getDiscountedPrice(props.order.unit.product.price);
+        const result = props.order.unit.product.price.value - getDiscountedPrice(props.order.unit.product.price);
         return roundedTo2(result);
     }
 
@@ -22,7 +22,7 @@ const getDiscountOnPrice = () => {
 
 const getTotalPrice = () => {
     if(props.order) {
-        const result = (props.order.unit.product.price.price - getDiscountOnPrice()) * props.order.unit.quantity;
+        const result = (props.order.unit.product.price.value - getDiscountOnPrice()) * props.order.unit.quantity;
         return roundedTo2(result);
     }
 
@@ -35,7 +35,7 @@ const getTotalPrice = () => {
         <h4 class="text-lg md:text-xl border-b py-1.5">Price Details</h4>
         <div class="flex justify-between items-center w-full py-1.5 mt-2">
             <h4>Price</h4>
-            <h4>${{order.unit.product.price.price}}</h4>
+            <h4>${{order.unit.product.price.value}}</h4>
         </div>
         <div class="flex justify-between items-center w-full py-1.5">
             <h4>Quantity</h4>
