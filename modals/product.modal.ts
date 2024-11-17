@@ -17,9 +17,9 @@ class ProductModal implements Product {
     prices!: ProductPrice[];
     sale!: boolean;
     shape!: ProductShape;
-    size!: ProductSize[];
-    stock!: ProductStock;
+    sizes!: ProductSize[];
     technique!: ProductTechnique;
+    stock!: ProductStock
 
     constructor() {
     }
@@ -77,7 +77,7 @@ class ProductModal implements Product {
      * @returns The discounted price.
      */
     getDiscountedPrice(price: ProductPrice) {
-        const originalPrice = price.price;
+        const originalPrice = price.value;
         const discount = price.sale_percentage;
         const discountPrice = originalPrice - originalPrice * (discount / 100);
         return Math.round(discountPrice * 100) / 100;
@@ -163,7 +163,7 @@ class ProductBuilder {
     }
 
     size(size: ProductSize[]): ProductBuilder {
-        this.product.size = size;
+        this.product.sizes = size;
         return this;
     }
 
@@ -189,13 +189,17 @@ class ProductBuilder {
             .price(product.prices)
             .sale(product.sale)
             .shape(product.shape)
-            .size(product.size)
-            .stock(product.stock)
+            .size(extractSizes(this.product.prices))
+            .stock(extractTotalStock(this.product.sizes))
             .technique(product.technique)
         return this;
     }
 
     build(): ProductModal {
+        if(!this.product.sizes) {
+            this.size(extractSizes(this.product.prices))
+            this.stock(this.product.sizes)
+        }
         return this.product;
     }
 }
@@ -214,7 +218,7 @@ class ProductBuilder {
  */
 const getPrizeText = (product: ProductModal, size: ProductSize) => {
     const price = product.getPrizeBySize(size);
-    return price ? `USD. ${price.price}` : 'Price not found';
+    return price ? `USD. ${price.value}` : 'Price not found';
 }
 
 
@@ -256,6 +260,23 @@ const cartActionHandler = (product: ProductModal, cartStore: CartStore) => {
         .build();
 
     return cartAction2Handler(cartModal, cartStore)
+}
+
+const extractTotalStock = (sizes: ProductSize[]): ProductStock => {
+    let total = 0;
+    sizes.forEach(size => {
+        total += size.stock.quantity
+    })
+
+    if(total > 0) {
+        return {quantity: total, status: "AVAILABLE"}
+    }
+
+    return {quantity: 0, status: "SOLD_OUT"}
+}
+
+const extractSizes = (prices: ProductPrice[]): ProductSize[] => {
+    return prices.map(price => price.size);
 }
 
 

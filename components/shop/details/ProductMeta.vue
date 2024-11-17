@@ -13,10 +13,10 @@ const props = defineProps({
     }
 });
 
-const selected = ref<ProductSize>()
+const selectedSize = ref<ProductSize>()
 
 onMounted(() => {
-    selected.value = props.product.prices[0].size;
+    selectedSize.value = props.product.prices[0].size;
 });
 
 const cartStore = useCartStore();
@@ -38,8 +38,8 @@ const addToCart = () => {
         .productId(product.id)
         .color(product.color)
         .quantity(1)
-        .price(product.getPrizeBySize(selected.value ?? product.prices[0].size) ?? product.prices[0])
-        .size(selected.value ?? product.prices[0].size)
+        .price(product.getPrizeBySize(selectedSize.value ?? product.prices[0].size) ?? product.prices[0])
+        .size(selectedSize.value ?? product.prices[0].size)
         .build()
 
     addedToCart.value = cartAction2Handler(cartModal, useCartStore)
@@ -49,7 +49,7 @@ const addToCart = () => {
 </script>
 
 <template>
-    <div class="flex flex-col items-center gap-y-3 w-full sticky top-10">
+    <div v-if="selectedSize" class="flex flex-col items-center gap-y-3 w-full sticky top-10">
         <ContentWrapper class="w-2/3">
             <h3 class="pb-4 border-b border-gray-600 dark:border-gray-200 w-full text-left">{{product.name}}</h3>
         </ContentWrapper>
@@ -61,20 +61,27 @@ const addToCart = () => {
         </ContentWrapper>
 
         <ContentWrapper>
-            <span v-if="selected" class="font-medium text-lg tracking-wide text-gray-700 dark:text-gray-300">{{ getPrizeText(product, selected) }}</span>
+            <span v-if="selectedSize" class="font-medium text-lg tracking-wide text-gray-700 dark:text-gray-300">{{getPrizeText(product, selectedSize)}}</span>
         </ContentWrapper>
 
-        <ContentWrapper class="w-2/3 text-gray-900 dark:text-gray-100 font-semibold text-sm" v-if="selected">
-            Size: {{selected.length}} x {{selected.width}} {{selected.unit}}
+        <ContentWrapper class="w-2/3 text-gray-900 dark:text-gray-100 font-semibold text-sm flex justify-start gap-x-5" v-if="selectedSize">
+            <p>
+                Size: {{ selectedSize.length }} x {{ selectedSize.width }} {{ selectedSize.unit }}
+            </p>
+
+            <p :class="{'line-through text-gray-600 dark:text-gray-300' : selectedSize.stock.quantity === 0}">
+                Quantity: {{selectedSize.stock.quantity}}
+            </p>
         </ContentWrapper>
 
         <ContentWrapper class="grid grid-cols-2 md:grid-cols-3 w-2/3 gap-x-5 gap-y-3">
             <SizeView @click="() => {
-                selected = price.size
-            }" v-for="price in product.prices" :size="price.size" :selected="selected === price.size"/>
+                selectedSize = price.size;
+                console.log(selectedSize.stock)
+            }" v-for="price in product.prices" :size="price.size" :selected="selectedSize === price.size"/>
         </ContentWrapper>
 
-        <div v-if="product.stock.status === 'AVAILABLE'" class="meta-div">
+        <div v-if="selectedSize.stock.status === 'AVAILABLE'" class="meta-div">
             <button class="meta-action bg-yellow-400 hover:bg-yellow-500 dark:bg-yellow-500 dark:hover:bg-yellow-600">
                 <UIcon name="i-icon-park-outline:buy" class="text-lg font-semibold"/>
                 <span>Buy Now</span>

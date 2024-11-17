@@ -10,18 +10,6 @@
     ],
     "description": "Inspired by Henri Matisse’s series of cut-outs, Rêverie Blonde presents organic shapes that interweave across the surface. The motif features a warm palette and is inset against the neutral Tibetan wool base, creating a collage effect.",
     "category": "MODERN",
-    "size": [
-      {
-        "length": 6,
-        "width": 4,
-        "unit": "ft"
-      },
-      {
-        "length": 10,
-        "width": 8,
-        "unit": "ft"
-      }
-    ],
     "color": "Green",
     "shape": "RECTANGLE",
     "material": "WOOL",
@@ -31,9 +19,13 @@
         "size": {
           "length": 6,
           "width": 4,
-          "unit": "ft"
+          "unit": "ft",
+          "stock": {
+            "status": "AVAILABLE",
+            "quantity": 15
+          }
         },
-        "price": 299.99,
+        "value": 299.99,
         "sale_percentage": 10,
         "price_type": "CUSTOMER"
       },
@@ -42,18 +34,18 @@
         "size": {
           "length": 10,
           "width": 8,
-          "unit": "ft"
+          "unit": "ft",
+          "stock": {
+            "status": "SOLD_OUT",
+            "quantity": 0
+          }
         },
-        "price": 799.99,
+        "value": 799.99,
         "sale_percentage": 40,
         "price_type": "CUSTOMER"
       }
     ],
     "sale": true,
-    "stock": {
-      "status": "SOLD_OUT",
-      "quantity": 0
-    },
     "animal_friendly": true
   },
 
@@ -68,23 +60,6 @@
     ],
     "description": "Composed in an earthy terracotta hue that emanates a warm, soft energy. Ramble is inspired by the meandering paths in New York’s Central Park and has been crafted in a fusion of silk and wool to accentuate the sense of momentum.",
     "category": "TRADITIONAL",
-    "size": [
-      {
-        "length": 6,
-        "width": 4,
-        "unit": "ft"
-      },
-      {
-        "length": 10,
-        "width": 8,
-        "unit": "ft"
-      },
-      {
-        "length": 15,
-        "width": 12,
-        "unit": "ft"
-      }
-    ],
     "color": "Beige",
     "shape": "RECTANGLE",
     "material": "SILK",
@@ -94,9 +69,13 @@
         "size": {
           "length": 6,
           "width": 4,
-          "unit": "ft"
+          "unit": "ft",
+          "stock": {
+            "status": "SOLD_OUT",
+            "quantity": 0
+          }
         },
-        "price": 299.99,
+        "value": 299.99,
         "sale_percentage": 10,
         "price_type": "CUSTOMER"
       },
@@ -105,9 +84,13 @@
         "size": {
           "length": 10,
           "width": 8,
-          "unit": "ft"
+          "unit": "ft",
+          "stock": {
+            "status": "AVAILABLE",
+            "quantity": 10
+          }
         },
-        "price": 799.99,
+        "value": 799.99,
         "sale_percentage": 40,
         "price_type": "CUSTOMER"
       },
@@ -115,18 +98,18 @@
         "size": {
           "length": 15,
           "width": 12,
-          "unit": "ft"
+          "unit": "ft",
+          "stock": {
+            "status": "AVAILABLE",
+            "quantity": 10
+          }
         },
-        "price": 1099.99,
+        "value": 1099.99,
         "sale_percentage": 40,
         "price_type": "CUSTOMER"
       }
     ],
     "sale": true,
-    "stock": {
-      "status": "SOLD_OUT",
-      "quantity": 0
-    },
     "animal_friendly": true
   },
 
@@ -141,18 +124,6 @@
     ],
     "description": "Inspired by Henri Matisse’s series of cut-outs, Rêverie Blonde presents organic shapes that interweave across the surface. The motif features a warm palette and is inset against the neutral Tibetan wool base, creating a collage effect.",
     "category": "DESIGNER",
-    "size": [
-      {
-        "length": 6,
-        "width": 0,
-        "unit": "ft"
-      },
-      {
-        "length": 10,
-        "width": 0,
-        "unit": "ft"
-      }
-    ],
     "color": "Green",
     "shape": "ROUNDED",
     "material": "BOMBOO_SILK",
@@ -162,9 +133,13 @@
         "size": {
           "length": 6,
           "width": 0,
-          "unit": "ft"
+          "unit": "ft",
+          "stock": {
+            "status": "AVAILABLE",
+            "quantity": 10
+          }
         },
-        "price": 129.99,
+        "value": 129.99,
         "sale_percentage": 10,
         "price_type": "CUSTOMER"
       },
@@ -173,18 +148,18 @@
         "size": {
           "length": 10,
           "width": 0,
-          "unit": "ft"
+          "unit": "ft",
+          "stock": {
+            "status": "AVAILABLE",
+            "quantity": 10
+          }
         },
-        "price": 499.99,
+        "value": 499.99,
         "sale_percentage": 40,
         "price_type": "CUSTOMER"
       }
     ],
     "sale": true,
-    "stock": {
-      "status": "AVAILABLE",
-      "quantity": 10
-    },
     "animal_friendly": true
   },
 
@@ -199,18 +174,6 @@
     ],
     "description": "Inspired by Henri Matisse’s series of cut-outs, Rêverie Blonde presents organic shapes that interweave across the surface. The motif features a warm palette and is inset against the neutral Tibetan wool base, creating a collage effect.",
     "category": "DESIGNER",
-    "size": [
-      {
-        "length": 6,
-        "width": 0,
-        "unit": "ft"
-      },
-      {
-        "length": 10,
-        "width": 0,
-        "unit": "ft"
-      }
-    ],
     "color": "Green",
     "shape": "ROUNDED",
     "material": "BOMBOO_SILK",
@@ -220,9 +183,13 @@
         "size": {
           "length": 6,
           "width": 0,
-          "unit": "ft"
+          "unit": "ft",
+          "stock": {
+            "status": "AVAILABLE",
+            "quantity": 10
+          }
         },
-        "price": 129.99,
+        "value": 129.99,
         "sale_percentage": 10,
         "price_type": "CUSTOMER"
       },
@@ -231,18 +198,18 @@
         "size": {
           "length": 10,
           "width": 0,
-          "unit": "ft"
+          "unit": "ft",
+          "stock": {
+            "status": "AVAILABLE",
+            "quantity": 10
+          }
         },
-        "price": 499.99,
+        "value": 499.99,
         "sale_percentage": 40,
         "price_type": "CUSTOMER"
       }
     ],
     "sale": true,
-    "stock": {
-      "status": "AVAILABLE",
-      "quantity": 10
-    },
     "animal_friendly": true
   },
 
@@ -278,9 +245,13 @@
         "size": {
           "length": 6,
           "width": 4,
-          "unit": "ft"
+          "unit": "ft",
+          "stock": {
+            "status": "AVAILABLE",
+            "quantity": 20
+          }
         },
-        "price": 299.99,
+        "value": 299.99,
         "sale_percentage": 10,
         "price_type": "CUSTOMER"
       },
@@ -289,18 +260,18 @@
         "size": {
           "length": 10,
           "width": 8,
-          "unit": "ft"
+          "unit": "ft",
+          "stock": {
+            "status": "SOLD_OUT",
+            "quantity": 0
+          }
         },
-        "price": 799.99,
+        "value": 799.99,
         "sale_percentage": 40,
         "price_type": "CUSTOMER"
       }
     ],
     "sale": true,
-    "stock": {
-      "status": "SOLD_OUT",
-      "quantity": 0
-    },
     "animal_friendly": true
   }
 ]

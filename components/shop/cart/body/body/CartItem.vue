@@ -56,7 +56,7 @@ const removeFromCart = () => {
             </div>
             <InfoText details="Indiknots" heading="Seller" size="sm"/>
             <div class="flex items-baseline gap-x-3 flex-wrap">
-                <span class="text-gray-600 dark:text-gray-300 line-through">${{roundedTo2(item.price.price * quantity)}}</span>
+                <span class="text-gray-600 dark:text-gray-300 line-through">${{ roundedTo2(item.price.value * quantity) }}</span>
                 <span class="text-gray-700 dark:text-gray-200 text-lg md:text-xl font-semibold">${{roundedTo2(item.product.getDiscountedPrice(item.price) * quantity)}}</span>
                 <span class="text-orange-400 dark:text-orange-500 text-sm">{{item.price.sale_percentage}}% OFF</span>
                 <span class="text-xs text-orange-400 dark:text-orange-500">DISCOUNT APPLIED</span>

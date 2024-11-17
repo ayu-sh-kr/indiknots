@@ -46,13 +46,13 @@ const filterByPrice = (value: number, filter: RangeType, products: ProductModal[
     switch (filter) {
         case "IN-Range": {
             return products.filter(products => {
-                return products.prices[0].price <= value;
+                return products.prices[0].value <= value;
             })
         }
 
         case "OFF-Range": {
             return products.filter(products => {
-                return products.prices[0].price > value;
+                return products.prices[0].value > value;
             })
         }
     }

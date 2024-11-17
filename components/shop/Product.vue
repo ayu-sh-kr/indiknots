@@ -51,10 +51,10 @@ const productView = () => {
     <div class="text-center flex flex-col items-center">
         <h4 class="text-lg font-medium text-gray-800 dark:text-gray-100">{{ product.name.toUpperCase() }}</h4>
         <p class="font-extralight text-gray-600 dark:text-gray-300 text-sm">{{processShortDescription(product)}}</p>
-        <p class="font-light text-gray-800/95 dark:text-gray-200/95 mt-2">{{processProductLength(product.size[0])}}</p>
+        <p class="font-light text-gray-800/95 dark:text-gray-200/95 mt-2">{{ processProductLength(product.sizes[0]) }}</p>
         <ViewButton @click="productView()">
             <p class="text-gray-950 dark:text-gray-50 text-lg group-hover:text-white transition-all">From
-                ${{ product.prices[0].price }}</p>
+                ${{ product.prices[0].value }}</p>
         </ViewButton>
     </div>
 </ProductCard>
