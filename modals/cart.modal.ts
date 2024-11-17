@@ -153,7 +153,7 @@ const cartAction2Handler = (cartModal: CartModal, cartStore: CartStore) => {
 const getTotalPrice = (cartModals: CartModal[]) => {
     let price = 0;
     cartModals.forEach(modal => {
-        price += modal.price.price * modal.quantity
+        price += modal.price.value * modal.quantity
     });
 
     return price;
