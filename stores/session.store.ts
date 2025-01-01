@@ -1,14 +1,12 @@
 import {defineStore} from 'pinia';
 import {ref} from 'vue';
+import type {LoginResponse} from "~/modals/login.modal";
 
-const useSessionStore = defineStore('session', () => {
-    const session = ref<Session>()
+export const useSessionStore = defineStore('session', () => {
+    const session = ref<LoginResponse>()
 
-    const createSession = (credentials: Credentials) => {
-        /**
-         * TODO: Create an API call to generate JWT and Refresh Token
-         * TODO: Store the session in the store
-         */
+    const storeCredentials = (loginResponse: LoginResponse) => {
+        session.value = loginResponse;
     }
 
     const updateSession = () => {
@@ -16,8 +14,9 @@ const useSessionStore = defineStore('session', () => {
          * TODO: Use the refresh token to generate the new Session
          * TODO: Update the old session with new session
          */
-
     }
 
-    return {session, createSession, updateSession}
+    return {session, createSession: storeCredentials, updateSession}
 })
+
+export type SessionStore = ReturnType<typeof useSessionStore>;
