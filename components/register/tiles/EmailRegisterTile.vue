@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import InputCol from "~/components/login/InputCol.vue";
+import InputCol from "~/components/utils/input/InputCol.vue";
 import RegisterButton from "~/components/register/utils/RegisterButton.vue";
 import {isEmail} from "~/utils/GeneralUtils";
 import type {FormError} from "#ui/types";
@@ -38,7 +38,7 @@ const send = () => {
 
         <div class="flex justify-between items-center mt-4 text-sm">
             <span class="flex items-center gap-x-2">Already have an account ?</span>
-            <NuxtLink to="/login"><span class="text-blue-400 hover:underline cursor-pointer">Login</span></NuxtLink>
+            <NuxtLink to="/login/login"><span class="text-blue-400 hover:underline cursor-pointer">Login</span></NuxtLink>
         </div>
     </div>
 </template>
