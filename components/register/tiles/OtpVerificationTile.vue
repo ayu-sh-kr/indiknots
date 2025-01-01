@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import InputCol from "~/components/login/InputCol.vue";
+import InputCol from "~/components/utils/input/InputCol.vue";
 import RegisterButton from "~/components/register/utils/RegisterButton.vue";
 
 const emit = defineEmits(['submit-success']);

@@ -1,7 +1,7 @@
 
 type Toaster = ReturnType<typeof useToast>;
 
-class ToastService {
+export class ToastService {
 
     _toast!: Toaster;
 
