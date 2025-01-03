@@ -3,17 +3,16 @@
 import SectionHeader from "~/components/utils/SectionHeader.vue";
 import {object, string} from "yup";
 import type {FormError, FormErrorEvent, FormSubmitEvent} from "#ui/types";
+import {type ContactFormData, EnquiryType} from "~/modals/connect.modal";
+import {useConnectService} from "~/composables/useConnectService";
 
 const phoneRegExp = /^(\+\d{1,3}[- ]?)?\d{10}$/;
 
-const toast = useToast();
+const toast = useToastService();
+const connectService = useConnectService();
 let loading = ref<boolean>(false)
 
-enum EnquiryType {
-    GENERAL_INQUIRY = 'General Enquiry',
-    PRODUCT_INQUIRY = 'Product Enquiry',
-    PRICE_INQUIRY = 'Price Enquiry'
-}
+
 
 const contactSchema = object<ContactFormData>({
     name: string().required('Name is required'),
@@ -41,22 +40,15 @@ function resetState(){
 
 async function onSubmit (event: FormSubmitEvent<ContactFormData>) {
     loading.value = true;
-    // Do something with event.data
-    console.log('Inside Submit Function')
-    setTimeout(() => {
-        let data = event.data as ContactFormData;
-        console.log(data)
-        toast.add({
-            color: "emerald",
-            title: "Success",
-            description: "Form Submitted Successfully",
-            timeout: 5000,
-            icon: "i-heroicons-check-circle"
-        })
-
+    const formData = event.data;
+    const result = await connectService.processContactUsForm(formData);
+    if (result) {
+        toast.success("Form Submitted Successfully");
         resetState();
-        loading.value = false;
-    }, 5000);
+    } else {
+        toast.failure("Something went wrong.");
+    }
+    loading.value = false;
 }
 
 
@@ -76,15 +68,6 @@ async function onError (event: FormErrorEvent) {
     element?.focus()
     element?.scrollIntoView({ behavior: 'smooth', block: 'center' })
     console.log(event)
-}
-
-
-export interface ContactFormData {
-    name: string | undefined,
-    email: string | undefined
-    phone: string | undefined,
-    inquiry: EnquiryType,
-    description?: string
 }
 
 </script>
