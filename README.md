@@ -10,4 +10,4 @@
 * Remodel the product for merchant and customer
 
 #### Next Phase (Backend)
-* Login and Register
+* ~~Login and Register~~
