@@ -1,4 +1,5 @@
 import {ProductModal} from "~/domains/product/product.modal";
+import {ProductUtils} from "~/domains/product/product.utils";
 
 /**
  * Sorts an array of ProductModal instances alphabetically by their name.
@@ -27,7 +28,7 @@ const sortAlphabeticalReverse = (products: ProductModal[]): ProductModal[] => {
  * @returns The sorted array of ProductModal instances.
  */
 const sortPriceHighToLow = (products: ProductModal[]): ProductModal[] => {
-    return products.sort((a, b) => b.prices[0].value - a.prices[0].value);
+    return products.sort((a, b) => b.variants[0].price.value - a.variants[0].price.value);
 }
 
 
@@ -38,7 +39,7 @@ const sortPriceHighToLow = (products: ProductModal[]): ProductModal[] => {
  * @returns The sorted array of ProductModal instances.
  */
 const sortPriceLowToHigh = (products: ProductModal[]): ProductModal[] => {
-    return products.sort((a, b) => a.prices[0].value - b.prices[0].value);
+    return products.sort((a, b) => a.variants[0].price.value - b.variants[0].price.value);
 }
 
 
@@ -51,12 +52,15 @@ const sortPriceLowToHigh = (products: ProductModal[]): ProductModal[] => {
  */
 const sortByStock = (products: ProductModal[]) => {
     return products.sort((a, b) => {
-        if (a.stock.status === "AVAILABLE" && b.stock.status === "SOLD_OUT") {
-            return -1
-        } else if (a.stock.status === "SOLD_OUT" && b.stock.status === "AVAILABLE") {
-            return 1
+        const aStock = ProductUtils.isAnyAvailable(a.variants);
+        const bStock = ProductUtils.isAnyAvailable(b.variants);
+
+        if (aStock && !bStock) {
+            return -1; // a comes first
+        } else if (!aStock && bStock) {
+            return 1; // b comes first
         } else {
-            return 0
+            return 0; // no change in order
         }
     })
 }
