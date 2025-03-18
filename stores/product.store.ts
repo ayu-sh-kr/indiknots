@@ -1,48 +1,66 @@
 import {defineStore} from 'pinia';
 import {ref} from 'vue';
 import type {ProductModal} from "~/domains/product/product.modal";
-import {ProductBuilder} from "~/domains/product/product.modal";
 
 export const useProductStore = defineStore('products', () => {
-    const products = ref<ProductModal[]>([]);
 
-    async function fetchOrRefresh() {
-        if(products.value.length > 0) {
-            return products.value;
-        } else {
-            await hardRefreshOrUpdate();
-            return products.value;
-        }
-    }
+  const products = ref<ProductModal[]>([]);
 
-    async function hardRefreshOrUpdate() {
-        const response = await fetch('/data/product.json');
+  /**
+   * Removes a product by its ID.
+   * @param id - The ID of the product to remove.
+   */
+  function removeById(id: string) {
+    products.value = products.value.filter(item => item.id !== id);
+  }
 
-        if(response.status === 200) {
-            const result = await response.json() as Product[]
+  function clearProducts() {
+    products.value = [];
+  }
 
-            products.value = result.map(item => {
-                const builder = new ProductBuilder();
-                return builder.fromProduct(item).build();
-            })
+  async function getById(id: string): Promise<ProductModal | undefined> {
+    return products.value.find(product => product.id === id)
+  }
 
-        }
-    }
 
-    function removeById(id: string) {
-        products.value = products.value.filter(item => item.id !== id);
-    }
+  /**
+   * Retrieves a paginated list of products from local storage.
+   * @param page - The page number to retrieve.
+   * @param size - The number of items per page.
+   * @returns An array of products for the specified page.
+   */
+  function getByPage(page: number, size: number = 10) {
+    const start = (page - 1) * size;
+    const end = start + size;
 
-    function clearProducts() {
-        products.value = [];
-    }
+    return products.value.slice(start, end);
+  }
 
-    async function getById(id: string): Promise<ProductModal | undefined> {
-        if(!products.value.length) await hardRefreshOrUpdate();
-        return products.value.find(product => product.id === id)
-    }
+  /**
+   * Updates the product list with new items.
+   * @param items - Array of ProductModal objects to set.
+   */
+  function setProduct(items: ProductModal[]) {
+    products.value = items;
+  }
 
-    return {products, fetchOrRefresh, hardRefreshOrUpdate, removeById, clearProducts, getById}
+  /**
+   * Appends new items to the product list at a specific page.
+   * @param page - The page number to append items to.
+   * @param items - Array of ProductModal objects to append.
+   */
+  function appendProducts(page: number, items: ProductModal[]) {
+    const start = (page - 1) * items.length;
+    const end = start + items.length;
+
+    products.value.splice(start, end, ...items);
+
+  }
+
+  return {
+    products, removeById, clearProducts,
+    getById, setProduct, getByPage, appendProducts
+  }
 });
 
-export type ProductStore = typeof useProductStore;
+export type ProductStore = ReturnType<typeof useProductStore>;
