@@ -207,3 +207,7 @@ declare interface Order {
     invoice: string,
     action: OrderAction
 }
+
+declare interface ModalDTO<T> {
+    toEntity(): T;
+}
