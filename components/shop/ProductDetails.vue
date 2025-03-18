@@ -4,7 +4,7 @@ import ProductMeta from "~/components/shop/details/ProductMeta.vue";
 import type {ProductModal} from "~/domains/product/product.modal";
 import ProductImage from "~/components/shop/details/ProductImage.vue";
 
-const props = defineProps({
+defineProps({
     product: {
         type: Object as PropType<ProductModal>,
         required: true
@@ -15,7 +15,7 @@ const props = defineProps({
 
 <template>
 <div v-if="product" class="relative grid grid-cols-1 md:grid-cols-2 mt-10 tracking-wider place-items-start gap-y-10 px-5">
-    <ProductImage :images="product.img"/>
+    <ProductImage :images="product.variants[0].images"/>
     <ProductMeta :product="product" />
 </div>
 <NoContent v-else />
