@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
-import type {CartModal} from "~/modals/cart.modal";
-import type {ProductModal} from "~/modals/product.modal";
+import type {CartModal} from "~/domains/cart/cart.modal";
+import type {ProductModal} from "~/domains/product/product.modal";
 
 
 export const useCartStore = defineStore('cart', () => {

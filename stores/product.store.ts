@@ -1,7 +1,7 @@
 import {defineStore} from 'pinia';
 import {ref} from 'vue';
-import type {ProductModal} from "~/modals/product.modal";
-import {ProductBuilder} from "~/modals/product.modal";
+import type {ProductModal} from "~/domains/product/product.modal";
+import {ProductBuilder} from "~/domains/product/product.modal";
 
 export const useProductStore = defineStore('products', () => {
     const products = ref<ProductModal[]>([]);
