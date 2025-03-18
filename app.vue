@@ -17,7 +17,7 @@
     });
 
     const accountStore = useAccountStore();
-    const productStore = useProductStore();
+    const productService = useProductService();
 
     onMounted(() => {
         init()
@@ -25,6 +25,6 @@
 
     const init = async () => {
       await accountStore.fetchAddresses();
-      await productStore.fetchOrRefresh()
+      await productService.fetchOrRefresh()
     }
 </script>
