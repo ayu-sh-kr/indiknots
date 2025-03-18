@@ -1,6 +1,7 @@
 import type {CartStore} from "~/stores/cart.store";
-import {cartAction2Handler, CartModal} from "~/domains/cart/cart.modal";
+import {CartModal} from "~/domains/cart/cart.modal";
 import {ProductVariantModal} from "~/domains/variant/product-variant.modal";
+import {CartUtils} from "~/domains/cart/cart.utils";
 
 class ProductModal implements Product {
 
@@ -223,7 +224,7 @@ const cartActionHandler = (product: ProductModal, cartStore: CartStore) => {
         .variant(product.variants[0])
         .build();
 
-    return cartAction2Handler(cartModal, cartStore)
+    return CartUtils.cartAction2Handler(cartModal, cartStore)
 }
 
 const getSizeText = (size: ProductSize) => {
