@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import {getPrizeText, type ProductModal} from "~/domains/product/product.modal";
+import {type ProductModal} from "~/domains/product/product.modal";
 import {useCartStore} from "~/stores/cart.store";
 import {ProductUtils} from "~/domains/product/product.utils";
 import type {CartModal} from "~/domains/cart/cart.modal";
