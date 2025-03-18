@@ -1,4 +1,4 @@
-import {ProductModal} from "~/modals/product.modal";
+import {ProductModal} from "~/domains/product/product.modal";
 
 /**
  * Sorts an array of ProductModal instances alphabetically by their name.
