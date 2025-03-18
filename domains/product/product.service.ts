@@ -10,7 +10,6 @@ export class ProductService {
 
   constructor(url: string, store: ProductStore) {
     this.restClient = RestClient.create()
-      .baseUrl(url)
       .handler(defaultResponseHandler)
       .build();
 
