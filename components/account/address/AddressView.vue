@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
 import AddressForm from "~/components/account/forms/AddressForm.vue";
-import {AddressModal, validateAddress} from "~/modals/address.modal";
+import {AddressModal, validateAddress} from "~/domains/account/address.modal";
 import {useAccountStore} from "~/stores/account.store";
 import type {FormError} from "#ui/types";
 import {useToastService} from "~/composables/useToastService";
