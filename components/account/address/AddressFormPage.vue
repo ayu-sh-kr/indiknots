@@ -3,7 +3,7 @@
 import AddressForm from "~/components/account/forms/AddressForm.vue";
 
 import {useAccountStore} from "~/stores/account.store";
-import {AddressModal, validateAddress} from "~/modals/address.modal";
+import {AddressModal, validateAddress} from "~/domains/account/address.modal";
 import {clearAddressForm} from "~/utils/GeneralUtils";
 import type {FormError} from "#ui/types";
 import {useToastService} from "~/composables/useToastService";
