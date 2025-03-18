@@ -4,9 +4,10 @@ import ContentWrapper from "~/components/shop/details/ContentWrapper.vue";
 import SizeView from "~/components/shop/details/SizeView.vue";
 import {useCartStore} from "~/stores/cart.store";
 import {type ProductModal} from "~/domains/product/product.modal";
-import {cartAction2Handler, CartModal} from "~/domains/cart/cart.modal";
+import {CartModal} from "~/domains/cart/cart.modal";
 import type {ProductVariantModal} from "~/domains/variant/product-variant.modal";
 import {ProductUtils} from "~/domains/product/product.utils";
+import {CartUtils} from "~/domains/cart/cart.utils";
 
 const props = defineProps({
     product: {
@@ -44,7 +45,7 @@ const addToCart = () => {
         .variant(selectedVariant.value ?? product.variants[0])
         .build()
 
-    addedToCart.value = cartAction2Handler(cartModal, useCartStore)
+    addedToCart.value = CartUtils.cartAction2Handler(cartModal, useCartStore())
 }
 
 
