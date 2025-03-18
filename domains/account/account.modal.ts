@@ -14,6 +14,10 @@ class AccountModal implements Account{
     constructor() {
     }
 
+    static builder() {
+        return new AccountModalBuilder();
+    }
+
 }
 
 
