@@ -2,6 +2,8 @@
 
 import {getPrizeText, type ProductModal} from "~/domains/product/product.modal";
 import {useCartStore} from "~/stores/cart.store";
+import {ProductUtils} from "~/domains/product/product.utils";
+import type {CartModal} from "~/domains/cart/cart.modal";
 
 const props = defineProps({
     product: {
@@ -11,6 +13,11 @@ const props = defineProps({
 });
 
 const cartStore = useCartStore()
+const cartItem = ref<CartModal | undefined>()
+
+onMounted(() => {
+    cartItem.value = cartStore.getCartItem(props.product.id)
+})
 
 
 const deleteFromCart = () => {
@@ -20,18 +27,18 @@ const deleteFromCart = () => {
 </script>
 
 <template>
-<div class="py-1.5 px-3 transition-all hover:bg-gray-100 dark:hover:bg-gray-800
+<div v-if="cartItem" class="py-1.5 px-3 transition-all hover:bg-gray-100 dark:hover:bg-gray-800
             cursor-pointer text-sm text-gray-800 dark:text-gray-200
             grid grid-cols-6 space-x-2 w-52"
 >
     <div class="w-6 h-8 col-span-1 overflow-hidden">
-        <img :src="product.img[0].url" :alt="product.name" class="w-full h-full">
+        <img :src="cartItem.variant.images[0].url" :alt="product.name" class="w-full h-full">
     </div>
     <div class="col-span-4 flex flex-col items-start gap-y-1 w-full">
         <p class="text-xs font-semibold line-clamp-1">{{product.name}}</p>
         <div class="text-xs flex justify-start items-center gap-x-2">
-            <span class="w-fit text-nowrap">{{ product.getSizeText(product.sizes[0]) }}</span>
-            <span class="w-fit text-nowrap">{{ getPrizeText(product, product.sizes[0]) }}</span>
+            <span class="w-fit text-nowrap">{{ ProductUtils.getSizeText(cartItem.variant) }}</span>
+            <span class="w-fit text-nowrap">{{ ProductUtils.getPrizeText(cartItem.variant) }}</span>
         </div>
     </div>
     <div class="col-span-1 flex justify-center items-center w-full">
