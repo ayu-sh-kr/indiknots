@@ -1,26 +1,26 @@
 import type {ProductModal} from "~/domains/product/product.modal";
+import type {ProductVariantModal} from "~/domains/variant/product-variant.modal";
+import {ProductUtils} from "~/domains/product/product.utils";
 
 /**
  * Represents an item in the shopping cart.
  * @implements CartItem - Interface for the Cart Data
  */
-class CartModal implements CartItem {
+class CartModal {
     color!: string;
     quantity!: number;
-    price!: ProductPrice;
     productId!: string;
-    size!: ProductSize;
-    product!: ProductModal
+    product!: ProductModal;
+    variant!: ProductVariantModal
 
     /**
      * Increments the quantity of the product in the cart by 1.
      */
     incrementCount = () => {
-        if(this.product.stock.status === "SOLD_OUT") {
-            this.quantity = 0
+        if(!ProductUtils.isStockAvailable(this.variant)) {
             return;
         }
-        if(this.product.stock.quantity === this.quantity) return;
+        if(this.variant.stock.quantity === this.quantity) return;
         this.quantity += 1;
     }
 
@@ -29,7 +29,12 @@ class CartModal implements CartItem {
      * Ensures that the quantity does not go below 1.
      */
     decrementCount = () => {
-        if (this.quantity === 1) return;
+        if (!ProductUtils.isStockAvailable(this.variant)) {
+            return;
+        }
+
+        if(this.quantity === 1) return;
+
         this.quantity -= 1;
     }
 
@@ -38,32 +43,26 @@ class CartModal implements CartItem {
      * @returns The selected size option.
      */
     selectedSize = () => {
-        const sizeOption: ProductSizeOption = {
-            label: this.product.getSizeText(this.size),
-            value: this.size
+        return {
+            label: ProductUtils.getSizeText(this.variant),
+            value: {
+                length: this.variant.size.length,
+                width: this.variant.size.width,
+                unit: this.variant.size.sizeUnit,
+                stock: this.variant.stock
+            }
         }
-        return sizeOption
     }
 
-    /**
-     * Updates the selected size based on the new size selected.
-     * @param option - The new size of the product in the form of `ProductSizeOption`.
-     */
-    updateSelectedSize = (option: ProductSizeOption) => {
-        this.size = option.value;
-        this.updatePrice(this.size)
+    updateVariant = (variant: ProductVariantModal) => {
+      const includes = this.product.variants.includes(variant);
+      if(!includes) return;
+      this.variant = variant;
     }
 
-    /**
-     * Update the price of the product based on the selected size.
-     * @param size - The new size of the product
-     */
-    private updatePrice = (size: ProductSize) => {
-        const price = this.product.getPrizeBySize(size)
 
-        if(price) {
-            this.price = price
-        }
+    static builder() {
+        return new CartModalBuilder();
     }
 }
 
@@ -89,29 +88,14 @@ class CartModalBuilder {
         return this;
     }
 
-    price(price: ProductPrice): CartModalBuilder {
-        this.cart.price = price;
-        return this;
-    }
-
     productId(productId: string): CartModalBuilder {
         this.cart.productId = productId;
         return this;
     }
 
-    size(size: ProductSize): CartModalBuilder {
-        this.cart.size = size;
-        return this;
-    }
-
-    fromCart(cart: CartModal): CartModalBuilder {
-        this.product(cart.product)
-            .color(cart.color)
-            .quantity(cart.quantity)
-            .price(cart.price)
-            .productId(cart.productId)
-            .size(cart.size);
-        return this;
+    variant(variant: ProductVariantModal): CartModalBuilder {
+      this.cart.variant = variant;
+      return this;
     }
 
     build(): CartModal {
@@ -130,7 +114,7 @@ class CartModalBuilder {
  * @returns `true` if the product was added to the cart, `false` if the product was removed from the cart.
  */
 const cartAction2Handler = (cartModal: CartModal, cartStore: CartStore) => {
-    if(!cartStore().isProductExist(cartModal.productId) && cartModal.product.stock.status === "AVAILABLE") {
+    if(!cartStore().isProductExist(cartModal.productId) && cartModal.variant.stock.status === "AVAILABLE") {
         cartStore().addToCart(cartModal)
         return true
     } else {
@@ -153,7 +137,7 @@ const cartAction2Handler = (cartModal: CartModal, cartStore: CartStore) => {
 const getTotalPrice = (cartModals: CartModal[]) => {
     let price = 0;
     cartModals.forEach(modal => {
-        price += modal.price.value * modal.quantity
+        price += modal.variant.price.value * modal.quantity
     });
 
     return price;
@@ -173,7 +157,7 @@ const getTotalPrice = (cartModals: CartModal[]) => {
 const getDiscountedPrice = (cartModals: CartModal[]) => {
     let discounted = 0;
     cartModals.forEach(modal => {
-        discounted += modal.product.getDiscountedPrice(modal.price) * modal.quantity
+        discounted += ProductUtils.getDiscountedPrice(modal.variant) * modal.quantity
     });
     return discounted;
 }
