@@ -3,7 +3,7 @@
 import Scaffold from "~/components/utils/Scaffold.vue";
 import SectionHeader from "~/components/utils/SectionHeader.vue";
 import ProductDetails from "~/components/shop/ProductDetails.vue";
-import {type ProductModal} from "~/modals/product.modal";
+import {type ProductModal} from "~/domains/product/product.modal";
 
 
 const route = useRoute();

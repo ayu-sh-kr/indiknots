@@ -4,7 +4,7 @@ import ProductCard from "~/components/shop/card/ProductCard.vue";
 import PCardImage from "~/components/shop/card/PCardImage.vue";
 import ViewButton from "~/components/shop/card/ViewButton.vue";
 import {useCartStore} from "~/stores/cart.store";
-import {cartActionHandler, type ProductModal} from "~/modals/product.modal";
+import {cartActionHandler, type ProductModal} from "~/domains/product/product.modal";
 
 const props = defineProps({
     product: {
