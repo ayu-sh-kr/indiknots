@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
-import type {OrderModal} from "~/modals/order.modal";
-import {getSizeText} from "~/modals/product.modal";
+import type {OrderModal} from "~/domains/order/order.modal";
+import {getSizeText} from "~/domains/product/product.modal";
 import OrderPreviewAction from "~/components/account/order/utils/OrderPreviewAction.vue";
 import OrderStatusView from "~/components/account/order/view/OrderStatusView.vue";
 

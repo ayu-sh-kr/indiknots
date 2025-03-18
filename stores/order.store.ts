@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
-import {OrderModal} from "~/modals/order.modal";
+import {OrderModal} from "~/domains/order/order.modal";
 
 export const useOrderStore = defineStore('orders', () => {
 

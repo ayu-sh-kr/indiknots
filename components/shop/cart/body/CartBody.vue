@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import {type CartModal, getDiscountedPrice, getTotalPrice} from "~/modals/cart.modal";
+import {type CartModal, getDiscountedPrice, getTotalPrice} from "~/domains/cart/cart.modal";
 import {useCartStore} from "~/stores/cart.store";
 import CartItem from "~/components/shop/cart/body/body/CartItem.vue";
 import CartDescription from "~/components/shop/cart/body/body/CartDescription.vue";

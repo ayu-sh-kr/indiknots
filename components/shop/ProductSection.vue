@@ -2,7 +2,7 @@
 
 import MetaAction from "~/components/shop/details/MetaAction.vue";
 import Product from "~/components/shop/Product.vue";
-import {type ProductModal} from "~/modals/product.modal";
+import {type ProductModal} from "~/domains/product/product.modal";
 import {useProductStore} from "~/stores/product.store";
 import NoContent from "~/components/utils/NoContent.vue";
 import Scaffold from "~/components/utils/Scaffold.vue";

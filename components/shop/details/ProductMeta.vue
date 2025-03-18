@@ -3,8 +3,8 @@
 import ContentWrapper from "~/components/shop/details/ContentWrapper.vue";
 import SizeView from "~/components/shop/details/SizeView.vue";
 import {useCartStore} from "~/stores/cart.store";
-import {getPrizeText, type ProductModal} from "~/modals/product.modal";
-import {cartAction2Handler, CartModalBuilder} from "~/modals/cart.modal";
+import {getPrizeText, type ProductModal} from "~/domains/product/product.modal";
+import {cartAction2Handler, CartModalBuilder} from "~/domains/cart/cart.modal";
 
 const props = defineProps({
     product: {

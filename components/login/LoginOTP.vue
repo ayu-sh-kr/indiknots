@@ -3,7 +3,7 @@
 import {checkError} from "~/utils/GeneralUtils";
 import InputCol from "~/components/utils/input/InputCol.vue";
 import type {FormError} from "#ui/types";
-import type {LoginRequest} from "~/modals/login.modal";
+import type {LoginRequest} from "~/domains/security/login.modal";
 import {useLoginService} from "~/composables/useLoginService";
 import {useSessionStore} from "~/stores/session.store";
 

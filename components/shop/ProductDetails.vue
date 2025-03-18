@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import NoContent from "~/components/utils/NoContent.vue";
 import ProductMeta from "~/components/shop/details/ProductMeta.vue";
-import type {ProductModal} from "~/modals/product.modal";
+import type {ProductModal} from "~/domains/product/product.modal";
 import ProductImage from "~/components/shop/details/ProductImage.vue";
 
 const props = defineProps({

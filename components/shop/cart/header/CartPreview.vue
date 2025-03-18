@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import {getPrizeText, type ProductModal} from "~/modals/product.modal";
+import {getPrizeText, type ProductModal} from "~/domains/product/product.modal";
 import {useCartStore} from "~/stores/cart.store";
 
 const props = defineProps({

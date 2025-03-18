@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
 import RangeUI from "~/components/utils/RangeUI.vue";
-import {processUnderscoreText} from "~/modals/product.modal";
+import {processUnderscoreText} from "~/domains/product/product.modal";
 
 const categoryOptions: ProductCategory[] = [
     "TRADITIONAL", "MODERN", "ABSTRACT", "GEOMETRIC", "FLORAL", "UNSHAPED", "DHURRIES", "PLAYROOM", "DESIGNER", "CUSHION&PILLOW", "ACCESSORIES"

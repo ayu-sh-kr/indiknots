@@ -1,5 +1,5 @@
-import type {ProductModal} from "~/modals/product.modal";
-import type {AddressModal} from "~/modals/address.modal";
+import type {ProductModal} from "~/domains/product/product.modal";
+import type {AddressModal} from "~/domains/account/address.modal";
 
 
 class OrderModal implements Order {

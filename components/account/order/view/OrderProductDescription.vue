@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import {getSizeText} from "~/modals/product.modal";
+import {getSizeText} from "~/domains/product/product.modal";
 
 const props = defineProps({
     product: {

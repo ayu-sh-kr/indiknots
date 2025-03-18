@@ -1,11 +1,11 @@
 <script setup lang="ts">
 
-import {cartAction2Handler, type CartModal} from "~/modals/cart.modal";
+import {cartAction2Handler, type CartModal} from "~/domains/cart/cart.modal";
 import ItemCount from "~/components/shop/cart/body/body/ItemCount.vue";
 import InfoText from "~/components/shop/cart/body/body/InfoText.vue";
 import {roundedTo2} from "~/utils/GeneralUtils";
 import {useOrderStore} from "~/stores/order.store";
-import {createOrder, OrderModal} from "~/modals/order.modal";
+import {createOrder, OrderModal} from "~/domains/order/order.modal";
 import {useAccountStore} from "~/stores/account.store";
 
 const props = defineProps({

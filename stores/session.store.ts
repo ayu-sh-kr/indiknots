@@ -1,6 +1,6 @@
 import {defineStore} from 'pinia';
 import {ref} from 'vue';
-import type {LoginResponse} from "~/modals/login.modal";
+import type {LoginResponse} from "~/domains/security/login.modal";
 
 export const useSessionStore = defineStore('session', () => {
     const session = ref<LoginResponse>()

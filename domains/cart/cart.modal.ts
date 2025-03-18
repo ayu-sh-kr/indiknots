@@ -1,4 +1,4 @@
-import type {ProductModal} from "~/modals/product.modal";
+import type {ProductModal} from "~/domains/product/product.modal";
 
 /**
  * Represents an item in the shopping cart.

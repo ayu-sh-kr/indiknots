@@ -1,4 +1,4 @@
-import {LoginService} from "~/modals/login.modal";
+import {LoginService} from "~/domains/security/login.modal";
 import {useSessionStore} from "~/stores/session.store";
 
 export const useLoginService = () => {

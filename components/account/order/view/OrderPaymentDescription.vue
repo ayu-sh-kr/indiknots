@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
-import type {OrderModal} from "~/modals/order.modal";
-import {getDiscountedPrice} from "~/modals/product.modal";
+import type {OrderModal} from "~/domains/order/order.modal";
+import {getDiscountedPrice} from "~/domains/product/product.modal";
 import {roundedTo2} from "~/utils/GeneralUtils";
 
 const props = defineProps({
