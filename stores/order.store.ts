@@ -19,4 +19,6 @@ export const useOrderStore = defineStore('orders', () => {
     }
 
     return {orders, findById, existsById, addToStore}
-})
+});
+
+export type OrderStore = ReturnType<typeof useOrderStore>
