@@ -1,6 +1,6 @@
 
 
-export class ProductStockModal {
+export class ProductStockModal implements ProductStock{
 
     id!: number;
     quantity!: number;
