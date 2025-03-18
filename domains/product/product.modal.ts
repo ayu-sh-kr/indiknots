@@ -1,9 +1,7 @@
 import type {CartStore} from "~/stores/cart.store";
-import {cartAction2Handler, CartModalBuilder} from "~/modals/cart.modal";
+import {cartAction2Handler, CartModalBuilder} from "~/domains/cart/cart.modal";
+import {ProductVariantModal} from "~/domains/variant/product-variant.modal";
 
-/**
- * Represents a product with various attributes and methods to interact with its properties.
- */
 class ProductModal implements Product {
 
     id!: string
@@ -19,7 +17,8 @@ class ProductModal implements Product {
     shape!: ProductShape;
     sizes!: ProductSize[];
     technique!: ProductTechnique;
-    stock!: ProductStock
+    stock!: ProductStock;
+    variants!: ProductVariantModal[]
 
     constructor() {
     }
@@ -95,6 +94,10 @@ class ProductModal implements Product {
                 value: price.size
             } as ProductSizeOption
         })
+    }
+
+    static builder() {
+        return new ProductBuilder();
     }
 
 }
@@ -174,6 +177,11 @@ class ProductBuilder {
 
     technique(technique: ProductTechnique): ProductBuilder {
         this.product.technique = technique;
+        return this;
+    }
+
+    variants(variants: ProductVariantModal[]): ProductBuilder {
+        this.product.variants = variants;
         return this;
     }
 
