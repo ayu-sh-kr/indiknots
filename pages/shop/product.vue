@@ -15,14 +15,15 @@ useHead({
 
 const product = ref<ProductModal | undefined>()
 
+const productService = useProductService();
 const productStore = useProductStore();
 
 onMounted(async () => {
-    product.value = await productStore.getById(productId);
+    product.value = await productService.getById(productId);
 });
 
 watch((productStore.products), async () => {
-    product.value = await productStore.getById(productId);
+    product.value = await productService.getById(productId);
 })
 </script>
 
