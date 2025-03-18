@@ -12,15 +12,8 @@ export const useCartStore = defineStore('cart', () => {
         return !!cart.value.find(cart => cart.productId === id)
     }
 
-    // TODO: implement to get cart when
-    // available or refresh it by fetching again
-    function getCart() {
-
-    }
-
-    // TODO: implement method to fetch updated cart
-    function fetchCart() {
-
+    function getCartItem(id: string): CartModal | undefined {
+        return cart.value.find(cart => cart.productId === id)
     }
 
     function updateProduct(product: ProductModal) {
@@ -44,7 +37,7 @@ export const useCartStore = defineStore('cart', () => {
         return cart.value.length
     }
 
-    return {cart, addToCart, removeFromCart, getCartSize, isProductExist, updateProduct}
+    return {cart, addToCart, removeFromCart, getCartSize, isProductExist, updateProduct, getCartItem}
 });
 
-export type CartStore = typeof useCartStore;
+export type CartStore = ReturnType<typeof useCartStore>;
