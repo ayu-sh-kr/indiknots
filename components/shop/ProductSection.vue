@@ -19,12 +19,13 @@ const pageStore = usePaginationStore();
 
 const {productPage: page, productSort: sort, productFilter: filter} = storeToRefs(pageStore)
 const productStore = useProductStore();
+const productService = useProductService();
 const pageSize = ref(8);
 
 const route = useRoute();
 
 onMounted(async () => {
-    products.value = await productStore.fetchOrRefresh();
+    products.value = await productService.fetchOrRefresh();
     const category = route.query.category as string;
     
     if(category) filter.value = defaultCategoryFilter(category.toUpperCase() as ProductCategory)
@@ -54,7 +55,7 @@ const applyFilters = (updatedFilter: ProductFilter) => {
 }
 
 const applyRefresh = async () => {
-    await productStore.hardRefreshOrUpdate();
+    await productService.hardRefreshOrUpdate();
     // remove filter on refresh
     filter.value = 'NONE';
 
