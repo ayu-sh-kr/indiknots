@@ -45,14 +45,14 @@ const filterByTechniques = (products: ProductModal[], techniques: ProductTechniq
 const filterByPrice = (value: number, filter: RangeType, products: ProductModal[]) => {
     switch (filter) {
         case "IN-Range": {
-            return products.filter(products => {
-                return products.prices[0].value <= value;
+            return products.filter(product => {
+                return product.variants[0].price.value <= value;
             })
         }
 
         case "OFF-Range": {
             return products.filter(products => {
-                return products.prices[0].value > value;
+                return products.variants[0].price.value > value;
             })
         }
     }
