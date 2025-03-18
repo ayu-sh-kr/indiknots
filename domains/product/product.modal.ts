@@ -1,5 +1,5 @@
 import type {CartStore} from "~/stores/cart.store";
-import {cartAction2Handler, CartModalBuilder} from "~/domains/cart/cart.modal";
+import {cartAction2Handler, CartModal} from "~/domains/cart/cart.modal";
 import {ProductVariantModal} from "~/domains/variant/product-variant.modal";
 
 class ProductModal implements Product {
@@ -184,52 +184,10 @@ class ProductBuilder {
         this.product.variants = variants;
         return this;
     }
-
-    fromProduct(product: Product): ProductBuilder {
-        this.id(product.id)
-            .animalFriendly(product.animal_friendly)
-            .category(product.category)
-            .color(product.color)
-            .description(product.description)
-            .img(product.img)
-            .material(product.material)
-            .name(product.name)
-            .price(product.prices)
-            .sale(product.sale)
-            .shape(product.shape)
-            .size(extractSizes(this.product.prices))
-            .stock(extractTotalStock(this.product.sizes))
-            .technique(product.technique)
-        return this;
-    }
-
-    build(): ProductModal {
-        if(!this.product.sizes) {
-            this.size(extractSizes(this.product.prices))
-            this.stock(this.product.sizes)
-        }
+  build(): ProductModal {
         return this.product;
     }
 }
-
-/**
- * Retrieves the price text for a given product and size.
- *
- * This function uses the `getPrizeBySize` method of the `ProductModal` class
- * to find the price details for the specified size. If the price is found,
- * it returns a formatted string with the price in USD. If the price is not found,
- * it returns a 'Price not found' message.
- *
- * @param product - The `ProductModal` instance representing the product.
- * @param size - The `ProductSize` instance representing the size of the product.
- * @returns A string representing the price text in USD or a 'Price not found' message.
- */
-const getPrizeText = (product: ProductModal, size: ProductSize) => {
-    const price = product.getPrizeBySize(size);
-    return price ? `USD. ${price.value}` : 'Price not found';
-}
-
-
 /**
  * Processes a given text by replacing all underscores with spaces.
  *
@@ -257,34 +215,15 @@ const processUnderscoreText = (text: string) => {
  * @returns The result of the `cartAction2Handler` function, which processes the cart action.
  */
 const cartActionHandler = (product: ProductModal, cartStore: CartStore) => {
-
-    const builder = new CartModalBuilder()
-    const cartModal = builder.product(product)
+    const cartModal = CartModal.builder()
+        .product(product)
         .productId(product.id)
         .quantity(1)
         .color(product.color)
-        .price(product.prices[0])
-        .size(product.prices[0].size)
+        .variant(product.variants[0])
         .build();
 
     return cartAction2Handler(cartModal, cartStore)
-}
-
-const extractTotalStock = (sizes: ProductSize[]): ProductStock => {
-    let total = 0;
-    sizes.forEach(size => {
-        total += size.stock.quantity
-    })
-
-    if(total > 0) {
-        return {quantity: total, status: "AVAILABLE"}
-    }
-
-    return {quantity: 0, status: "SOLD_OUT"}
-}
-
-const extractSizes = (prices: ProductPrice[]): ProductSize[] => {
-    return prices.map(price => price.size);
 }
 
 const getSizeText = (size: ProductSize) => {
@@ -299,4 +238,4 @@ const getDiscountedPrice = (price: ProductPrice) => {
 }
 
 
-export {ProductModal, ProductBuilder, getPrizeText, processUnderscoreText, cartActionHandler, getSizeText, getDiscountedPrice}
+export {ProductModal, ProductBuilder, processUnderscoreText, cartActionHandler, getSizeText, getDiscountedPrice}
