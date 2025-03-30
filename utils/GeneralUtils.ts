@@ -254,9 +254,23 @@ const defaultResponseHandler: ResponseHandler = (response: Response) => {
     }
 }
 
+/**
+ * Capitalizes the first letter of the given string and converts the rest to lowercase.
+ *
+ * This function takes a string input and returns a new string with the first character
+ * converted to uppercase and the remaining characters converted to lowercase. If the input
+ * string is empty or undefined, it returns the original string.
+ *
+ * @param str - The input string to be capitalized.
+ * @returns string - The capitalized string.
+ */
+const capitalize = (str: string): string => {
+  if (!str) return str;
+  return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+};
 
 export {
     roundedTo2, isEmail, isValidGender, isValidAddressType, isValidAccountType,
     getActivePageInfo, isNotBlank, clearAddressForm, checkError, validatePassword, deepCopy,
-    defaultResponseHandler
+    defaultResponseHandler, capitalize
 }
