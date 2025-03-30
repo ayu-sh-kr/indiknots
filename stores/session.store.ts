@@ -1,22 +1,23 @@
 import {defineStore} from 'pinia';
 import {ref} from 'vue';
-import type {LoginResponse} from "~/domains/security/login.modal";
+
+import type {LoginResponse} from "~/domains/security/login.service";
+import {useLocalStorage} from "@vueuse/core";
 
 export const useSessionStore = defineStore('session', () => {
-    const session = ref<LoginResponse>()
+    const session = useLocalStorage<LoginResponse>(
+      "credentials", {accessToken: ''}
+    );
 
     const storeCredentials = (loginResponse: LoginResponse) => {
-        session.value = loginResponse;
+       session.value = loginResponse;
     }
 
-    const updateSession = () => {
-        /**
-         * TODO: Use the refresh token to generate the new Session
-         * TODO: Update the old session with new session
-         */
+    const getSession = (): LoginResponse => {
+      return session.value
     }
 
-    return {session, createSession: storeCredentials, updateSession}
+    return {session, createSession: storeCredentials, getSession}
 })
 
 export type SessionStore = ReturnType<typeof useSessionStore>;
