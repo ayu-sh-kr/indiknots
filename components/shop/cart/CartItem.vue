@@ -4,12 +4,11 @@ import type {CartItemModal} from "~/domains/cart/cart-item.modal";
 import ItemCount from "~/components/shop/cart/util/ItemCount.vue";
 import InfoText from "~/components/shop/cart/util/InfoText.vue";
 import {roundedTo2} from "~/utils/GeneralUtils";
-import {useOrderStore} from "~/stores/order.store";
-import {createOrder, OrderModal} from "~/domains/order/order.modal";
 import {useAccountStore} from "~/stores/account.store";
 import {ProductUtils} from "~/domains/product/product.utils";
 import {CartUtils} from "~/domains/cart/cart.utils";
 import {useCartService} from "~/composables/useCartService";
+import {useOrderService} from "~/composables/useOrderService";
 
 const props = defineProps({
     item: {
@@ -54,21 +53,20 @@ const removeFromCart = async () => {
     await CartUtils.cartAction3Handler(props.item, useCartService())
 }
 
-const orderStore = useOrderStore();
+const orderService = useOrderService();
 const addressStore = useAccountStore();
-const buyThisNow = () => {
-    const order = createOrder(
-        props.item.product,
-        addressStore.addresses[0],
-        selectedSize.value,
-        quantity.value
-    );
-    orderStore.addToStore(
-        OrderModal.builder()
-          .fromOrder(order)
-          .build()
-    );
-    navigateTo("/account/order");
+const buyThisNow = async () => {
+    await orderService.createOrder({
+        items: [
+            {
+                orderId: -1,
+                productId: props.item.product.id,
+                variantId: props.item.variant.id,
+                quantity: quantity.value,
+            }
+        ],
+        addressId: addressStore.addresses[0].id,
+    });
 }
 
 </script>
