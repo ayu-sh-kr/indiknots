@@ -2,16 +2,14 @@ import type {ProductModal} from "~/domains/product/product.modal";
 import type {ProductVariantModal} from "~/domains/variant/product-variant.modal";
 import {ProductUtils} from "~/domains/product/product.utils";
 
-/**
- * Represents an item in the shopping cart.
- * @implements CartItem - Interface for the Cart Data
- */
-class CartModal {
-    color!: string;
+
+class CartItemModal {
+    id!: number;
     quantity!: number;
     productId!: string;
     product!: ProductModal;
-    variant!: ProductVariantModal
+    variant!: ProductVariantModal;
+    price!: number;
 
     /**
      * Increments the quantity of the product in the cart by 1.
@@ -62,45 +60,53 @@ class CartModal {
 
 
     static builder() {
-        return new CartModalBuilder();
+        return new CartItemModalBuilder();
     }
 }
 
-class CartModalBuilder {
-    private readonly cart: CartModal;
+class CartItemModalBuilder {
+    private readonly cart: CartItemModal;
 
     constructor() {
-        this.cart = new CartModal();
+        this.cart = new CartItemModal();
     }
 
-    product(product: ProductModal): CartModalBuilder {
+    id(id: number): CartItemModalBuilder {
+        this.cart.id = id;
+        return this;
+    }
+
+    product(product: ProductModal): CartItemModalBuilder {
         this.cart.product = product;
         return this;
     }
 
-    color(color: string): CartModalBuilder {
-        this.cart.color = color;
-        return this;
-    }
-
-    quantity(count: number): CartModalBuilder {
+    quantity(count: number): CartItemModalBuilder {
         this.cart.quantity = count;
         return this;
     }
 
-    productId(productId: string): CartModalBuilder {
+    productId(productId: string): CartItemModalBuilder {
         this.cart.productId = productId;
         return this;
     }
 
-    variant(variant: ProductVariantModal): CartModalBuilder {
+    price(price: number): CartItemModalBuilder {
+        this.cart.price = price;
+        return this;
+    }
+
+    variant(variant: ProductVariantModal): CartItemModalBuilder {
       this.cart.variant = variant;
       return this;
     }
 
-    build(): CartModal {
+    build(): CartItemModal {
+      if (!this.cart.productId) {
+        this.cart.productId = this.cart.product.id;
+      }
         return this.cart;
     }
 }
 
-export {CartModal, CartModalBuilder}
+export {CartItemModal, CartItemModalBuilder}
