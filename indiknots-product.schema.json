@@ -1,0 +1,117 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "IndiKnots Products Schema",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "properties": {
+      "product": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "description": { "type": "string" },
+          "category": {
+            "type": "string",
+            "enum": [
+              "TRADITIONAL", "MODERN", "ABSTRACT", "GEOMETRIC",
+              "FLORAL", "UNSHAPED", "DHURRIES", "PLAYROOM",
+              "DESIGNER", "CUSHION&PILLOW", "ACCESSORIES"
+            ]
+          },
+          "shape": {
+            "type": "string",
+            "enum": [
+              "ROUNDED", "RECTANGLE", "SQUARE", "RUNNER", "UNSHAPED", "OTHER"
+            ]
+          },
+          "material": {
+            "type": "string",
+            "enum": [
+              "WOOL", "VISCOSE", "SILK", "JUTE", "PET",
+              "BOMBOO_SILK", "TENCIL", "OTHER"
+            ]
+          },
+          "technique": {
+            "type": "string",
+            "enum": [
+              "HAND_KNOTTED", "HAND_TUFTED", "HAND_LOOMED",
+              "FLAT_WEAVE", "PATCH_WORK", "SHAGGY", "OTHER"
+            ]
+          },
+          "isAnimalFriendly": { "type": "boolean" },
+          "id": { "type": ["integer", "string"] },
+          "created_at": { "type": "string", "format": "date" },
+          "updated_at": { "type": "string", "format": "date" }
+        },
+        "required": [
+          "name", "description", "category", "shape", "material",
+          "technique", "isAnimalFriendly", "id", "created_at", "updated_at"
+        ]
+      },
+      "variants": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": { "type": ["integer", "string"] },
+            "productId": { "type": ["integer", "string"] },
+            "size": {
+              "type": "object",
+              "properties": {
+                "length": { "type": "number", "minimum": 0 },
+                "width": { "type": "number", "minimum": 0 },
+                "sizeUnit": { "type": "string", "enum": ["FT", "ft"] },
+                "id": { "type": ["integer", "string"] },
+                "created_at": { "type": "string", "format": "date" },
+                "updated_at": { "type": "string", "format": "date" }
+              },
+              "required": ["length", "sizeUnit", "id", "created_at", "updated_at"]
+            },
+            "stock": {
+              "type": "object",
+              "properties": {
+                "quantity": { "type": "integer", "minimum": 0 },
+                "status": { "type": "string", "enum": ["AVAILABLE", "SOLD_OUT"] },
+                "id": { "type": ["integer", "string"] },
+                "created_at": { "type": "string", "format": "date" },
+                "updated_at": { "type": "string", "format": "date" }
+              },
+              "required": ["quantity", "status", "id", "created_at", "updated_at"]
+            },
+            "price": {
+              "type": "object",
+              "properties": {
+                "value": { "type": "number", "minimum": 0 },
+                "sales": { "type": "boolean" },
+                "salesPercentage": { "type": "number", "minimum": 0, "maximum": 100 },
+                "id": { "type": ["integer", "string"] },
+                "created_at": { "type": "string", "format": "date" },
+                "updated_at": { "type": "string", "format": "date" }
+              },
+              "required": ["value", "sales", "salesPercentage", "id", "created_at", "updated_at"]
+            },
+            "images": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "url": { "type": "string", "format": "uri" },
+                  "variantId": { "type": ["integer", "string"] },
+                  "productId": { "type": ["integer", "string"] },
+                  "id": { "type": ["integer", "string"] },
+                  "created_at": { "type": "string", "format": "date" },
+                  "updated_at": { "type": "string", "format": "date" }
+                },
+                "required": ["url", "variantId", "productId", "id", "created_at", "updated_at"]
+              },
+              "minItems": 1
+            }
+          },
+          "required": ["id", "productId", "size", "stock", "price", "images"]
+        },
+        "minItems": 1
+      }
+    },
+    "required": ["product", "variants"]
+  }
+}

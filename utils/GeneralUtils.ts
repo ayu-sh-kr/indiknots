@@ -1,4 +1,5 @@
 import type {FormError} from "#ui/types";
+import type {ResponseHandler} from "@ayu-sh-kr/dota-rest";
 
 /**
  * `Function` to round off a decimal number to 2 digit.
@@ -232,8 +233,44 @@ function deepCopy<T>(obj: T): T {
     return objCopy as T;
 }
 
+/**
+ * This function is bare minimum implementation of `ResponseHandler` which checks for status of
+ * response whether it is `ok` i.e in the range of 200-209 else throw an error with the customized
+ * message.
+ *
+ * @param response - Response object returned by the `fetch` call
+ */
+const defaultResponseHandler: ResponseHandler = (response: Response) => {
+    const toast = useToastService();
+    if (!response.ok) {
+        if (response.headers.get('Content-Type') === 'application/json')
+            response.clone().json()
+                .then(value => {
+                        console.log(value);
+                        toast.failure(value.message)
+                    }
+                );
+        throw new Error(`Server respond with status code ${response.status}`);
+    }
+}
+
+/**
+ * Capitalizes the first letter of the given string and converts the rest to lowercase.
+ *
+ * This function takes a string input and returns a new string with the first character
+ * converted to uppercase and the remaining characters converted to lowercase. If the input
+ * string is empty or undefined, it returns the original string.
+ *
+ * @param str - The input string to be capitalized.
+ * @returns string - The capitalized string.
+ */
+const capitalize = (str: string): string => {
+  if (!str) return str;
+  return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+};
 
 export {
     roundedTo2, isEmail, isValidGender, isValidAddressType, isValidAccountType,
-    getActivePageInfo, isNotBlank, clearAddressForm, checkError, validatePassword, deepCopy
+    getActivePageInfo, isNotBlank, clearAddressForm, checkError, validatePassword, deepCopy,
+    defaultResponseHandler, capitalize
 }

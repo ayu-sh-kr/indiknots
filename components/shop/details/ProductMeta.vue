@@ -3,8 +3,11 @@
 import ContentWrapper from "~/components/shop/details/ContentWrapper.vue";
 import SizeView from "~/components/shop/details/SizeView.vue";
 import {useCartStore} from "~/stores/cart.store";
-import {getPrizeText, type ProductModal} from "~/modals/product.modal";
-import {cartAction2Handler, CartModalBuilder} from "~/modals/cart.modal";
+import {type ProductModal} from "~/domains/product/product.modal";
+import {CartItemModal} from "~/domains/cart/cart-item.modal";
+import type {ProductVariantModal} from "~/domains/variant/product-variant.modal";
+import {ProductUtils} from "~/domains/product/product.utils";
+import {CartUtils} from "~/domains/cart/cart.utils";
 
 const props = defineProps({
     product: {
@@ -13,10 +16,11 @@ const props = defineProps({
     }
 });
 
-const selectedSize = ref<ProductSize>()
+const selectedVariant = ref<ProductVariantModal>()
 
 onMounted(() => {
-    selectedSize.value = props.product.prices[0].size;
+    console.log(props.product)
+    selectedVariant.value = props.product.variants[0];
 });
 
 const cartStore = useCartStore();
@@ -31,25 +35,23 @@ const cartActionButton = () => {
 
 const addedToCart = ref<boolean>(false)
 
-const addToCart = () => {
+const addToCart = async () => {
     const product = props.product;
-    const builder = new CartModalBuilder()
-    const cartModal = builder.product(product)
+    const cartModal = CartItemModal.builder()
+        .product(product)
         .productId(product.id)
-        .color(product.color)
         .quantity(1)
-        .price(product.getPrizeBySize(selectedSize.value ?? product.prices[0].size) ?? product.prices[0])
-        .size(selectedSize.value ?? product.prices[0].size)
+        .variant(selectedVariant.value ?? product.variants[0])
         .build()
 
-    addedToCart.value = cartAction2Handler(cartModal, useCartStore)
+    addedToCart.value = await CartUtils.cartAction3Handler(cartModal, useCartService())
 }
 
 
 </script>
 
 <template>
-    <div v-if="selectedSize" class="flex flex-col items-center gap-y-3 w-full sticky top-10">
+    <div v-if="selectedVariant" class="flex flex-col items-center gap-y-3 w-full sticky top-10">
         <ContentWrapper class="w-2/3">
             <h3 class="pb-4 border-b border-gray-600 dark:border-gray-200 w-full text-left">{{product.name}}</h3>
         </ContentWrapper>
@@ -61,27 +63,26 @@ const addToCart = () => {
         </ContentWrapper>
 
         <ContentWrapper>
-            <span v-if="selectedSize" class="font-medium text-lg tracking-wide text-gray-700 dark:text-gray-300">{{getPrizeText(product, selectedSize)}}</span>
+            <span v-if="selectedVariant" class="font-medium text-lg tracking-wide text-gray-700 dark:text-gray-300">{{ ProductUtils.getPrizeText(selectedVariant) }}</span>
         </ContentWrapper>
 
-        <ContentWrapper class="w-2/3 text-gray-900 dark:text-gray-100 font-semibold text-sm flex justify-start gap-x-5" v-if="selectedSize">
+        <ContentWrapper class="w-2/3 text-gray-900 dark:text-gray-100 font-semibold text-sm flex justify-start gap-x-5" v-if="selectedVariant">
             <p>
-                Size: {{ selectedSize.length }} x {{ selectedSize.width }} {{ selectedSize.unit }}
+                Size: {{ProductUtils.getSizeText(selectedVariant)}}
             </p>
 
-            <p :class="{'line-through text-gray-600 dark:text-gray-300' : selectedSize.stock.quantity === 0}">
-                Quantity: {{selectedSize.stock.quantity}}
+            <p :class="{'line-through text-gray-600 dark:text-gray-300' : selectedVariant.stock.quantity === 0}">
+                Quantity: {{ selectedVariant.stock.quantity }}
             </p>
         </ContentWrapper>
 
         <ContentWrapper class="grid grid-cols-2 md:grid-cols-3 w-2/3 gap-x-5 gap-y-3">
             <SizeView @click="() => {
-                selectedSize = price.size;
-                console.log(selectedSize.stock)
-            }" v-for="price in product.prices" :size="price.size" :selected="selectedSize === price.size"/>
+                selectedVariant = variants;
+            }" v-for="variants in product.variants" :variant="variants" :selected="selectedVariant === variants"/>
         </ContentWrapper>
 
-        <div v-if="selectedSize.stock.status === 'AVAILABLE'" class="meta-div">
+        <div v-if="selectedVariant.stock.status === 'AVAILABLE'" class="meta-div">
             <button class="meta-action bg-yellow-400 hover:bg-yellow-500 dark:bg-yellow-500 dark:hover:bg-yellow-600">
                 <UIcon name="i-icon-park-outline:buy" class="text-lg font-semibold"/>
                 <span>Buy Now</span>

@@ -18,5 +18,10 @@ export default defineNuxtConfig({
   },
 
   ssr: true,
-  compatibilityDate: "2025-01-02"
+  compatibilityDate: "2025-01-02",
+  runtimeConfig: {
+      public: {
+          apiUrl: process.env.API_URL || 'http://localhost:3000',
+      }
+  }
 })

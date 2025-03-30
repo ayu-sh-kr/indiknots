@@ -3,8 +3,10 @@
 import ProductCard from "~/components/shop/card/ProductCard.vue";
 import PCardImage from "~/components/shop/card/PCardImage.vue";
 import ViewButton from "~/components/shop/card/ViewButton.vue";
-import {useCartStore} from "~/stores/cart.store";
-import {cartActionHandler, type ProductModal} from "~/modals/product.modal";
+import {type ProductModal} from "~/domains/product/product.modal";
+import {ProductUtils} from "~/domains/product/product.utils";
+import {CartItemModal} from "~/domains/cart/cart-item.modal";
+import {CartUtils} from "~/domains/cart/cart.utils";
 
 const props = defineProps({
     product: {
@@ -13,27 +15,17 @@ const props = defineProps({
     }
 });
 
-const capitalize = (str: string): string => {
-    if (!str) return str;
-    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
-};
-
-const processShortDescription = (product: Product) => {
-    return `${product.technique.split('_').map(str => capitalize(str)).join(" ")} - ${capitalize(product.category)}, ${product.material.split("_").map(str => capitalize(str)).join(" ")} Rug`
-}
-
-const processProductLength = (size: ProductSize) => {
-
-    if(size.width === 0) {
-        return `Rounded ${size.length} ${size.unit}`
-    }
-
-    return `${size.length} x ${size.width} ${size.unit}`
-}
-
-const addToCart = () => {
+const addToCart = async () => {
     let product = props.product;
-    cartActionHandler(product, useCartStore);
+    const cartItem = CartItemModal.builder()
+      .productId(product.id)
+      .product(product)
+      .variant(product.variants[0])
+      .quantity(1)
+      .price(product.variants[0].price.value)
+      .build();
+
+    await CartUtils.cartAction3Handler(cartItem, useCartService())
 }
 
 const productView = () => {
@@ -47,14 +39,14 @@ const productView = () => {
 
 <template>
 <ProductCard>
-    <PCardImage @addCart="addToCart" :url="product.img[0].url" :image="product.img[0]"/>
+    <PCardImage @addCart="addToCart" :image="ProductUtils.getProductImages(product.variants)[0]" :product="product"/>
     <div class="text-center flex flex-col items-center">
         <h4 class="text-lg font-medium text-gray-800 dark:text-gray-100">{{ product.name.toUpperCase() }}</h4>
-        <p class="font-extralight text-gray-600 dark:text-gray-300 text-sm">{{processShortDescription(product)}}</p>
-        <p class="font-light text-gray-800/95 dark:text-gray-200/95 mt-2">{{ processProductLength(product.sizes[0]) }}</p>
+        <p class="font-extralight text-gray-600 dark:text-gray-300 text-sm">{{ ProductUtils.getShortDescription(product) }}</p>
+        <p class="font-light text-gray-800/95 dark:text-gray-200/95 mt-2">{{ ProductUtils.getLengthText(product.variants[0].size) }}</p>
         <ViewButton @click="productView()">
             <p class="text-gray-950 dark:text-gray-50 text-lg group-hover:text-white transition-all">From
-                ${{ product.prices[0].value }}</p>
+                ${{ product.variants[0].price.value }}</p>
         </ViewButton>
     </div>
 </ProductCard>

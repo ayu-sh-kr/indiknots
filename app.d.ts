@@ -81,14 +81,6 @@ const schema = {
     "animal_friendly": ""
 }
 
-declare interface CartItem {
-    productId: string
-    quantity: number
-    size: ProductSize
-    color: string
-    price: ProductPrice
-}
-
 declare type ProductSizeOption = {
     label: String,
     value: ProductSize
@@ -206,4 +198,8 @@ declare interface Order {
     address: Address,
     invoice: string,
     action: OrderAction
+}
+
+declare interface ModalDTO<T> {
+    toEntity(): T;
 }

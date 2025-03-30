@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
 import {useOrderStore} from "~/stores/order.store";
-import type {OrderModal} from "~/modals/order.modal";
+import type {OrderModal} from "~/domains/order/order.modal";
 import SectionHeader from "~/components/utils/SectionHeader.vue";
 import NoContent from "~/components/utils/NoContent.vue";
 import OrderPaymentDescription from "~/components/account/order/view/OrderPaymentDescription.vue";

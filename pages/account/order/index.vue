@@ -3,7 +3,7 @@
 import OrderPreview from "~/components/account/order/view/OrderPreview.vue";
 import {useOrderStore} from "~/stores/order.store";
 import NoContent from "~/components/utils/NoContent.vue";
-import type {OrderModal} from "~/modals/order.modal";
+import type {OrderModal} from "~/domains/order/order.modal";
 
 definePageMeta({
     layout: 'account'

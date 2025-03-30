@@ -1,15 +1,15 @@
 <script setup lang="ts">
 
 import TagButton from "~/components/shop/card/TagButton.vue";
+import type {ProductImageModal} from "~/domains/image/product-image.modal";
 
 const props = defineProps({
-    url: String,
     product: {
         type: Object as PropType<Product>,
         required: false
     },
     image: {
-        type: Object as PropType<ProductImage>,
+        type: Object as PropType<ProductImageModal>,
         required: true
     }
 });
@@ -32,7 +32,7 @@ const addToCart = () => {
                 <TagButton icon="material-symbols-light:favorite"/>
             </UTooltip>
         </div>
-        <img :src="image.url" :alt="image.text" class="w-full h-full">
+        <img :src="image.url" :alt="product?.name || 'Product image'" class="w-full h-full">
     </div>
 </template>
 

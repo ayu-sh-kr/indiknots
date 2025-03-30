@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import { ref } from 'vue';
-import {OrderModal} from "~/modals/order.modal";
+import {OrderModal} from "~/domains/order/order.modal";
 
 export const useOrderStore = defineStore('orders', () => {
 
@@ -19,4 +19,6 @@ export const useOrderStore = defineStore('orders', () => {
     }
 
     return {orders, findById, existsById, addToStore}
-})
+});
+
+export type OrderStore = ReturnType<typeof useOrderStore>

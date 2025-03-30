@@ -2,7 +2,7 @@
 
 import MetaAction from "~/components/shop/details/MetaAction.vue";
 import Product from "~/components/shop/Product.vue";
-import {type ProductModal} from "~/modals/product.modal";
+import {type ProductModal} from "~/domains/product/product.modal";
 import {useProductStore} from "~/stores/product.store";
 import NoContent from "~/components/utils/NoContent.vue";
 import Scaffold from "~/components/utils/Scaffold.vue";
@@ -19,12 +19,13 @@ const pageStore = usePaginationStore();
 
 const {productPage: page, productSort: sort, productFilter: filter} = storeToRefs(pageStore)
 const productStore = useProductStore();
+const productService = useProductService();
 const pageSize = ref(8);
 
 const route = useRoute();
 
 onMounted(async () => {
-    products.value = await productStore.fetchOrRefresh();
+    products.value = await productService.fetchOrRefresh();
     const category = route.query.category as string;
     
     if(category) filter.value = defaultCategoryFilter(category.toUpperCase() as ProductCategory)
@@ -54,7 +55,7 @@ const applyFilters = (updatedFilter: ProductFilter) => {
 }
 
 const applyRefresh = async () => {
-    await productStore.hardRefreshOrUpdate();
+    await productService.hardRefreshOrUpdate();
     // remove filter on refresh
     filter.value = 'NONE';
 

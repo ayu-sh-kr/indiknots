@@ -2,7 +2,7 @@
 
 import Scaffold from "~/components/utils/Scaffold.vue";
 import SectionHeader from "~/components/utils/SectionHeader.vue";
-import CartBody from "~/components/shop/cart/body/CartBody.vue";
+import CartBody from "~/components/shop/cart/CartBody.vue";
 </script>
 
 <template>

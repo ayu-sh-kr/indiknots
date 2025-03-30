@@ -3,7 +3,7 @@
 import SectionHeader from "~/components/utils/SectionHeader.vue";
 import {object, string} from "yup";
 import type {FormError, FormErrorEvent, FormSubmitEvent} from "#ui/types";
-import {type ContactFormData, EnquiryType} from "~/modals/connect.modal";
+import {type ContactFormData, EnquiryType} from "~/domains/connect/connect.modal";
 import {useConnectService} from "~/composables/useConnectService";
 
 const phoneRegExp = /^(\+\d{1,3}[- ]?)?\d{10}$/;

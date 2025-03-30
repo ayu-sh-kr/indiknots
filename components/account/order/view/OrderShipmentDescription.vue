@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import {getLocalAddress} from "~/modals/address.modal";
+import {getLocalAddress} from "~/domains/account/address.modal";
 
 const props = defineProps({
     address: {

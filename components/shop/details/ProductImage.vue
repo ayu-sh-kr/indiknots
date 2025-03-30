@@ -1,10 +1,11 @@
 <script setup lang="ts">
 
 import ProductImagePreview from "~/components/shop/details/ProductImagePreview.vue";
+import type {ProductImageModal} from "~/domains/image/product-image.modal";
 
 const props = defineProps({
     images: {
-        type: Object as PropType<ProductImage[]>,
+        type: Object as PropType<ProductImageModal[]>,
         required: true
     }
 })
@@ -26,7 +27,7 @@ const onImageSelection = (data: number) => {
 
         <div class="col-span-5 p-2 h-full">
             <UCarousel ref="carouselRef" v-slot="{ item }" :items="images" :ui="{ item: 'basis-full' }" class="flex justify-center items-center overflow-hidden">
-                <img :src="item.url" :alt="item.text" class="w-5/6 h-5/6" draggable="false">
+                <img :src="item.url" :alt="item.id" class="w-5/6 h-5/6" draggable="false">
             </UCarousel>
         </div>
 
