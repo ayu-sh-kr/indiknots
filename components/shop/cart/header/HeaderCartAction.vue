@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import {useCartStore} from "~/stores/cart.store";
 import CartPreview from "~/components/shop/cart/header/CartPreview.vue";
-import type {CartModal} from "~/domains/cart/cart.modal";
+import type {CartItemModal} from "~/domains/cart/item/cartItemModal";
 
 const cartStore = useCartStore();
 
-const products = ref<CartModal[]>([])
+const products = ref<CartItemModal[]>([])
 
 onMounted(() => {
     products.value = cartStore.cart;
