@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import type {CartModal} from "~/domains/cart/cart.modal";
+import type {CartItemModal} from "~/domains/cart/cart-item.modal";
 import ItemCount from "~/components/shop/cart/util/ItemCount.vue";
 import InfoText from "~/components/shop/cart/util/InfoText.vue";
 import {roundedTo2} from "~/utils/GeneralUtils";
@@ -9,10 +9,11 @@ import {createOrder, OrderModal} from "~/domains/order/order.modal";
 import {useAccountStore} from "~/stores/account.store";
 import {ProductUtils} from "~/domains/product/product.utils";
 import {CartUtils} from "~/domains/cart/cart.utils";
+import {useCartService} from "~/composables/useCartService";
 
 const props = defineProps({
     item: {
-        type: Object as PropType<CartModal>,
+        type: Object as PropType<CartItemModal>,
         required: true
     }
 });
@@ -49,8 +50,8 @@ const updatedQuantity = (value: number) => {
     emit("update-total")
 }
 
-const removeFromCart = () => {
-    CartUtils.cartAction2Handler(props.item, useCartStore())
+const removeFromCart = async () => {
+    await CartUtils.cartAction3Handler(props.item, useCartService())
 }
 
 const orderStore = useOrderStore();
