@@ -1,5 +1,4 @@
 import {defineStore} from 'pinia';
-import {ref} from 'vue';
 
 import type {LoginResponse} from "~/domains/security/login.service";
 import {useLocalStorage} from "@vueuse/core";
