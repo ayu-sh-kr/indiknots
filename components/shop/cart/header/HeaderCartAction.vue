@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {useCartStore} from "~/stores/cart.store";
 import CartPreview from "~/components/shop/cart/header/CartPreview.vue";
-import type {CartItemModal} from "~/domains/cart/item/cartItemModal";
+import type {CartItemModal} from "~/domains/cart/cart-item.modal";
 
 const cartStore = useCartStore();
 

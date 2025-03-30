@@ -1,6 +1,6 @@
 <script setup lang="ts">
 
-import type {CartItemModal} from "~/domains/cart/item/cartItemModal";
+import type {CartItemModal} from "~/domains/cart/cart-item.modal";
 
 const props = defineProps({
     item: {
