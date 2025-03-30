@@ -32,7 +32,7 @@ const addToCart = () => {
                 <TagButton icon="material-symbols-light:favorite"/>
             </UTooltip>
         </div>
-        <img :src="image.url" :alt="product?.name" class="w-full h-full">
+        <img :src="image.url" :alt="product?.name || 'Product image'" class="w-full h-full">
     </div>
 </template>
 
