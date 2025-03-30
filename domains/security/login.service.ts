@@ -79,4 +79,11 @@ export class LoginService {
       return jwtPayload.sub;
     }
   }
+
+  getAccessToken() {
+    if(this.isLoggedIn()) {
+      const session = this.sessionStore.getSession();
+      return session.accessToken;
+    }
+  }
 }
