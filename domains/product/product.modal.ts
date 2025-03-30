@@ -1,4 +1,4 @@
-import {ProductVariantModal} from "~/domains/variant/product-variant.modal";
+import {ProductVariantModal} from "~/domains/product/variant/product-variant.modal";
 
 class ProductModal implements Product {
 

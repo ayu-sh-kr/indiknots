@@ -1,4 +1,4 @@
-import {ProductStockModal} from "~/domains/stock/product-stock.modal";
+import {ProductStockModal} from "~/domains/product/stock/product-stock.modal";
 
 export class StockDTO implements ModalDTO<ProductStockModal>{
     id: number;

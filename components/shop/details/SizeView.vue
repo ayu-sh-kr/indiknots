@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
-import type {ProductVariantModal} from "~/domains/variant/product-variant.modal";
-import type {ProductSizeModal} from "~/domains/size/product-size.modal";
+import type {ProductVariantModal} from "~/domains/product/variant/product-variant.modal";
+import type {ProductSizeModal} from "~/domains/product/size/product-size.modal";
 
 defineProps({
     variant: {

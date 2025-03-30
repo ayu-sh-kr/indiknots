@@ -1,5 +1,5 @@
 import {ProductDTO} from "~/domains/product/ProductDTO";
-import {ProductVariantDTO} from "~/domains/variant/ProductVariantDTO";
+import {ProductVariantDTO} from "~/domains/product/variant/ProductVariantDTO";
 import {ProductModal} from "~/domains/product/product.modal";
 
 

@@ -1,4 +1,4 @@
-import {ProductImageModal} from "~/domains/image/product-image.modal";
+import {ProductImageModal} from "~/domains/product/image/product-image.modal";
 
 export class ImageDTO implements ModalDTO<ProductImageModal>{
     id: number;

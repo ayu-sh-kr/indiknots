@@ -1,8 +1,6 @@
 <script setup lang="ts">
 
-import OrderPreview from "~/components/account/order/view/OrderPreview.vue";
 import {useOrderStore} from "~/stores/order.store";
-import NoContent from "~/components/utils/NoContent.vue";
 import type {OrderModal} from "~/domains/order/order.modal";
 
 definePageMeta({
@@ -22,10 +20,7 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class="space-y-5">
-        <OrderPreview v-if="orders.length > 0" v-for="order in orders" :order="order"/>
-        <NoContent v-else />
-    </div>
+
 </template>
 
 <style scoped>

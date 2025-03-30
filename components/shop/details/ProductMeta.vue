@@ -5,7 +5,7 @@ import SizeView from "~/components/shop/details/SizeView.vue";
 import {useCartStore} from "~/stores/cart.store";
 import {type ProductModal} from "~/domains/product/product.modal";
 import {CartItemModal} from "~/domains/cart/cart-item.modal";
-import type {ProductVariantModal} from "~/domains/variant/product-variant.modal";
+import type {ProductVariantModal} from "~/domains/product/variant/product-variant.modal";
 import {ProductUtils} from "~/domains/product/product.utils";
 import {CartUtils} from "~/domains/cart/cart.utils";
 
