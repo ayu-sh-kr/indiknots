@@ -3,7 +3,7 @@
 import {type ProductModal} from "~/domains/product/product.modal";
 import {useCartStore} from "~/stores/cart.store";
 import {ProductUtils} from "~/domains/product/product.utils";
-import type {CartModal} from "~/domains/cart/cart.modal";
+import type {CartItemModal} from "~/domains/cart/item/cartItemModal";
 
 const props = defineProps({
     product: {
@@ -13,7 +13,7 @@ const props = defineProps({
 });
 
 const cartStore = useCartStore()
-const cartItem = ref<CartModal | undefined>()
+const cartItem = ref<CartItemModal | undefined>()
 
 onMounted(() => {
     cartItem.value = cartStore.getCartItem(props.product.id)
