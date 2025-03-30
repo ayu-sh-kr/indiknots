@@ -1,10 +1,10 @@
 <script setup lang="ts">
 
-import type {CartModal} from "~/domains/cart/cart.modal";
+import type {CartItemModal} from "~/domains/cart/item/cartItemModal";
 
 const props = defineProps({
     item: {
-        type: Object as PropType<CartModal>,
+        type: Object as PropType<CartItemModal>,
         required: true
     }
 })
@@ -17,13 +17,13 @@ onMounted(() => {
 
 const emit = defineEmits(['update-quantity'])
 
-const increment = (item: CartModal) => {
+const increment = (item: CartItemModal) => {
     item.incrementCount()
     count.value = item.quantity;
     emit("update-quantity", item.quantity)
 }
 
-const decrement = (item: CartModal) => {
+const decrement = (item: CartItemModal) => {
     item.decrementCount();
     count.value = item.quantity
     emit("update-quantity", item.quantity)
