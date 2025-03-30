@@ -1,5 +1,5 @@
 import type {ProductModal} from "~/domains/product/product.modal";
-import type {ProductVariantModal} from "~/domains/variant/product-variant.modal";
+import type {ProductVariantModal} from "~/domains/product/variant/product-variant.modal";
 import {ProductUtils} from "~/domains/product/product.utils";
 
 

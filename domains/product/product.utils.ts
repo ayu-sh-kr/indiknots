@@ -1,8 +1,8 @@
-import type {ProductVariantModal} from "~/domains/variant/product-variant.modal";
-import type {ProductImageModal} from "~/domains/image/product-image.modal";
+import type {ProductVariantModal} from "~/domains/product/variant/product-variant.modal";
+import type {ProductImageModal} from "~/domains/product/image/product-image.modal";
 import type {ProductModal} from "~/domains/product/product.modal";
 import {capitalize} from "~/utils/GeneralUtils";
-import type {ProductSizeModal} from "~/domains/size/product-size.modal";
+import type {ProductSizeModal} from "~/domains/product/size/product-size.modal";
 
 
 export class ProductUtils {

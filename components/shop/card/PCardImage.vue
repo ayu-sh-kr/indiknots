@@ -1,7 +1,7 @@
 <script setup lang="ts">
 
 import TagButton from "~/components/shop/card/TagButton.vue";
-import type {ProductImageModal} from "~/domains/image/product-image.modal";
+import type {ProductImageModal} from "~/domains/product/image/product-image.modal";
 
 const props = defineProps({
     product: {

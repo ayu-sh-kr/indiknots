@@ -1,8 +1,8 @@
-import {StockDTO} from "~/domains/stock/StockDTO";
-import {SizeDTO} from "~/domains/size/SizeDTO";
-import {PriceDTO} from "~/domains/price/PriceDTO";
-import {ImageDTO} from "~/domains/image/ImageDTO";
-import {ProductVariantModal} from "~/domains/variant/product-variant.modal";
+import {StockDTO} from "~/domains/product/stock/StockDTO";
+import {SizeDTO} from "~/domains/product/size/SizeDTO";
+import {PriceDTO} from "~/domains/product/price/PriceDTO";
+import {ImageDTO} from "~/domains/product/image/ImageDTO";
+import {ProductVariantModal} from "~/domains/product/variant/product-variant.modal";
 
 export class ProductVariantDTO implements ModalDTO<ProductVariantModal>{
 

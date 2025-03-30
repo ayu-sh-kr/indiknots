@@ -1,7 +1,7 @@
-import {ProductSizeModal} from "~/domains/size/product-size.modal";
-import {ProductStockModal} from "~/domains/stock/product-stock.modal";
-import {ProductPriceModal} from "~/domains/price/product-price.modal";
-import {ProductImageModal} from "~/domains/image/product-image.modal";
+import {ProductSizeModal} from "~/domains/product/size/product-size.modal";
+import {ProductStockModal} from "~/domains/product/stock/product-stock.modal";
+import {ProductPriceModal} from "~/domains/product/price/product-price.modal";
+import {ProductImageModal} from "~/domains/product/image/product-image.modal";
 
 
 export class ProductVariantModal {

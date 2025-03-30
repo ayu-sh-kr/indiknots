@@ -1,6 +1,6 @@
 import {CartItemModal} from "~/domains/cart/cart-item.modal";
 import {EnrichedProductDTO} from "~/domains/product/EnrichedProductDTO";
-import {ProductVariantDTO} from "~/domains/variant/ProductVariantDTO";
+import {ProductVariantDTO} from "~/domains/product/variant/ProductVariantDTO";
 
 export class CartItemDTO implements ModalDTO<CartItemModal>{
 

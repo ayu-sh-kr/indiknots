@@ -1,4 +1,4 @@
-import {ProductPriceModal} from "~/domains/price/product-price.modal";
+import {ProductPriceModal} from "~/domains/product/price/product-price.modal";
 
 export class PriceDTO implements ModalDTO<ProductPriceModal>{
     id: number;

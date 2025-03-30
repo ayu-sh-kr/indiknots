@@ -1,4 +1,4 @@
-import {ProductSizeModal} from "~/domains/size/product-size.modal";
+import {ProductSizeModal} from "~/domains/product/size/product-size.modal";
 
 export class SizeDTO implements ModalDTO<ProductSizeModal>{
     id: number;
